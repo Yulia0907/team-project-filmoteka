@@ -1,11 +1,10 @@
 body {
   font-family: Roboto, sans-serif;
-  color: $main-text-color;
-  font-size: 16px;
-  line-height: 1.5;
-  background-color: $main-background-color;
+  color: $main-color;
+  font-size: 12px;
+  line-height: 1.4;
+  background-color: $main-bg-color;
 
-  }
 }
 
 body.modal-open {
