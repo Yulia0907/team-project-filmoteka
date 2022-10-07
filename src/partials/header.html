@@ -1,6 +1,6 @@
 <header class="header">
-  <div class="container">
-    <nav class="header-nav">
+  <div class="container header__container">
+    <nav class="header-nav container__header-nav">
       <a href="./index.html" class="logo">
         <img src="./img/film.svg" alt="Icon logo" width="24" height="24" />
         <!-- <svg class="logo__icon">
@@ -10,11 +10,7 @@
       </a>
       <ul class="header-nav__end">
         <li class="header-nav__item">
-          <a
-            href="./index.html"
-            class="header-nav__link header-nav__link--current-header"
-            >HOME</a
-          >
+          <a href="./index.html" class="header-nav__link header-nav__link--current-header">HOME</a>
         </li>
         <li class="header-nav__item">
           <a href="./mylibrary.html" class="header-nav__link">MY LIBRARY</a>
@@ -22,27 +18,16 @@
       </ul>
     </nav>
 
-    <div class="hero-home">
-      <form class="hero-home__form" name="hero-home" role="search">
-        <input
-          class="form_input"
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Movie search"
-        />
-        <button class="form_search-button" aria-label="search" type="submit">
-          <img
-            src="./img/search.svg"
-            alt="Icon search"
-            width="20"
-            height="20"
-          />
-          <!-- <svg class="form_search-icon" width="12" height="12">
+    <!-- <div class="hero-home"> -->
+    <form class="hero-home__form" name="hero-home" role="search">
+      <input class="form_input" type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+      <button class="form_search-button" aria-label="search" type="submit">
+        <img src="./img/search.svg" alt="Icon search" width="20" height="20" />
+        <!-- <svg class="form_search-icon" width="12" height="12">
             <use href="./img/search.svg"></use>
           </svg> -->
-        </button>
-      </form>
-    </div>
+      </button>
+    </form>
+    <!-- </div> -->
   </div>
 </header>
