@@ -1,0 +1,147 @@
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.movies__container {
+  width: 100%;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 320px) {
+    width: 320px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    padding-top: 60px;
+  }
+}
+
+.movies {
+  display: grid;
+  row-gap: 20px;
+
+  @include mq(tablet) {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  @include mq(desktop) {
+    column-gap: 15px;
+    row-gap: 32px;
+  }
+}
+
+.films__item {
+  position: relative;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  width: 280px;
+
+  @include mq(tablet) {
+    width: 336px;
+  }
+
+  @include mq(desktop) {
+    width: 395px;
+  }
+
+  &:hover {
+    box-shadow: -5px -5px 18px $accent-color;
+
+    & .films__img {
+      opacity: 0.7;
+    }
+  }
+}
+
+.films__img {
+  height: 398px;
+
+  @include mq(tablet) {
+    height: 455px;
+  }
+  @include mq(desktop) {
+    height: 574px;
+  }
+
+  opacity: 1;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.films__img > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.films__description {
+  padding: 10px 5px 2px;
+}
+
+.film__title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.films__meta {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $accent-color;
+}
+
+.films__data:before {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: $accent-color;
+}
+
+.films__rating {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 16px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  border-radius: 5px;
+  color: $main-invert-color;
+  background-color: $accent-color;
+}
