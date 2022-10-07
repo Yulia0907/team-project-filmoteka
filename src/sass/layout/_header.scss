@@ -1,0 +1,260 @@
+.header {
+    min-width: 320px;
+    min-height: 230px;
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background: url(../img/header-mobile@1x-min.jpg) $main-invert-color;
+    background-size: cover;
+
+    @include mq(retina) {
+        background: url(../img/header-mobile@2x-min.jpg) $main-invert-color;
+        background-size: cover;
+    }
+
+    @include mq(tablet) {
+        background: url(../img/header-tablet@1x-min.jpg) $main-invert-color;
+        background-size: cover;
+
+        @include mq(retina) {
+            background: url(../img/header-tablet@2x-min.jpg) $main-invert-color;
+            background-size: cover;
+        }
+    }
+
+    @include mq(desktop) {
+        background: url(../img/header-desktop@1x-min.jpg) $main-invert-color;
+        background-size: cover;
+
+        @include mq(retina) {
+            background: url(../img/header-desktop@2x-min.jpg) $main-invert-color;
+            background-size: cover;
+        }
+    }
+
+    background-color: transparent;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.logo__label {
+
+    &:hover,
+    &:focus {
+        color: $main-invert-color;
+    }
+
+    @include mq(mobile-only) {
+        display: none;
+    }
+
+    @include mq(tablet) {
+        color: $main-invert-color;
+        margin-left: 10px;
+        line-height: 1.16;
+        text-align: center;
+    }
+}
+
+.logo {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+
+
+    @include mq(tablet) {
+        margin-left: 10px;
+
+        line-height: 1.16;
+
+        text-align: center;
+
+        color: $main-invert-color;
+    }
+
+    transition: transition((color transform));
+
+    &:hover,
+    &:focus {
+        color: $main-invert-color;
+    }
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    &__list {
+        display: flex;
+        margin-left: auto;
+    }
+
+    &__end {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+
+
+.header-nav__item {
+    &:not(:last-child) {
+        margin-right: 40px;
+    }
+
+    transform: scale(1);
+    transition: transform ease 1s;
+    transition: transition((transform));
+
+    &:hover {
+        transform: scale(1.3);
+        transition: transition((transform));
+    }
+}
+
+.header-nav__link {
+    color: $main-invert-color;
+    font-size: 12px;
+    line-height: 1.16;
+    padding-top: 44px;
+    padding-bottom: 22px;
+    text-transform: uppercase;
+
+
+    & {
+        padding-bottom: 3px;
+    }
+
+    &:hover,
+    &:focus {
+        color: $main-invert-color;
+    }
+}
+
+.header-nav__link--current-header {
+    position: relative;
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: #FF001B;
+    }
+}
+
+.hero-home {
+    cursor: pointer;
+
+    @include mq(tablet) {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+}
+
+
+
+.hero-home__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    cursor: pointer;
+    width: 280px;
+    margin: 0 auto 16px auto;
+
+    @include mq(tablet) {
+        width: 336px;
+        margin: 0 auto 20px auto;
+    }
+
+    @include mq(desktop) {
+        width: 394px;
+        margin: 0 auto 20px auto;
+    }
+
+    border-bottom: 0.5px solid $main-invert-color;
+
+    &:hover,
+    &:focus-within {
+        border-bottom: 3px solid $accent-color;
+        box-shadow: inset 0 -8px 15px -8px $accent-color;
+        background: transparent;
+    }
+}
+
+.form_input {
+    position: relative;
+    width: 100%;
+    outline: none;
+    padding: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: $main-invert-color;
+
+    &::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.14;
+        color: $main-invert-color;
+    }
+
+    &:hover,
+    &:focus {
+        &::placeholder {
+            color: bbbbbb;
+        }
+    }
+}
+
+
+
+.form_search-button {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.container {
+    @include mq(tablet) {
+        max-width: 768px;
+    }
+
+    @include mq(tablet) {
+        max-width: 1270px;
+    }
+}
