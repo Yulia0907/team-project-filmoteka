@@ -1,0 +1,39 @@
+.footer {
+  padding: 29px 36px 30px 48px;
+  background-color: $bg-footer-color;
+
+  &-content {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.19;
+    color: $footer-color;
+
+    @include mq(mobile-only) {
+      font-size: 14px;
+      line-height: 1.47;
+    }
+  }
+
+  &-btn {
+    border-style: none;
+    background-color: transparent;
+    color: $footer-color;
+    padding: 0;
+    text-decoration-line: underline;
+  }
+
+  &-btn:hover,
+  &-btn:focus {
+    color: $accent-color;
+  }
+
+  @include mq(tablet) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  @include mq(desktop) {
+    padding-top: 30px;
+    padding-bottom: 28px;
+  }
+}
