@@ -1,0 +1,43 @@
+<div class="backdrop" data-modal>
+  <div class="modal-registr">
+    <!-- <button type="button" class="modal-regist-close-btn">
+    <svg class="svg">
+      <use href=""></use>
+    </svg>
+  </button> -->
+    <p class="modal-registr-title">Welcome to Filmoteka</p>
+    <button class="modal-registr-btn-google">
+      <svg class="modal-registr-icon-google">
+        <use href="/src/img/modal-registration.svg#icon-google"></use>
+      </svg>
+      Continue wits Google
+    </button>
+    <form>
+      <div class="modal-registr-wrap">
+        <input
+          type="text"
+          name="user-name"
+          id="user-name"
+          class="modal-registr-input"
+          placeholder="Name"
+          minlength="2"
+          pattern="^[a-zA-Z]+"
+          title="John"
+          required
+        />
+        <input
+          type="email"
+          name="user-email"
+          id="user-email"
+          class="modal-registr-input"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <button type="submit" class="modal-registr-btn-sbmt">Sign in</button>
+      <p class="modal-registr-signup">
+        No account yet? <a href="" class="modal-registr-ref">Sign up</a>
+      </p>
+    </form>
+  </div>
+</div>
