@@ -1,5 +1,3 @@
-import genresData from './genres.json';
-
 function createMovieCards(movies) {
   return movies
     .map(
@@ -14,12 +12,14 @@ function createMovieCards(movies) {
         genres,
         genre_ids,
       }) => {
+        const genresListFromStorage = localStorage.getItem('genresList');
+        const parsedGenres = JSON.parse(genresListFromStorage);
         let filmGenres;
         if (genres) {
           filmGenres = genres.map(({ name }) => name).join(', ');
         }
         if (genre_ids) {
-          filmGenres = genresData
+          filmGenres = parsedGenres
             .filter(({ id }) => genre_ids.includes(id))
             .map(({ name }) => name)
             .join(', ');

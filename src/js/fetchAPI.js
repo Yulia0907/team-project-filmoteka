@@ -46,4 +46,25 @@ async function fetchMoviesByName(movieName, p = 1) {
   }
 }
 
-export { fetchTrendingMovies, fetchMovieById, fetchMoviesByName };
+async function fetchGenresList() {
+  try {
+    const data = await fetch(
+      'https://api.themoviedb.org/3/genre/movie/list?api_key=0214e4f6556edfc65f2eadfc23b43510&language=en-US'
+    );
+    const genresList = await data.json();
+    localStorage.setItem('genresList', JSON.stringify(genresList.genres));
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+if (!localStorage.getItem('genresList')) {
+  fetchGenresList();
+}
+
+export {
+  fetchTrendingMovies,
+  fetchMovieById,
+  fetchMoviesByName,
+  fetchGenresList,
+};
