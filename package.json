@@ -24,7 +24,6 @@
     "@parcel/transformer-sass": "^2.6.0",
     "assert": "^2.0.0",
     "axios": "^1.1.2",
-    "basiclightbox": "^5.0.4",
     "parcel": "^2.6.0",
     "basiclightbox": "^5.0.4",
     "canvas-confetti": "^1.5.1",
