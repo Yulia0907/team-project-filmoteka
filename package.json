@@ -1,11 +1,11 @@
 {
-  "name": "parcel-project-template",
+  "name": "js-project-7",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://NilKad.github.io/js-project-7.git",
+  "homepage": "https://NilKad.github.io/js-project-7",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /js-project-7.git/"
+    "build": "parcel build src/*.html --public-url /js-project-7/"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "author": "Alexander Kadulin <kadulin@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NilKad/js-project-7.git/issues"
+    "url": "https://github.com/NilKad/js-project-7/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
@@ -23,9 +23,11 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "axios": "^1.1.2",
+    "basiclightbox": "^5.0.4",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "tui-pagination": "^3.4.1"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
