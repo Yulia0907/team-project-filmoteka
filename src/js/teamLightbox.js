@@ -1,8 +1,11 @@
+// import './js/teamLightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
+
 import * as basicLightbox from 'basiclightbox';
 
 import showConfetti from './confetti';
 
-import aleksandrImg from '../img/team/user-min.png';
+import aleksandrImg from '../img/team/aleksandr-k.jpg';
 import oksanaImg from '../img/team/Oksana.jpg';
 import alekseiImg from '../img/team/Aleksei.jpg';
 import dmytroImg from '../img/team/Dmytro.jpg';
@@ -14,8 +17,6 @@ import yelyzavetaImg from '../img/team/Yelyzaveta.jpg';
 import artemImg from '../img/team/user-min.png';
 import yuriiImg from '../img/team/Yurii.jpg';
 import spriteUrl from '../img/team/sprite.svg';
-
-
 
 const markupTeam = `<div class="team-wrapper">
 <div class="team-card">
@@ -127,5 +128,5 @@ function openModalTeam(e) {
       modalTeam.close();
       window.removeEventListener('keydown', closeModalHandler);
     }
-  };
+  }
 }

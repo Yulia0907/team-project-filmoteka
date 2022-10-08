@@ -18,15 +18,14 @@
     "url": "https://github.com/NilKad/js-project-7.git/issues"
   },
   "dependencies": {
-    "basiclightbox": "^5.0.4",
-    "canvas-confetti": "^1.5.1",
-    "modern-normalize": "^1.1.0",
-    "simplelightbox": "^2.10.3"
+    "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "axios": "^1.1.2",
     "parcel": "^2.6.0",
+    "basiclightbox": "^5.0.4",
+    "canvas-confetti": "^1.5.1",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
