@@ -26,7 +26,7 @@ function modalBasicLightbox({
         <ul>
           <li class="movie__item">
             <p class="movie__details">Vote / Votes</p>
-            <p class="movie__info--uper">
+            <p>
               <span class="movie__rating--orange">${vote_average}</span>
               <span class="movie__rating--delimiter"> / </span>
               <span class="vote-count">${vote_count}</span>
@@ -34,11 +34,11 @@ function modalBasicLightbox({
           </li>
           <li class="movie__item">
             <p class="movie__details">Popularity</p>
-            <p class="movie__info--uper">${popularity}</p>
+            <p>${popularity}</p>
           </li>
           <li class="movie__item">
             <p class="movie__details">Original title</p>
-            <p>${title || original_title || name}</p>
+            <p class="movie__info--uper">${title || original_title || name}</p>
           </li>
           <li class="movie__item">
             <p class="movie__details">Genre</p>

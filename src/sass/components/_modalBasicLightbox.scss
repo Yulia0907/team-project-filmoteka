@@ -1,6 +1,14 @@
+.basicLightbox__placeholder {
+  background-color: $main-invert-color;
+  // width: 806px;
+  outline: none;
+  border: none;
+}
+
 .modal {
   background-color: $main-invert-color;
   color: $main-color;
+
   max-height: 100vh;
   width: 100%;
   padding: 48px 20px 40px 20px;
@@ -41,6 +49,7 @@
     height: 478px;
   }
 }
+
 .movie__image {
   @include mq(tablet) {
     margin-right: 68px;
@@ -50,6 +59,7 @@
     margin-right: 16px;
   }
 }
+
 .movie__information {
   text-align: start;
   width: 240px;
@@ -76,6 +86,7 @@
 .movie__item {
   display: flex;
   margin-bottom: 8px;
+  font-weight: 500;
 
   &:last-child {
     margin-bottom: 20px;
@@ -83,6 +94,7 @@
 }
 .movie__details {
   color: $advanced-color;
+  line-height: 1.33;
   min-width: 108px;
 }
 
@@ -100,6 +112,15 @@
 }
 .movie__rating--delimiter {
   margin-right: 3px;
+}
+
+.vote-count {
+  background-color: #f7f7f7;
+
+  border-radius: 5px;
+  width: 36px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .about__title {
