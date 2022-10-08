@@ -25,7 +25,7 @@ async function trendingMovies() {
       });
     });
   } catch (error) {
-    console.log(error.statusText);
+    console.log('error', error.message);
   }
 }
 trendingMovies();
@@ -41,7 +41,7 @@ async function onMovieCardClick(e) {
     const film = await fetchMovieById(id);
     modalBasicLightbox(film);
   } catch (error) {
-    console.log(error.statusText);
+    console.log(error.message);
   }
 }
 
