@@ -37,7 +37,7 @@
   cursor: pointer;
   transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  width: 280px;
+  max-width: 480px;
 
   @include mq(tablet) {
     width: 336px;
