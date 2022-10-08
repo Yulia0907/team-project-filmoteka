@@ -34,7 +34,6 @@ moviesContainer.addEventListener('click', onMovieCardClick);
 
 async function onMovieCardClick(e) {
   const id = e.target.closest('li').dataset.id;
-  console.log(id);
   if (e.target.nodeName === 'UL') {
     return;
   }

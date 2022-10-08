@@ -12,7 +12,7 @@ function modalBasicLightbox({
   popularity,
   id,
 }) {
-  const filmGenres = genres.map(({ name }) => name).join(', ');
+  // const filmGenres = genres.map(({ name }) => name).join(', ');
   const instance = basicLightbox.create(
     `<div class="modal">
     <div class="movie__image">
@@ -42,7 +42,9 @@ function modalBasicLightbox({
           </li>
           <li class="movie__item">
             <p class="movie__details">Genre</p>
-            <p class="movie__info">${filmGenres}</p>
+            <p class="movie__info">${genres
+              .map(genre => genre.name)
+              .join(', ')}</p>
           </li>
         </ul>
       </div>

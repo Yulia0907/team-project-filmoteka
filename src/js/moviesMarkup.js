@@ -28,20 +28,20 @@ function createMovieCards(movies) {
           ? `https://image.tmdb.org/t/p/original${poster_path}`
           : 'https://via.placeholder.com/395x574';
 
-        return `<li class="films__item" data-id=${id}>
-                <div class="films__img">
+        return `<li class="movies__item" data-id=${id}>
+                <div class="movies__img">
                 <img src=${imgUrl} alt="${title || name}" loading="lazy">
         </div>
-                <div class="films__description">
-                  <p class="films__title">${title || name}</p>
-                  <div class="films__meta">
-                    <p class="films__genres">${filmGenres}</p>
-                    <p class="films__data">${(
+                <div class="movies__description">
+                  <p class="movies__title">${title || name}</p>
+                  <div class="movies__meta">
+                    <p class="movies__genres">${filmGenres}</p>
+                    <p class="movies__data">${(
                       release_date ||
                       first_air_date ||
                       '2023'
                     ).slice(0, 4)}</p>
-                    <span class="films__rating">${vote_average || '-'}</span>
+                    <span class="movies__rating">${vote_average || '-'}</span>
                   </div>
                 </div>
             </li>`;
