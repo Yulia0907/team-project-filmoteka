@@ -57,7 +57,8 @@ function modalBasicLightbox({
         <button type="button" class="movie__button" data-id=${id}>Add to queue</button>
       </div>
       </div>
-      </div>`,
+      </div>
+      `,
     {
       onShow: instance => {
         instance.element().querySelector('.modal').onclick = instance.close;

@@ -5,15 +5,12 @@ async function fetchTrendingMovies(p = 1) {
     page: p ?? 1,
     include_adult: false,
   });
-  try {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?${searchParams}`
-    );
-    const results = await data.json();
-    return results;
-  } catch (error) {
-    console.log(error.statusText);
-  }
+
+  const data = await fetch(
+    `https://api.themoviedb.org/3/trending/movie/day?${searchParams}`
+  );
+  const results = await data.json();
+  return results;
 }
 
 async function fetchMovieById(id) {
@@ -21,15 +18,11 @@ async function fetchMovieById(id) {
     api_key: '0214e4f6556edfc65f2eadfc23b43510',
     language: 'en-US',
   });
-  try {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?${searchParams}`
-    );
-    const results = await data.json();
-    return results;
-  } catch (error) {
-    console.log(error.statusText);
-  }
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?${searchParams}`
+  );
+  const results = await data.json();
+  return results;
 }
 
 async function fetchMoviesByName(movieName, p = 1) {
