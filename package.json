@@ -18,10 +18,13 @@
     "url": "https://github.com/NilKad/js-project-7/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "basiclightbox": "^5.0.4",
+    "modern-normalize": "^1.1.0",
+    "tui-pagination": "^3.4.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
+    "assert": "^2.0.0",
     "axios": "^1.1.2",
     "basiclightbox": "^5.0.4",
     "parcel": "^2.6.0",
