@@ -1,5 +1,5 @@
 // import './js/teamLightbox';
-import 'basiclightbox/dist/basicLightbox.min.css';
+// import 'basiclightbox/dist/basicLightbox.min.css';
 
 import * as basicLightbox from 'basiclightbox';
 
