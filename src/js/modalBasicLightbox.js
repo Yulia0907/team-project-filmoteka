@@ -1,4 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
+const body = document.querySelector('body');
 
 function modalBasicLightbox({
   poster_path,
@@ -61,13 +62,18 @@ function modalBasicLightbox({
       `,
     {
       onShow: instance => {
-        instance.element().querySelector('.modal').onclick = instance.close;
+        instance.element().querySelector('.modal');
+        body.style.overflow = 'hidden';
         window.addEventListener('keydown', function event(evt) {
           if (evt.keyCode === 27) {
+            body.style.overflow = 'auto';
             instance.close();
             window.removeEventListener('keydown', event);
           }
         });
+      },
+      onClose: instance => {
+        body.style.overflow = 'auto';
       },
     }
   );
