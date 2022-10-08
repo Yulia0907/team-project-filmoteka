@@ -3,10 +3,14 @@ body {
   color: $main-color;
   font-size: 12px;
   line-height: 1.2;
-  background-color: $main-bg-color;
+  background-color: $main-invert-color;
 
 }
 
 body.modal-open {
   overflow: hidden;
+}
+
+button {
+  cursor: pointer;
 }
