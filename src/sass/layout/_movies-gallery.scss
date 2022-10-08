@@ -35,9 +35,6 @@
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
-  // max-width: 480px;
 
   @include mq(tablet) {
     width: 336px;
@@ -57,17 +54,12 @@
 }
 
 .movies__img {
-  // height: 398px;
-
   @include mq(tablet) {
     height: 455px;
   }
   @include mq(desktop) {
     height: 574px;
   }
-
-  opacity: 1;
-  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .movies__img > img {
