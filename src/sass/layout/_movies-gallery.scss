@@ -1,3 +1,5 @@
+@import '../components/modalBasicLightbox';
+
 .visually-hidden {
   position: absolute;
 
@@ -57,12 +59,13 @@
   @include mq(tablet) {
     height: 455px;
   }
+
   @include mq(desktop) {
     height: 574px;
   }
 }
 
-.movies__img > img {
+.movies__img>img {
   height: 100%;
   width: 100%;
   object-fit: cover;
