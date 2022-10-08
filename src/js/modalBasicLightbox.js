@@ -1,4 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
+
 const body = document.querySelector('body');
 
 function modalBasicLightbox({
