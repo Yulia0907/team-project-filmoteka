@@ -37,7 +37,7 @@
   cursor: pointer;
   transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  max-width: 480px;
+  // max-width: 480px;
 
   @include mq(tablet) {
     width: 336px;
@@ -57,7 +57,7 @@
 }
 
 .movies__img {
-  height: 398px;
+  // height: 398px;
 
   @include mq(tablet) {
     height: 455px;

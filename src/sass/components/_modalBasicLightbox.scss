@@ -7,6 +7,7 @@
   padding: 48px 20px 40px 20px;
 
   @include mq(mobile-only) {
+    max-width: 480px;
     overflow: scroll;
   }
 
@@ -28,9 +29,7 @@
 
 .image {
   display: block;
-
   min-width: 240px;
-  height: 357px;
   border-radius: 5px;
   @include mq(mobile-only) {
     margin-bottom: 30px;
@@ -58,7 +57,6 @@
 
 .movie__information {
   text-align: start;
-  width: 240px;
 
   @include mq(tablet) {
     width: 264px;
@@ -92,6 +90,7 @@
   color: $advanced-color;
   line-height: 1.33;
   min-width: 108px;
+  margin-right: 25px;
 }
 
 .movie__info--uper {
@@ -156,12 +155,6 @@
     width: 136px;
   }
 }
-
-// .movie__button.active {
-//   background-color: $accent-color;
-//   color: $main-invert-color;
-//   border: 1px solid $accent-color;
-// }
 
 .movie__button:first-child {
   margin-right: 15px;
