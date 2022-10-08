@@ -1,0 +1,91 @@
+.basicLightbox {
+  overflow: scroll;
+}
+
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  background: radial-gradient(circle, rgba(181,104,48,1) 0%, rgba(219,212,208,1) 100%);
+
+  border-radius: 25px;
+  
+  margin-top: 480px;
+
+  @include mq(mobile-only) {
+    width: 240px;
+  }
+
+  @include mq(tablet) {
+    width: 800px;
+    margin-top: 180px;
+  }
+
+  @include mq(desktop) {
+    margin: -30px;
+    width: 1100px;
+  }
+}
+
+.team-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+ 
+  align-items: center;
+ 
+  margin: 10px;
+
+  width: calc((100% - 80px) / 2);
+
+  @include mq(tablet) {
+    width: calc((100% - 160px) / 4);
+
+  }
+
+  @include mq(desktop) {
+    margin: 20px;
+
+    width: calc((100% - 240px) / 6);
+  }
+}
+
+.team-image {
+  margin-bottom: 10px;
+  border-top-left-radius: 50%;
+ 
+  justify-content: center;
+
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.5); 
+  }
+
+  @include transition(transform);
+
+  box-shadow: 5px 2px 5px 2px $accent-color;
+}
+
+.team-name {
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  color: $main-color;
+}
+
+.team-role {
+  font-size: 14px;
+}
+
+.team-git {
+  position: absolute;
+  fill: $accent-bg-color;
+
+  top: 0;
+  left: 0;
+
+}
