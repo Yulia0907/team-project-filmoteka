@@ -24,11 +24,11 @@
     "@parcel/transformer-sass": "^2.6.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4",
     "assert": "^2.0.0",
     "axios": "^1.1.2",
     "basiclightbox": "^5.0.4",
     "canvas-confetti": "^1.5.1",
-    "posthtml-include": "^1.7.4",
     "tui-pagination": "^3.4.1"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
