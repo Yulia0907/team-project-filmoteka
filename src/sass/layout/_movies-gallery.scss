@@ -98,15 +98,20 @@
 }
 
 .movies__description {
-  padding: 10px 5px 2px;
+  padding: 12px 5px 12px;
 }
 
 .movies__title {
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.17;
+  line-height: 1.33;
   text-transform: uppercase;
   margin-bottom: 2px;
+
+  @include mq(desktop) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 
 .movies__meta {
@@ -116,6 +121,11 @@
   font-size: 12px;
   line-height: 1.33;
   color: $accent-color;
+
+  @include mq(desktop) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 
 .movies__data:before {
