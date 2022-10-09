@@ -11,13 +11,12 @@
   opacity: 0;
 
   font-size: 20px;
-  line-height: 40px;
 
   border: none;
   border-radius: 50%;
   cursor: pointer;
 
-  background-color: rgba(179, 33, 45, 0.89);
+  background-color: rgba(179, 33, 45, 0.9);
 
   transition: cubic-bezier(0.3, 0.6, 0.82, 0.75);
 }
@@ -57,3 +56,4 @@
 .scroll__icon {
   transform: rotate(-90deg);
 }
+

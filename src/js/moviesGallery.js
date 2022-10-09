@@ -1,11 +1,20 @@
-import { fetchTrendingMovies, fetchMovieById } from './fetchAPI';
+import {
+  fetchTrendingMovies,
+  fetchMovieById,
+  fetchMoviesByName,
+} from './fetchAPI';
 import { createMovieCards } from './moviesMarkup';
 import { modalBasicLightbox } from './modalBasicLightbox';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
 const moviesContainer = document.querySelector('.movies');
+const form = document.querySelector('.hero-home__form');
+const failSearch = document.querySelector('.fail-search');
 
+/**
+ * Function fetch trending movies and make markup on page
+ */
 async function trendingMovies() {
   try {
     const res = await fetchTrendingMovies();
@@ -22,6 +31,7 @@ async function trendingMovies() {
     pagination.on('afterMove', ({ page }) => {
       fetchTrendingMovies(page).then(res => {
         moviesContainer.innerHTML = createMovieCards(res.results);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
   } catch (error) {
@@ -45,37 +55,44 @@ async function onMovieCardClick(e) {
   }
 }
 
-// async function fetchMoviesByName(event) {
-//   event.preventDefault();
-//   const movieName = form.elements.query.value.trim();
-//   if (movieName === '') {
-//     return console.log('Empty search query');
-//   }
-//   resetPage();
+form.addEventListener('submit', onFormInputHandler);
 
-//   const res = await fetchMovies(movieName);
-//   moviesContainer.innerHTML = createMovieCards(res.results);
+async function onFormInputHandler(event) {
+  event.preventDefault();
+  const movieName = form.elements.searchQuery.value.trim();
+  if (movieName === '') {
+    return console.log('Empty search query');
+  }
 
-//   const options = {
-//     totalItems: res.total_pages,
-//     itemsPerPage: 20,
-//     visiblePages: 5,
-//     centerAlign: false,
-//   };
-//   const container = document.getElementById('pagination');
-//   const pagination = new Pagination(container, options);
+  // resetPage();
 
-//   pagination.on('afterMove', ({ page }) => {
-//     fetchMovies(movieName, page)
-//       .then(res => {
-//         moviesContainer.innerHTML = createMovieCards(res.results);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-//   });
-// }
+  const res = await fetchMoviesByName(movieName);
+  if (res.results.length === 0) {
+    failSearch.classList.remove('is-hidden');
+    setTimeout(() => failSearch.classList.add('is-hidden'), 5000);
+    form.reset();
+    return;
+  }
+  moviesContainer.innerHTML = createMovieCards(res.results);
 
-// function resetPage() {
-//   page = DEFAULT_PAGE;
-// }
+  const options = {
+    totalItems: res.total_pages,
+    itemsPerPage: 20,
+    visiblePages: 4,
+    centerAlign: false,
+  };
+  const container = document.getElementById('pagination');
+  const pagination = new Pagination(container, options);
+
+  pagination.on('afterMove', ({ page }) => {
+    fetchMoviesByName(movieName, page)
+      .then(res => {
+        moviesContainer.innerHTML = createMovieCards(res.results);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
+  form.reset();
+}

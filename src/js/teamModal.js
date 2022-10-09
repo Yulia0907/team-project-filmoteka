@@ -1,9 +1,7 @@
-// import './js/teamLightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-
 import * as basicLightbox from 'basiclightbox';
+import showConfetti from './confettiTeamModal'; 
 
-import showConfetti from './confetti';
 
 import aleksandrImg from '../img/team/aleksandr-k.jpg';
 import oksanaImg from '../img/team/Oksana.jpg';
@@ -23,7 +21,8 @@ const markupTeam = `<div class="team-wrapper">
     <img src="${aleksandrImg}" alt="Aleksandr" class="team-image">
     <p class="team-name">Aleksandr Kadulin</p>
     <p class="team-role">Team Lead</p>
-    <a href="https://github.com/NilKad" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
+    <a href="https://github.com/NilKad" target="_blank" class="team-git">
+    <svg class="logo__icon" width="24" height="24">
       <use href="${spriteUrl}#github"></use>
     </svg></a>
 </div>
@@ -69,7 +68,7 @@ const markupTeam = `<div class="team-wrapper">
 </div>
 <div class="team-card">
     <img src="${maximImg}" alt="Maksim" class="team-image">
-    <p class="team-name">Maksim Semak</p>
+    <p class="team-name">Maksim Siomak</p>
     <p class="team-role">Developer</p>
     <a href="https://github.com/Pleomax07" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
       <use href="${spriteUrl}#github"></use>
@@ -95,7 +94,7 @@ const markupTeam = `<div class="team-wrapper">
     <img src="${artemImg}" alt="Artem" class="team-image">
     <p class="team-name">Artem Borzov</p>
     <p class="team-role">Developer</p>
-    <a href="https://github.com/" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
+    <a href="https://github.com/Artem-Borzov" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
       <use href="${spriteUrl}#github"></use>
     </svg></a>
 </div>
@@ -110,7 +109,6 @@ const markupTeam = `<div class="team-wrapper">
 </div>`;
 
 const wrapperTeam = document.querySelector('.footer-btn');
-const clickBtn = document.querySelector('.close__btn');
 
 wrapperTeam.addEventListener('click', openModalTeam);
 
@@ -121,12 +119,12 @@ function openModalTeam(e) {
   modalTeam.show();
   showConfetti();
 
-  window.addEventListener('keydown', closeModalHandler);
+  window.addEventListener('keydown', closeModalTeam);
 
-  function closeModalHandler(e) {
+  function closeModalTeam(e) {
     if (e.code === 'Escape') {
       modalTeam.close();
-      window.removeEventListener('keydown', closeModalHandler);
+      window.removeEventListener('keydown', closeModalTeam);
     }
   }
 }
