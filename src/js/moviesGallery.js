@@ -10,6 +10,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 
 const moviesContainer = document.querySelector('.movies');
 const form = document.querySelector('.hero-home__form');
+const failSearch = document.querySelector('.fail-search');
 
 const DEFAULT_PAGE = 1;
 
@@ -68,9 +69,8 @@ async function onFormInputHandler(event) {
 
   const res = await fetchMoviesByName(movieName);
   if (res.results.length === 0) {
-    console.log(
-      'Search result not successful. Enter the correct movie name and '
-    );
+    failSearch.classList.remove('is-hidden');
+    setTimeout(() => failSearch.classList.add('is-hidden'), 3000);
     form.reset();
     return;
   }
