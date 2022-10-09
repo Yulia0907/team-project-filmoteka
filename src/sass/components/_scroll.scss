@@ -1,0 +1,40 @@
+.scroll {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+
+  width: 40px;
+
+  visibility: hidden;
+  opacity: 0;
+
+  font-size: 20px;
+  line-height: 40px;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background-color: rgba(179, 33, 45, 0.89);
+
+  transition: cubic-bezier(0.3, 0.6, 0.82, 0.75);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    background-color: #ff6200;
+  }
+}
+
+.scroll-visible {
+  visibility: visible;
+  opacity: 1;
+
+  animation-name: animation-btn;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+}
+
+.scroll__icon {
+  transform: rotate(-90deg);
+}
