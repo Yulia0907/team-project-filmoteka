@@ -1,5 +1,38 @@
 // -----header-mylibrary-----
+.header-mylibrary {
+  background-image: url('../img/header-mobile-v2@x-min.jpg');
+  // ;
+  // background-size: cover;
 
+  @include mq(retina) {
+    background-image: url('../img/header-mobile-v2@2x-min.jpg');
+    // ;
+    // background-size: cover;
+  }
+
+  @include mq(tablet) {
+    background-image: url('../img/header-tablet-v2@1x-min.jpg');
+    // ;
+    // background-size: cover;
+
+    @include mq(retina) {
+      background-image: url('../img/header-tablet-v2@2x-min.jpg');
+      // ;
+      // background-size: cover;
+    }
+  }
+  @include mq(desktop) {
+    background-image: url('../img/header-desktop-v2@1x-min.jpg');
+    //
+    // background-size: cover;
+
+    @include mq(retina) {
+      background-image: url('../img/header-desktop-v2@2x-min.jpg');
+      // ;
+      // background-size: cover;
+    }
+  }
+}
 .header-button__wrapper {
   display: flex;
   justify-content: center;
