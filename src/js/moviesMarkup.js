@@ -1,3 +1,5 @@
+import noFoto from '../img/no_ing.jpg';
+
 function createMovieCards(movies) {
   return movies
     .map(
@@ -25,7 +27,7 @@ function createMovieCards(movies) {
         }
         const imgUrl = poster_path
           ? `https://image.tmdb.org/t/p/original${poster_path}`
-          : 'https://via.placeholder.com/395x574';
+          : noFoto;
 
         return `<li class="movies__item" data-id=${id}>
                 <div class="movies__img">
