@@ -1,3 +1,5 @@
+@import '../components/modalBasicLightbox';
+
 .visually-hidden {
   position: absolute;
 
@@ -35,6 +37,7 @@
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
+  transition: box-shadow 250ms linear;
 
   @include mq(tablet) {
     width: 336px;
@@ -44,19 +47,17 @@
     width: 395px;
   }
 
-  // &:hover {
-  //   box-shadow: -5px -5px 18px $accent-color;
-
-  //   & .movies__img {
-  //     opacity: 0.7;
-  //   }
-  // }
+  &:hover {
+    box-shadow: 0 0 10px 3px rgb(34 60 80 / 50%);
+    // box-shadow: 5px 5px 18px rgb(0 0 0 / 50%);
+  }
 }
 
 .movies__img {
   @include mq(tablet) {
     height: 455px;
   }
+
   @include mq(desktop) {
     height: 574px;
   }

@@ -1,5 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
+import { fetchTrailerById } from './fetchAPI';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import playSvg from '../img/play.svg';
 
 const body = document.querySelector('body');
 
@@ -15,9 +17,9 @@ function modalBasicLightbox({
   popularity,
   id,
 }) {
-  // const filmGenres = genres.map(({ name }) => name).join(', ');
   const instance = basicLightbox.create(
     `<div class="modal">
+    <button class="mobalClose__btn" type="button"></button>
     <div class="movie__image">
       <img class="image" src=https://image.tmdb.org/t/p/original${poster_path} alt=${
       title || original_title || name
@@ -30,14 +32,16 @@ function modalBasicLightbox({
           <li class="movie__item">
             <p class="movie__details">Vote / Votes</p>
             <p>
-              <span class="movie__rating--orange">${vote_average}</span>
+              <span class="movie__rating--orange">${vote_average.toFixed(
+                1
+              )}</span>
               <span class="movie__rating--delimiter"> / </span>
               <span class="vote-count">${vote_count}</span>
             </p>
           </li>
           <li class="movie__item">
             <p class="movie__details">Popularity</p>
-            <p>${popularity}</p>
+            <p>${popularity.toFixed(1)}</p>
           </li>
           <li class="movie__item">
             <p class="movie__details">Original title</p>
@@ -54,6 +58,7 @@ function modalBasicLightbox({
       <div>
         <h3 class="about__title">About</h3>
         <p class="about__text">${overview}</p>
+        <button type="button" class="trailer__button" data-id=${id}><img class="play__icon" src=${playSvg} alt="play" />Watch trailer</button>
       </div>
       <div class="button__wrapper">
         <button type="button" class="movie__button" data-id=${id}>Add to watched</button>
@@ -62,6 +67,47 @@ function modalBasicLightbox({
       </div>
       </div>
       `,
+    {
+      onShow: instance => {
+        instance.element().querySelector('.modal');
+        instance.element().querySelector('.mobalClose__btn').onclick = () => {
+          instance.close();
+        };
+        body.style.overflow = 'hidden';
+        window.addEventListener('keydown', function event(evt) {
+          if (evt.keyCode === 27) {
+            body.style.overflow = 'auto';
+            instance.close();
+            window.removeEventListener('keydown', event);
+          }
+        });
+      },
+      onClose: instance => {
+        body.style.overflow = 'auto';
+      },
+    }
+  );
+
+  instance.show();
+
+  const trailerBtnEl = document.querySelector('.trailer__button');
+  trailerBtnEl.addEventListener('click', getLinkTrailer);
+}
+
+async function getLinkTrailer(e) {
+  const movieId = e.target.dataset.id;
+  const trailer = await fetchTrailerById(movieId);
+  const resultType = trailer.results;
+  const typeObj = resultType.find(result => result.type === 'Trailer');
+  if (typeObj.type !== 'Trailer') {
+    const trailerBtnEl = document.querySelector('.trailer__button');
+    trailerBtnEl.style.display = 'none';
+    return;
+  }
+  const trailerKey = typeObj.key;
+
+  const instanceTrailer = basicLightbox.create(
+    `<iframe width="560" height="315" src="https://www.youtube.com/embed/${trailerKey}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
     {
       onShow: instance => {
         instance.element().querySelector('.modal');
@@ -80,7 +126,7 @@ function modalBasicLightbox({
     }
   );
 
-  instance.show();
+  instanceTrailer.show();
 }
 
 export { modalBasicLightbox };

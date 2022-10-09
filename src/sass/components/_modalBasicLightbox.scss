@@ -1,4 +1,5 @@
 .modal {
+  position: relative;
   background-color: $main-invert-color;
   color: $main-color;
 
@@ -25,6 +26,21 @@
     height: 558px;
     padding: 40px 12px 40px 12px;
   }
+}
+
+.mobalClose__btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  background-color: transparent;
+  border: 0;
+  background-image: url(../img/close.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .image {
@@ -125,6 +141,7 @@
 }
 .about__text {
   line-height: 1.67;
+  font-weight: 500;
   margin-bottom: 20px;
 }
 .button__wrapper {
@@ -158,4 +175,37 @@
 
 .movie__button:first-child {
   margin-right: 15px;
+}
+
+.trailer__button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-left: 0;
+  width: 120px;
+  height: 20px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+
+  @include mq(tablet-only) {
+    width: 125px;
+  }
+
+  @include mq(desktop) {
+    width: 140px;
+  }
+}
+
+.play__icon {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
 }
