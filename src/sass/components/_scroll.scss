@@ -32,17 +32,28 @@
   animation-name: animation-btn;
   animation-duration: 500ms;
   animation-timing-function: linear;
-  &:active,
-  &:hover {
-    transform: scale(1.1);
-    background-color: $accent-color;
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+      background-color: $accent-color;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      transform: scale(1.1);
+      background-color: $accent-color;
+    }
   }
 }
+// &:active,
+// &:hover {
+//   transform: scale(1.1);
+//   background-color: $accent-color;
+//   .clicked {
+//     background-color: rgba(179, 33, 45, 0.89);
+//   }
+// }
 
 .scroll__icon {
   transform: rotate(-90deg);
-}
-
-.noHover {
-  pointer-events: none;
 }
