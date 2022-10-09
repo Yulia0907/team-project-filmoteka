@@ -1,4 +1,57 @@
 <div class="backdrop" data-modal>
+  <div class="modal-registr is-hidden">
+    <p class="modal-registr-title">Sing up to Filmoteka</p>
+    <form>
+      <div class="modal-registr-wrap">
+        <input
+          type="text"
+          name="user-name"
+          id="user-name"
+          class="modal-registr-input"
+          placeholder="Name"
+          minlength="2"
+          pattern="^[a-zA-Z]+"
+          required
+        />
+        <input
+          type="email"
+          name="user-email"
+          id="user-email"
+          class="modal-registr-input"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="text"
+          name="user-password"
+          id="user-password"
+          class="modal-registr-input"
+          placeholder="Password"
+          minlength="2"
+          pattern="^[a-zA-Z]+"
+          required
+        />
+        <input
+          type="text"
+          name="user-password"
+          id="user-password"
+          class="modal-registr-input"
+          placeholder="Verify password"
+          minlength="2"
+          pattern="^[a-zA-Z]+"
+          required
+        />
+      </div>
+      <button type="submit" class="modal-registr-btn-sbmt">Sign up</button>
+      <p class="modal-registr-signup">
+        Already have an account?
+        <button type="button" class="modal-registr-btn" id="modal-registr">
+          Log in
+        </button>
+      </p>
+    </form>
+  </div>
+
   <div class="modal-registr">
     <!-- <button type="button" class="modal-regist-close-btn">
     <svg class="svg">
@@ -10,10 +63,10 @@
       <div class="modal-registr-wrap">
         <input
           type="text"
-          name="user-password"
-          id="user-password"
+          name="user-name"
+          id="user-name"
           class="modal-registr-input"
-          placeholder="Password"
+          placeholder="Name"
           minlength="2"
           pattern="^[a-zA-Z]+"
           required
@@ -26,18 +79,6 @@
           placeholder="Email"
           required
         />
-      </div>
-      <button type="submit" class="modal-registr-btn-sbmt">Log in</button>
-      <p class="modal-registr-signup">
-        No account yet? <a href="" class="modal-registr-ref">Sign up</a>
-      </p>
-    </form>
-  </div>
-
-  <div class="modal-registr modal-singup">
-    <p class="modal-registr-title">Sing up to Filmoteka</p>
-    <form>
-      <div class="modal-registr-wrap">
         <input
           type="text"
           name="user-password"
@@ -48,18 +89,16 @@
           pattern="^[a-zA-Z]+"
           required
         />
-        <input
-          type="email"
-          name="user-email"
-          id="user-email"
-          class="modal-registr-input"
-          placeholder="Email"
-          required
-        />
       </div>
-      <button type="submit" class="modal-registr-btn-sbmt">Sign up</button>
+      <button type="submit" class="modal-registr-btn-sbmt">Log in</button>
       <p class="modal-registr-signup">
-        Already have an account? <a href="" class="modal-registr-ref">Log in</a>
+        No account yet?<button
+          type="button"
+          class="modal-registr-btn"
+          id="modal-registr"
+        >
+          Sign up
+        </button>
       </p>
     </form>
   </div>
