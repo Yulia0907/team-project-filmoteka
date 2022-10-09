@@ -12,8 +12,10 @@ const moviesContainer = document.querySelector('.movies');
 const form = document.querySelector('.hero-home__form');
 
 const DEFAULT_PAGE = 1;
-// let page = DEFAULT_PAGE;
 
+/**
+ * Function fetch trending movies and make markup on page
+ */
 async function trendingMovies() {
   try {
     const res = await fetchTrendingMovies();
