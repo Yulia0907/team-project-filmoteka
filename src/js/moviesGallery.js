@@ -12,8 +12,6 @@ const moviesContainer = document.querySelector('.movies');
 const form = document.querySelector('.hero-home__form');
 const failSearch = document.querySelector('.fail-search');
 
-const DEFAULT_PAGE = 1;
-
 /**
  * Function fetch trending movies and make markup on page
  */
@@ -33,6 +31,7 @@ async function trendingMovies() {
     pagination.on('afterMove', ({ page }) => {
       fetchTrendingMovies(page).then(res => {
         moviesContainer.innerHTML = createMovieCards(res.results);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
   } catch (error) {
@@ -65,7 +64,7 @@ async function onFormInputHandler(event) {
     return console.log('Empty search query');
   }
 
-  resetPage();
+  // resetPage();
 
   const res = await fetchMoviesByName(movieName);
   if (res.results.length === 0) {
@@ -89,14 +88,11 @@ async function onFormInputHandler(event) {
     fetchMoviesByName(movieName, page)
       .then(res => {
         moviesContainer.innerHTML = createMovieCards(res.results);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       })
       .catch(error => {
         console.log(error);
       });
   });
   form.reset();
-}
-
-function resetPage() {
-  page = DEFAULT_PAGE;
 }

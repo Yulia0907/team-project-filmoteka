@@ -4,7 +4,6 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import playSvg from '../img/play.svg';
 
 const body = document.querySelector('body');
-const closeBtn = document.querySelector('.modalClose__btn');
 
 function modalBasicLightbox({
   poster_path,
