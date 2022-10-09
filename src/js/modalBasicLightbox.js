@@ -2,6 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
 const body = document.querySelector('body');
+const closeBtn = document.querySelector('.modalClose__btn');
 
 function modalBasicLightbox({
   poster_path,
@@ -15,9 +16,9 @@ function modalBasicLightbox({
   popularity,
   id,
 }) {
-  // const filmGenres = genres.map(({ name }) => name).join(', ');
   const instance = basicLightbox.create(
     `<div class="modal">
+    <button class="mobalClose__btn" type="button"></button>
     <div class="movie__image">
       <img class="image" src=https://image.tmdb.org/t/p/original${poster_path} alt=${
       title || original_title || name
@@ -30,14 +31,16 @@ function modalBasicLightbox({
           <li class="movie__item">
             <p class="movie__details">Vote / Votes</p>
             <p>
-              <span class="movie__rating--orange">${vote_average}</span>
+              <span class="movie__rating--orange">${vote_average.toFixed(
+                1
+              )}</span>
               <span class="movie__rating--delimiter"> / </span>
               <span class="vote-count">${vote_count}</span>
             </p>
           </li>
           <li class="movie__item">
             <p class="movie__details">Popularity</p>
-            <p>${popularity}</p>
+            <p>${popularity.toFixed(1)}</p>
           </li>
           <li class="movie__item">
             <p class="movie__details">Original title</p>
@@ -65,6 +68,9 @@ function modalBasicLightbox({
     {
       onShow: instance => {
         instance.element().querySelector('.modal');
+        instance.element().querySelector('.mobalClose__btn').onclick = () => {
+          instance.close();
+        };
         body.style.overflow = 'hidden';
         window.addEventListener('keydown', function event(evt) {
           if (evt.keyCode === 27) {
