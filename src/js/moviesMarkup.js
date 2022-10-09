@@ -12,6 +12,7 @@ function createMovieCards(movies) {
         genres,
         genre_ids,
       }) => {
+        const moviRating = vote_average === 0 ? '-' : vote_average.toFixed(1);
         const genresListFromStorage = localStorage.getItem('genresList');
         const parsedGenres = JSON.parse(genresListFromStorage);
         let filmGenres;
@@ -37,9 +38,7 @@ function createMovieCards(movies) {
                     <p class="movies__data">${
                       parseInt(release_date) || parseInt(first_air_date)
                     }</p>
-                    <span class="movies__rating">${
-                      vote_average.toFixed(1) || '-'
-                    }</span>
+                    <span class="movies__rating">${moviRating}</span>
                   </div>
                 </div>
             </li>`;
