@@ -1,1 +1,1 @@
-import './teamLightbox';
+import './teamModal';
