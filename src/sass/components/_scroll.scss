@@ -25,7 +25,7 @@
   &:active,
   &:hover {
     transform: scale(1.1);
-    background-color: #ff6200;
+    background-color: $accent-color;
     opacity: 1;
   }
 }
