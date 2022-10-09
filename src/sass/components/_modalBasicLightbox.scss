@@ -1,4 +1,5 @@
 .modal {
+  position: relative;
   background-color: $main-invert-color;
   color: $main-color;
 
@@ -25,6 +26,21 @@
     height: 558px;
     padding: 40px 12px 40px 12px;
   }
+}
+
+.mobalClose__btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  background-color: transparent;
+  border: 0;
+  background-image: url(../img/close.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .image {
