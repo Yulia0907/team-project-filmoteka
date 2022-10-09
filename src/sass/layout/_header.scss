@@ -1,4 +1,7 @@
 .header {
+  @include mq(mobile-only) {
+    height: 230px;
+  }
   min-width: 320px;
   height: 216px;
   color: $main-invert-color;
@@ -104,6 +107,9 @@
 }
 
 .container__header-nav {
+  @include mq(mobile-only) {
+    margin-bottom: 60px;
+  }
   margin-bottom: 40px;
 }
 
@@ -262,7 +268,3 @@
     }
   }
 }
-
-// .header-movie__button:first-child {
-//   margin-right: 15px;
-// }
