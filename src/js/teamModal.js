@@ -1,7 +1,7 @@
 import 'basiclightbox/dist/basicLightbox.min.css';
 import * as basicLightbox from 'basiclightbox';
-
 import showConfetti from './confettiTeamModal';
+
 
 import aleksandrImg from '../img/team/aleksandr-k.jpg';
 import oksanaImg from '../img/team/Oksana.jpg';
