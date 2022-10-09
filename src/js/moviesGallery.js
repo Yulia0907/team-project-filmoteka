@@ -70,7 +70,7 @@ async function onFormInputHandler(event) {
   const res = await fetchMoviesByName(movieName);
   if (res.results.length === 0) {
     failSearch.classList.remove('is-hidden');
-    setTimeout(() => failSearch.classList.add('is-hidden'), 3000);
+    setTimeout(() => failSearch.classList.add('is-hidden'), 5000);
     form.reset();
     return;
   }
