@@ -35,7 +35,7 @@ function createMovieCards(movies) {
                   <div class="movies__meta">
                     <p class="movies__genres">${filmGenres}</p>
                     <p class="movies__data">${
-                      release_date.slice(0, 4) || first_air_date.slice(0, 4)
+                      parseInt(release_date) || parseInt(first_air_date)
                     }</p>
                     <span class="movies__rating">${
                       vote_average.toFixed(1) || '-'

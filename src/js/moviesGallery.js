@@ -57,7 +57,6 @@ form.addEventListener('submit', onFormInputHandler);
 
 async function onFormInputHandler(event) {
   event.preventDefault();
-
   const movieName = form.elements.searchQuery.value.trim();
   if (movieName === '') {
     return console.log('Empty search query');
@@ -70,6 +69,8 @@ async function onFormInputHandler(event) {
     console.log(
       'Search result not successful. Enter the correct movie name and '
     );
+    form.reset();
+    return;
   }
   moviesContainer.innerHTML = createMovieCards(res.results);
 
@@ -91,6 +92,7 @@ async function onFormInputHandler(event) {
         console.log(error);
       });
   });
+  form.reset();
 }
 
 function resetPage() {
