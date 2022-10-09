@@ -175,3 +175,36 @@
 .movie__button:first-child {
   margin-right: 15px;
 }
+
+.trailer__button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-left: 0;
+  width: 120px;
+  height: 20px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+
+  @include mq(tablet-only) {
+    width: 125px;
+  }
+
+  @include mq(desktop) {
+    width: 140px;
+  }
+}
+
+.play__icon {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+}
