@@ -1,5 +1,5 @@
 // import paginations from './js/paginations';
-
+import './js/scroll.js';
 import './js/moviesGallery';
 
 const currentPage = 1;
