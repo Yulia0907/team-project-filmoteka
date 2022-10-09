@@ -12,42 +12,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
-  background-image: url('../img/header-mobile@1x-min.jpg');
-  // ;
-  // background-size: cover;
-
-  @include mq(retina) {
-    background-image: url('../img/header-mobile@2x-min.jpg');
-    // ;
-    // background-size: cover;
-  }
-
-  @include mq(tablet) {
-    background-image: url('../img/header-tablet@1x-min.jpg');
-    // ;
-    // background-size: cover;
-
-    @include mq(retina) {
-      background-image: url('../img/header-tablet@2x-min.jpg');
-      // ;
-      // background-size: cover;
-    }
-  }
-
-  @include mq(desktop) {
-    background-image: url('../img/header-desktop@1x-min.jpg');
-    //
-    // background-size: cover;
-
-    @include mq(retina) {
-      background-image: url('../img/header-desktop@2x-min.jpg');
-      // ;
-      // background-size: cover;
-    }
-  }
-
-  // background-color: transparent;
 }
 
 .header__container {
@@ -237,4 +201,42 @@
 
 .is-hidden {
   display: none;
+}
+
+.header-index {
+  background-image: url('../img/header-mobile@1x-min.jpg');
+  // ;
+  // background-size: cover;
+
+  @include mq(retina) {
+    background-image: url('../img/header-mobile@2x-min.jpg');
+    // ;
+    // background-size: cover;
+  }
+
+  @include mq(tablet) {
+    background-image: url('../img/header-tablet@1x-min.jpg');
+    // ;
+    // background-size: cover;
+
+    @include mq(retina) {
+      background-image: url('../img/header-tablet@2x-min.jpg');
+      // ;
+      // background-size: cover;
+    }
+
+    @include mq(desktop) {
+      background-image: url('../img/header-desktop@1x-min.jpg');
+      //
+      // background-size: cover;
+
+      @include mq(retina) {
+        background-image: url('../img/header-desktop@2x-min.jpg');
+        // ;
+        // background-size: cover;
+      }
+
+      // background-color: transparent;
+    }
+  }
 }
