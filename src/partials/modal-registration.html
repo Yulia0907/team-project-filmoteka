@@ -6,23 +6,16 @@
     </svg>
   </button> -->
     <p class="modal-registr-title">Welcome to Filmoteka</p>
-    <button class="modal-registr-btn-google">
-      <svg class="modal-registr-icon-google">
-        <use href="/src/img/modal-registration.svg#icon-google"></use>
-      </svg>
-      Continue wits Google
-    </button>
     <form>
       <div class="modal-registr-wrap">
         <input
           type="text"
-          name="user-name"
-          id="user-name"
+          name="user-password"
+          id="user-password"
           class="modal-registr-input"
-          placeholder="Name"
+          placeholder="Password"
           minlength="2"
           pattern="^[a-zA-Z]+"
-          title="John"
           required
         />
         <input
@@ -34,9 +27,39 @@
           required
         />
       </div>
-      <button type="submit" class="modal-registr-btn-sbmt">Sign in</button>
+      <button type="submit" class="modal-registr-btn-sbmt">Log in</button>
       <p class="modal-registr-signup">
         No account yet? <a href="" class="modal-registr-ref">Sign up</a>
+      </p>
+    </form>
+  </div>
+
+  <div class="modal-registr modal-singup">
+    <p class="modal-registr-title">Sing up to Filmoteka</p>
+    <form>
+      <div class="modal-registr-wrap">
+        <input
+          type="text"
+          name="user-password"
+          id="user-password"
+          class="modal-registr-input"
+          placeholder="Password"
+          minlength="2"
+          pattern="^[a-zA-Z]+"
+          required
+        />
+        <input
+          type="email"
+          name="user-email"
+          id="user-email"
+          class="modal-registr-input"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <button type="submit" class="modal-registr-btn-sbmt">Sign up</button>
+      <p class="modal-registr-signup">
+        Already have an account? <a href="" class="modal-registr-ref">Log in</a>
       </p>
     </form>
   </div>

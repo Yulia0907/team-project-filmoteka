@@ -28,52 +28,32 @@
     background: #ffffff;
     border-radius: 4px;
     padding: 40px;
+    // background-image: url(/src/img/header-mobile-v2@x-min.jpg);
+    // background-repeat: no-repeat;
+    //     background-position: center;
+    //     background-size: cover;
+    background-image: url(/src/img/header-tablet-v2@1x-min.jpg);
+    background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+    @include mq(retina){
+background-image: url(/src/img/header-tablet-v2@2x-min.jpg);
+background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    }
 }
 
 .modal-registr-title{
     font-family: inherit;
     text-align: center;
     text-transform: uppercase;
+    @include font(12px, 500, 1.3);
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
     margin-bottom: 40px;
-}
-
-.modal-registr-btn-google{
-    display: flex;
-    margin: auto;
-    width: 100%;
-    padding: 14px 8px;
-    margin-bottom: 40px;
-    
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    text-transform: uppercase;
-    // @include font(16px, 500, 16px, null);
-    font-weight: 500;
-    line-height: 16px;
-    border-radius: 5px;
-    color: #000;
-    // background-color: #FF6B08;
-    background-color: transparent;
-
-    border: 1px solid #000000;
-    cursor: pointer;
-
-    &:hover,
-    &:focus{
-        background-color: #FF6B08;
-        border: 1px solid #FF6B08;
-        color: #ffffff;
-    }
-}
-
-.modal-registr-icon-google{
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+    color: #fff;
 }
 
 .modal-registr-input{
@@ -81,21 +61,25 @@
     width: 100%;
     margin-bottom: 20px;
     padding: 14px 8px;
-    border-radius: 5px;
-    border: 1px solid #000000;
+    padding-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
     background-color: transparent;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
     &:hover,
     &:focus {
         outline: none;
-        border: 1px solid #FF6B08;
+        border-bottom: 1px solid #FF6B08;
+        transform: scale(1.02);
     }
-
     &:not(:placeholder-shown):required:valid {
-        border: 1px solid #32CD32;
+        border-bottom: 1px solid #32CD32;
     }
 
     &:not(:placeholder-shown):required:invalid {
-        border: 1px solid #ff0000;
+        border-bottom: 1px solid #ff0000;
     }
 }
 
@@ -110,24 +94,26 @@
     text-transform: uppercase;
     font-weight: 500;
     border-radius: 5px;
-    color: #000;
-    // background-color: #FF6B08;
+    color: #fff;
     background-color: transparent;
 
-    border: 1px solid #000000;
+    border: 1px solid #fff;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 
     &:hover,
     &:focus {
-        // outline: none;
         background-color: #FF6B08;
         border: 1px solid #FF6B08;
         color: #ffffff;
+        transform: scale(1.02);
     }
 }
 
 .modal-registr-signup{
     text-align: center;
+    color: #fff;
 }
 
 .modal-registr-ref{
@@ -136,21 +122,27 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 479px) {
-    .modal-registr {
-        max-width: 100%;
-    }
-}
-
 @media screen and (min-width: 480px) {
-.modal-registr {
+    .modal-registr {
         width: 450px;
     }
 }
 
-@media screen and (min-width: 1200px) {
+@include mq(desktop) {
     .modal-registr {
         width: 550px;
+
+    //     background-image: url(/src/img/header-desktop-v2@1x-min.jpg);
+    //     background-repeat: no-repeat;
+    //     background-position: center;
+    //     background-size: cover;
+        
+    // @include mq(retina) {
+    //     background-image: url(/src/img/header-desktop-v2@2x-min.jpg);
+    //     background-repeat: no-repeat;
+    //     background-position: center;
+    //     background-size: cover;
+    // }
     }
     .modal-registr-title{
         font-size: 25px;
