@@ -3,6 +3,10 @@
 .footer {
   padding: 29px 36px 30px 48px;
   background-color: $bg-footer-color;
+  position: fixed; /* Фиксированное положение */
+  left: 0;
+  bottom: 0; /* Левый нижний угол */
+  width: 100%; /* Ширина слоя */
 
   &-content {
     text-align: center;
