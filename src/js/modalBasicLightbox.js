@@ -2,6 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 import { fetchTrailerById } from './fetchAPI';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import playSvg from '../img/play.svg';
+import noFoto from '../img/no_ing.jpg';
 
 const body = document.querySelector('body');
 
@@ -17,13 +18,14 @@ function modalBasicLightbox({
   popularity,
   id,
 }) {
+  const imgUrl = poster_path
+    ? `https://image.tmdb.org/t/p/original${poster_path}`
+    : noFoto;
   const instance = basicLightbox.create(
     `<div class="modal">
     <button class="mobalClose__btn" type="button"></button>
     <div class="movie__image">
-      <img class="image" src=https://image.tmdb.org/t/p/original${poster_path} alt=${
-      title || original_title || name
-    } />
+      <img class="image" src=${imgUrl} alt=${title || original_title || name} />
     </div>
     <div class="movie__information">
       <div>
