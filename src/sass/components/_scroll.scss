@@ -1,7 +1,5 @@
 .scroll {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
   position: fixed;
   bottom: 15px;
   right: 20px;
@@ -21,28 +19,41 @@
   background-color: rgba(179, 33, 45, 0.9);
 
   transition: cubic-bezier(0.3, 0.6, 0.82, 0.75);
-
-  &:active,
-  &:hover {
-    transform: scale(1.1);
-    background-color: $accent-color;
-    opacity: 1;
-  }
 }
 
 .scroll-visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   visibility: visible;
   opacity: 0.7;
 
   animation-name: animation-btn;
   animation-duration: 500ms;
   animation-timing-function: linear;
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+      background-color: $accent-color;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      transform: scale(1.1);
+      background-color: $accent-color;
+    }
+  }
 }
+// &:active,
+// &:hover {
+//   transform: scale(1.1);
+//   background-color: $accent-color;
+//   .clicked {
+//     background-color: rgba(179, 33, 45, 0.89);
+//   }
+// }
 
 .scroll__icon {
   transform: rotate(-90deg);
 }
 
-.noHover {
-  pointer-events: none;
-}
