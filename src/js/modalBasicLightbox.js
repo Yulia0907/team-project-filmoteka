@@ -1,6 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import { fetchTrailerById } from './fetchAPI';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import playSvg from '../img/play.svg';
 
 const body = document.querySelector('body');
 
@@ -55,12 +56,12 @@ function modalBasicLightbox({
       <div>
         <h3 class="about__title">About</h3>
         <p class="about__text">${overview}</p>
+        <button type="button" class="trailer__button" data-id=${id}><img class="play__icon" src=${playSvg} alt="play" />Watch trailer</button>
       </div>
       <div class="button__wrapper">
         <button type="button" class="movie__button" data-id=${id}>Add to watched</button>
         <button type="button" class="movie__button" data-id=${id}>Add to queue</button>
       </div>
-        <button type="button" class="trailer__button" data-id=${id}>Watch trailer</button>
       </div>
       </div>
       `,
