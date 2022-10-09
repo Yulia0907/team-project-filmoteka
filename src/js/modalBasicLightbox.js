@@ -19,7 +19,7 @@ function modalBasicLightbox({
   id,
 }) {
   const imgUrl = poster_path
-    ? `https://image.tmdb.org/t/p/original${poster_path}`
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : noFoto;
   const instance = basicLightbox.create(
     `<div class="modal">

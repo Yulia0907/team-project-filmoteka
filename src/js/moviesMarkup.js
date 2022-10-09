@@ -26,8 +26,9 @@ function createMovieCards(movies) {
             .join(', ');
         }
         const imgUrl = poster_path
-          ? `https://image.tmdb.org/t/p/original${poster_path}`
-          : noFoto;
+          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+          : // ? `https://image.tmdb.org/t/p/original${poster_path}`
+            noFoto;
 
         return `<li class="movies__item" data-id=${id}>
                 <div class="movies__img">
