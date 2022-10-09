@@ -92,24 +92,36 @@ function modalBasicLightbox({
 
   instance.show();
 
+  async function tryFetch() {
+    const trailer = await fetchTrailerById(id);
+    const resultType = trailer.results;
+    const typeObj = resultType.find(result => result.type === 'Trailer');
+    if (resultType.length === 0 || typeObj.type !== 'Trailer') {
+      trailerBtnEl.style.display = 'none';
+      return;
+    }
+    return;
+  }
+  tryFetch();
+
   const trailerBtnEl = document.querySelector('.trailer__button');
   trailerBtnEl.addEventListener('click', getLinkTrailer);
 }
 
 async function getLinkTrailer(e) {
+  const trailerBtnEl = document.querySelector('.trailer__button');
   const movieId = e.target.dataset.id;
   const trailer = await fetchTrailerById(movieId);
   const resultType = trailer.results;
   const typeObj = resultType.find(result => result.type === 'Trailer');
-  if (typeObj.type !== 'Trailer') {
-    const trailerBtnEl = document.querySelector('.trailer__button');
+  if (resultType.length === 0 || typeObj.type !== 'Trailer') {
     trailerBtnEl.style.display = 'none';
     return;
   }
   const trailerKey = typeObj.key;
 
   const instanceTrailer = basicLightbox.create(
-    `<iframe width="560" height="315" src="https://www.youtube.com/embed/${trailerKey}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+    `<iframe width="700" height="400" src="https://www.youtube.com/embed/${trailerKey}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
     {
       onShow: instance => {
         instance.element().querySelector('.modal');
