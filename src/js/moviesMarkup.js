@@ -15,13 +15,11 @@ function createMovieCards(movies) {
         const genresListFromStorage = localStorage.getItem('genresList');
         const parsedGenres = JSON.parse(genresListFromStorage);
         let filmGenres;
-        if (genres) {
-          filmGenres = genres.map(({ name }) => name).join(', ');
-        }
         if (genre_ids) {
           filmGenres = parsedGenres
             .filter(({ id }) => genre_ids.includes(id))
             .map(({ name }) => name)
+            .slice(0, 2)
             .join(', ');
         }
         const imgUrl = poster_path
@@ -36,10 +34,12 @@ function createMovieCards(movies) {
                   <p class="movies__title">${title || name}</p>
                   <div class="movies__meta">
                     <p class="movies__genres">${filmGenres}</p>
-                    <p class="movies__data">${(
+                    <p class="movies__data">${
                       release_date || first_air_date
-                    ).slice(0, 4)}</p>
-                    <span class="movies__rating">${vote_average || '-'}</span>
+                    }</p>
+                    <span class="movies__rating">${
+                      vote_average.toFixed(1) || '-'
+                    }</span>
                   </div>
                 </div>
             </li>`;
