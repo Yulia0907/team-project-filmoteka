@@ -19,8 +19,10 @@ function scrollEvent() {
   if (window.pageYOffset > 300) {
     // каждый скролл проверяем есть ли 300рх от начала сайта / страницы
     scrollToTopBtn.classList.add('scroll-visible'); // если да - добавляем
+    scrollToTopBtn.classList.remove('noHover');
   } else {
     scrollToTopBtn.classList.remove('scroll-visible'); // если нет - удаляем
+    scrollToTopBtn.classList.add('noHover');
   }
 }
 

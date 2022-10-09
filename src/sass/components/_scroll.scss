@@ -1,9 +1,13 @@
 .scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   bottom: 15px;
   right: 20px;
 
   width: 40px;
+  height: 40px;
 
   visibility: hidden;
   opacity: 0;
@@ -19,8 +23,7 @@
 
   transition: cubic-bezier(0.3, 0.6, 0.82, 0.75);
 
-  &:hover,
-  &:focus {
+  &:active {
     transform: scale(1.1);
     background-color: #ff6200;
   }
@@ -28,7 +31,7 @@
 
 .scroll-visible {
   visibility: visible;
-  opacity: 1;
+  opacity: 0.7;
 
   animation-name: animation-btn;
   animation-duration: 500ms;
@@ -37,4 +40,8 @@
 
 .scroll__icon {
   transform: rotate(-90deg);
+}
+
+.noHover {
+  pointer-events: none;
 }
