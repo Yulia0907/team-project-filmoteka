@@ -2,7 +2,7 @@
 import './js/scroll.js';
 import './js/moviesGallery';
 import './js/form/form-search-input';
-import './js/header';
+import './js/modal-registr';
 
 const currentPage = 1;
 
