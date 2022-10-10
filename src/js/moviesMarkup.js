@@ -25,6 +25,9 @@ function createMovieCards(movies) {
             .slice(0, 2)
             .join(', ');
         }
+        if (filmGenres.length > 0) {
+          filmGenres += ' |';
+        }
         const imgUrl = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : // ? `https://image.tmdb.org/t/p/original${poster_path}`
