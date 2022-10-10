@@ -43,4 +43,4 @@ function onLogIn() {
     markupModalSignUp.close();
 };
 
-export { toggleModal, onSignUp, onLogIn };
+// export { toggleModal, onSignUp, onLogIn };
