@@ -1,26 +1,59 @@
-<div class="modal-registr is-hidden">
+<div class="modal-registr" id="modal-singup">
   <p class="modal-registr-title">Sing up to Filmoteka</p>
   <form>
     <div class="modal-registr-wrap">
-      <input type="text" name="user-name" id="user-name" class="modal-registr-input" placeholder="Name" minlength="2"
-        pattern="^[a-zA-Z]+" required />
-      <input type="email" name="user-email" id="user-email" class="modal-registr-input" placeholder="Email" required />
-      <input type="text" name="user-password" id="user-password" class="modal-registr-input" placeholder="Password"
-        minlength="2" pattern="^[a-zA-Z]+" required />
-      <input type="text" name="user-password" id="user-password" class="modal-registr-input"
-        placeholder="Verify password" minlength="2" pattern="^[a-zA-Z]+" required />
+      <input
+        type="text"
+        name="user-name"
+        id="user-name"
+        class="modal-registr-input"
+        placeholder="Name"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
+      <input
+        type="email"
+        name="user-email"
+        id="user-email"
+        class="modal-registr-input"
+        placeholder="Email"
+        required
+      />
+      <input
+        type="text"
+        name="user-password"
+        id="user-password"
+        class="modal-registr-input"
+        placeholder="Password"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
+      <input
+        type="text"
+        name="user-password"
+        id="user-password"
+        class="modal-registr-input"
+        placeholder="Verify password"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
     </div>
     <button type="submit" class="modal-registr-btn-sbmt">Sign up</button>
     <p class="modal-registr-signup">
-      Already have an account?
-      <button type="button" class="modal-registr-btn" id="modal-registr">
+      Already have an account?<a class="modal-registr-btn" id="login-btn"
+        >Log in</a
+      >
+      <!-- <button type="button" class="modal-registr-btn" id="modal-login-btn">
         Log in
-      </button>
+      </button> -->
     </p>
   </form>
 </div>
 
-<div class="modal-registr ">
+<div class="modal-registr" id="modal-welcome">
   <!-- <button type="button" class="modal-regist-close-btn">
     <svg class="svg">
       <use href=""></use>
@@ -29,17 +62,42 @@
   <p class="modal-registr-title">Welcome to Filmoteka</p>
   <form>
     <div class="modal-registr-wrap">
-      <input type="text" name="user-name" id="user-name" class="modal-registr-input" placeholder="Name" minlength="2"
-        pattern="^[a-zA-Z]+" required />
-      <input type="email" name="user-email" id="user-email" class="modal-registr-input" placeholder="Email" required />
-      <input type="text" name="user-password" id="user-password" class="modal-registr-input" placeholder="Password"
-        minlength="2" pattern="^[a-zA-Z]+" required />
+      <input
+        type="text"
+        name="user-name"
+        id="user-name"
+        class="modal-registr-input"
+        placeholder="Name"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
+      <input
+        type="email"
+        name="user-email"
+        id="user-email"
+        class="modal-registr-input"
+        placeholder="Email"
+        required
+      />
+      <input
+        type="text"
+        name="user-password"
+        id="user-password"
+        class="modal-registr-input"
+        placeholder="Password"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
     </div>
     <button type="submit" class="modal-registr-btn-sbmt">Log in</button>
     <p class="modal-registr-signup">
-      No account yet?<button type="button" class="modal-registr-btn" id="modal-registr">
+      No account yet?
+      <a class="modal-registr-btn" id="signup-btn">Sign up</a>
+      <!-- <button type="button" class="modal-registr-btn" id="signup-btn">
         Sign up
-      </button>
+      </button> -->
     </p>
   </form>
 </div>

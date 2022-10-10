@@ -1,8 +1,8 @@
 import * as basicLightbox from 'basiclightbox'
 import 'basiclightbox/dist/basicLightbox.min.css';
 
-const openModalSignUpEl = document.querySelector('#modal-singup-btn');
-const openModalLogInEl = document.querySelector('#modal-login-btn');
+const openModalSignUpEl = document.querySelector('#signup-btn');
+const openModalLogInEl = document.querySelector('#login-btn');
 
 const openModal = document.querySelector('#check');
 openModal.addEventListener("click", toggleModal);
@@ -25,7 +25,6 @@ openModalLogInEl.addEventListener('click', onLogIn);
 
 const markupModalSignUp = basicLightbox.create(document.querySelector('#modal-singup'));
 function onSignUp() {
-
     markupModalSignUp.show();
 
     window.addEventListener('keydown', onEscKeyPress);
@@ -43,4 +42,6 @@ function onLogIn() {
     markupModalSignUp.close();
 };
 
+openModalSignUpEl.addEventListener('click', onSignUp);
+openModalLogInEl.addEventListener('click', onLogIn);
 // export { toggleModal, onSignUp, onLogIn };
