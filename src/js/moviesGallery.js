@@ -12,6 +12,25 @@ const moviesContainer = document.querySelector('.movies');
 const form = document.querySelector('.hero-home__form');
 const failSearch = document.querySelector('.fail-search');
 
+let visiblePages = 0;
+const mediaQueryMobile = window.matchMedia('(max-width: 768px)');
+const mediaQueryTablet = window.matchMedia(
+  '(min-width: 769px) and (max-width: 1279px)'
+);
+const mediaQueryDesktop = window.matchMedia('(min-width: 1280px)');
+
+if (mediaQueryMobile.matches) {
+  visiblePages = 3;
+}
+
+if (mediaQueryTablet.matches) {
+  visiblePages = 5;
+}
+
+if (mediaQueryDesktop.matches) {
+  visiblePages = 10;
+}
+
 /**
  * Function fetch trending movies and make markup on page
  */
@@ -22,8 +41,10 @@ async function trendingMovies() {
     const options = {
       totalItems: res.total_results,
       itemsPerPage: 20,
-      visiblePages: 4,
+      visiblePages,
       centerAlign: false,
+      firstItemClassName: 'tui-first-child',
+      lastItemClassName: 'tui-last-child',
     };
     const container = document.getElementById('pagination');
     const pagination = new Pagination(container, options);
@@ -87,7 +108,7 @@ async function galletyFetchAndRender(movieName) {
   const options = {
     totalItems: res.total_results,
     itemsPerPage: 20,
-    visiblePages: 4,
+    visiblePages,
     centerAlign: false,
   };
   const container = document.getElementById('pagination');
