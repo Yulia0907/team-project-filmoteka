@@ -1,1 +1,249 @@
-@import '/src/sass/components/modal_registration'
+@import '../components/form-search';
+
+.header {
+  @include mq(mobile-only) {
+    height: 230px;
+  }
+
+  min-width: 320px;
+  height: 216px;
+  color: $main-invert-color;
+  // margin-left: auto;
+  // margin-right: auto;
+  // background-color: $main-color;
+  background-color: rgba(0, 0, 0, 0.56);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.header__container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: 100%;
+}
+
+.logo {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  display: flex;
+  align-items: center;
+  transition: transform ease 1s;
+
+  @include mq(tablet) {
+    // margin-left: 10px;
+
+    // line-height: 1.16;
+    // color: $main-invert-color;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.logo__label {
+  @include mq(mobile-only) {
+    display: none;
+  }
+
+  @include mq(tablet) {
+    // color: $main-invert-color;
+    margin-left: 10px;
+    // line-height: 1.16;
+    // text-align: center;
+  }
+}
+
+.header-nav {
+  // color: $main-invert-color;
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+
+  // &__list {
+  //     display: flex;
+  //     margin-left: auto;
+  // }
+
+  &__end {
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.container__header-nav {
+  @include mq(mobile-only) {
+    margin-bottom: 60px;
+  }
+
+  margin-bottom: 40px;
+}
+
+.header-nav__item {
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  transform: scale(1);
+  transition: transform ease 1s;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
+.header-nav__link {
+  // font-size: 12px;
+  // line-height: 1.16;
+  text-transform: uppercase;
+  // padding-bottom: 3px;
+
+  // & {
+  //     padding-bottom: 3px;
+  // }
+}
+
+.header-nav__link--current-header {
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: #ff001b;
+  }
+}
+
+.hero-home__form {
+  position: relative;
+  z-index: 1;
+  // display: flex;
+  // align-items: center;
+  // height: 44px;
+  // cursor: pointer;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  // margin: 0 auto 16px auto;
+  transition: transform ease 1s;
+  color: $main-invert-color;
+
+  @include mq(tablet) {
+    width: 336px;
+    // margin: 0 auto 20px auto;
+  }
+
+  @include mq(desktop) {
+    width: 394px;
+  }
+
+  border-bottom: 0.5px solid $main-invert-color;
+
+  &:hover,
+  &:focus-within {
+    transform: scale(1.1);
+    border-bottom: 3px solid $accent-color;
+    box-shadow: inset 0 -8px 15px -8px $accent-color;
+    background: transparent;
+  }
+}
+
+.form_input {
+  position: relative;
+  width: 100%;
+  outline: none;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: inherit;
+  line-height: 1.14;
+  height: 30px;
+  // cursor: pointer;
+  // color: $main-invert-color;
+
+  &::placeholder {
+    // font-weight: 400;
+    // font-size: 14px;
+    // line-height: 1.14;
+    // color: $main-invert-color;
+    color: inherit;
+  }
+
+  &:hover,
+  &:focus {
+    &::placeholder {
+      color: bbbbbb;
+    }
+  }
+}
+
+.form_search-button {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  // padding: 3px;
+  background: transparent;
+  border: none;
+  // cursor: pointer;
+}
+
+.fail-search {
+  color: #ff001b;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.header-index {
+  background-image: url('../img/header-mobile@1x-min.jpg');
+  // ;
+  // background-size: cover;
+
+  @include mq(retina) {
+    background-image: url('../img/header-mobile@2x-min.jpg');
+    // ;
+    // background-size: cover;
+  }
+
+  @include mq(tablet) {
+    background-image: url('../img/header-tablet@1x-min.jpg');
+    // ;
+    // background-size: cover;
+
+    @include mq(retina) {
+      background-image: url('../img/header-tablet@2x-min.jpg');
+      // ;
+      // background-size: cover;
+    }
+
+    @include mq(desktop) {
+      background-image: url('../img/header-desktop@1x-min.jpg');
+      //
+      // background-size: cover;
+
+      @include mq(retina) {
+        background-image: url('../img/header-desktop@2x-min.jpg');
+        // ;
+        // background-size: cover;
+      }
+
+      // background-color: transparent;
+    }
+  }
+}
+
