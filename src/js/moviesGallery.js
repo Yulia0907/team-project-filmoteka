@@ -20,7 +20,7 @@ async function trendingMovies() {
     const res = await fetchTrendingMovies();
     moviesContainer.innerHTML = createMovieCards(res.results);
     const options = {
-      totalItems: res.total_pages,
+      totalItems: res.total_results,
       itemsPerPage: 20,
       visiblePages: 4,
       centerAlign: false,
@@ -60,17 +60,20 @@ async function onMovieCardClick(e) {
   }
 }
 
-form.addEventListener('submit', onFormInputHandler);
+// form.addEventListener('submit', onFormInputHandler);
 
-async function onFormInputHandler(event) {
+function onFormInputHandler(event) {
   event.preventDefault();
   const movieName = form.elements.searchQuery.value.trim();
   if (movieName === '') {
     return console.log('Empty search query');
   }
 
+  galletyFetchAndRender(movieName);
   // resetPage();
+}
 
+async function galletyFetchAndRender(movieName) {
   const res = await fetchMoviesByName(movieName);
   // console.log('search by Name: ', res, '      total_pages: ', res.total_pages);
   if (res.results.length === 0) {
@@ -82,7 +85,7 @@ async function onFormInputHandler(event) {
   moviesContainer.innerHTML = createMovieCards(res.results);
 
   const options = {
-    totalItems: res.total_pages,
+    totalItems: res.total_results,
     itemsPerPage: 20,
     visiblePages: 4,
     centerAlign: false,
@@ -100,5 +103,7 @@ async function onFormInputHandler(event) {
         console.log(error);
       });
   });
-  form.reset();
+  // form.reset();
 }
+
+export { galletyFetchAndRender };

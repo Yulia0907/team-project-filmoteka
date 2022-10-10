@@ -1,5 +1,14 @@
 @import '../components/modalBasicLightbox';
 
+.movies-gallery {
+  // z-index: -10;
+  // outline: 5px solid red;
+}
+
+// .movies__container {
+//   z-index: -10000;
+// }
+
 .visually-hidden {
   position: absolute;
 
@@ -32,8 +41,9 @@
 }
 
 .movies__item {
+  // outline: 5px solid red;
   position: relative;
-  z-index: -1;
+  // z-index: -1;
   box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
   border-radius: 5px;
   overflow: hidden;

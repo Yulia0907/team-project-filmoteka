@@ -1,7 +1,7 @@
 // import paginations from './js/paginations';
 import './js/scroll.js';
 import './js/moviesGallery';
-// import './js/form/form-search-input';
+import './js/form/form-search-input';
 
 const currentPage = 1;
 

@@ -1,4 +1,6 @@
 .search-result {
+  position: relative;
+  z-index: 999;
   // display: flex;
 
   // position: absolute;
@@ -9,13 +11,17 @@
 
 .search-result__item {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   &:hover {
     background-color: rgba(100, 100, 100, .4);
     // font-weight: 500;
     color: $accent-color;
     // scale: 1.02;
+  }
+
+  &:hover .search-result__date {
+    color: $advanced-color;
   }
 }
 
