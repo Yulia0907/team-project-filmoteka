@@ -18,6 +18,7 @@
     "url": "https://github.com/NilKad/js-project-7.git/issues"
   },
   "dependencies": {
+    "firebase": "^9.11.0",
     "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
@@ -25,7 +26,8 @@
     "axios": "^1.1.2",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
