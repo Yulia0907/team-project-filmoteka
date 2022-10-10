@@ -1,0 +1,31 @@
+.search-result {
+  // display: flex;
+
+  // position: absolute;
+  // z-index: 9999999;
+  background-color: $main-color;
+
+}
+
+.search-result__item {
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: rgba(100, 100, 100, .4);
+    // font-weight: 500;
+    color: $accent-color;
+    // scale: 1.02;
+  }
+}
+
+.search-result__title {
+  // color: red;
+  padding: 1px 7px;
+
+}
+
+.search-result__date {
+  font-weight: 500;
+  color: $accent-color;
+}

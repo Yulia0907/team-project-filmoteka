@@ -1,3 +1,5 @@
+@import '../components/form-search';
+
 .header {
   @include mq(mobile-only) {
     height: 230px;
@@ -155,7 +157,7 @@
 }
 
 .form_input {
-  // position: relative;
+  position: relative;
   width: 100%;
   outline: none;
   padding: 4px;

@@ -33,6 +33,7 @@
 
 .movies__item {
   position: relative;
+  z-index: -1;
   box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
   border-radius: 5px;
   overflow: hidden;
@@ -63,7 +64,7 @@
   }
 }
 
-.movies__img > img {
+.movies__img>img {
   height: 100%;
   width: 100%;
   object-fit: cover;

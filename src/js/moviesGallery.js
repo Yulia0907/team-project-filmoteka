@@ -20,7 +20,7 @@ async function trendingMovies() {
     const res = await fetchTrendingMovies();
     moviesContainer.innerHTML = createMovieCards(res.results);
     const options = {
-      totalItems: res.total_pages,
+      totalItems: res.total_results,
       itemsPerPage: 20,
       visiblePages: 4,
       centerAlign: false,
@@ -67,6 +67,7 @@ async function onFormInputHandler(event) {
   // resetPage();
 
   const res = await fetchMoviesByName(movieName);
+  // console.log('search by Name: ', res, '      total_pages: ', res.total_pages);
   if (res.results.length === 0) {
     failSearch.classList.remove('is-hidden');
     setTimeout(() => failSearch.classList.add('is-hidden'), 5000);
@@ -76,7 +77,7 @@ async function onFormInputHandler(event) {
   moviesContainer.innerHTML = createMovieCards(res.results);
 
   const options = {
-    totalItems: res.total_pages,
+    totalItems: res.total_results,
     itemsPerPage: 20,
     visiblePages: 4,
     centerAlign: false,
@@ -94,5 +95,5 @@ async function onFormInputHandler(event) {
         console.log(error);
       });
   });
-  form.reset();
+  // form.reset();
 }
