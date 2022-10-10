@@ -20,7 +20,7 @@ async function trendingMovies() {
     const res = await fetchTrendingMovies();
     moviesContainer.innerHTML = createMovieCards(res.results);
     const options = {
-      totalItems: res.total_results,
+      totalItems: res.total_pages,
       itemsPerPage: 20,
       visiblePages: 4,
       centerAlign: false,
@@ -43,10 +43,15 @@ trendingMovies();
 moviesContainer.addEventListener('click', onMovieCardClick);
 
 async function onMovieCardClick(e) {
+  console.log('onMovieCardClick e: ', e);
+  console.log('onMovieCardClick e.target: ', e.target);
+  console.log('onMovieCardClick e.target: ', e.target.closest('li'));
   const id = e.target.closest('li').dataset.id;
+  console.log('id: ', id);
   if (e.target.nodeName === 'UL') {
     return;
   }
+
   try {
     const film = await fetchMovieById(id);
     modalBasicLightbox(film);
@@ -77,7 +82,7 @@ async function onFormInputHandler(event) {
   moviesContainer.innerHTML = createMovieCards(res.results);
 
   const options = {
-    totalItems: res.total_results,
+    totalItems: res.total_pages,
     itemsPerPage: 20,
     visiblePages: 4,
     centerAlign: false,
@@ -95,5 +100,5 @@ async function onFormInputHandler(event) {
         console.log(error);
       });
   });
-  // form.reset();
+  form.reset();
 }

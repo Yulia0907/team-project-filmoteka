@@ -2,13 +2,14 @@ import debounce from 'lodash.debounce';
 import { fetchMoviesByName } from '../fetchAPI';
 import { markupFormSearch } from './markup-form-search';
 const formInputResultSearch = document.querySelector('.search-result');
+const fromRefs = document.querySelector('.hero-home__form');
 
 const formSearchInput = document.querySelector('.form_input');
 const DEBOUNCE_DELAY = 500;
 
 let searchString = null;
 
-function onInputChange(e) {
+const onInputChange = e => {
   searchString = e.target.value.trim();
   if (searchString.length === 0) {
     renderSearch('');
@@ -20,7 +21,7 @@ function onInputChange(e) {
     // return data;
     prepareArrayForRender(data);
   });
-}
+};
 
 const prepareArrayForRender = fetchData => {
   console.log('fetchData.results: ', fetchData);
@@ -32,7 +33,14 @@ const renderSearch = dataRender => {
   formInputResultSearch.innerHTML = dataRender;
 };
 
-formSearchInput.addEventListener(
-  'input',
-  debounce(onInputChange, DEBOUNCE_DELAY)
-);
+const onFormClick = evt => {
+  console.log('onFormClick click ');
+};
+
+// formSearchInput.addEventListener(
+//   'input',
+//   debounce(onInputChange, DEBOUNCE_DELAY)
+// );
+
+// fromRefs.addEventListener('click', onFormClick);
+// form
