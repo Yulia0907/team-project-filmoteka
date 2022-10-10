@@ -63,7 +63,7 @@
   }
 }
 
-.movies__img > img {
+.movies__img>img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -100,15 +100,19 @@
   }
 }
 
-.movies__data:before {
-  content: '';
-  display: inline-block;
-  width: 1px;
-  height: 12px;
-  margin-left: 5px;
+.movies__genres {
   margin-right: 5px;
-  background-color: $accent-color;
 }
+
+// .movie.s__data:before {
+//   content: '';
+//   display: inline-block;
+//   width: 1px;
+//   height: 12px;
+//   margin-left: 5px;
+//   margin-right: 5px;
+//   background-color: $accent-color;
+// }
 
 .movies__rating {
   position: absolute;
