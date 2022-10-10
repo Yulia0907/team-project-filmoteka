@@ -1,0 +1,108 @@
+.basicLightbox {
+  overflow: scroll;
+
+@include mq(desktop) {
+    overflow: visible;
+  }
+}
+
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  background: radial-gradient(circle, rgba(181,104,48,1) 0%, rgba(219,212,208,1) 100%);
+
+  border-radius: 25px;
+
+  margin-top: 600px;
+  width: 300px;
+  
+
+@include mq(mobile-tablet) {
+    margin-top: 250px;
+    width: 460px;
+  }
+
+@include mq(tablet) {
+    margin-top: 160px;
+    width: 760px;
+  }
+
+@include mq(desktop) {
+    margin: -30px;
+    width: 1200px;
+  }
+}
+
+.team-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+    margin: 5px;
+    width: calc((100% - 40px) / 2);
+
+@include mq(mobile-tablet) {
+    width: calc((100% - 60px) / 3);
+  }
+
+@include mq(tablet) {
+    margin: 10px;
+    width: calc((100% - 160px) / 4);
+  }
+
+@include mq(desktop) {
+    margin: 20px;
+    width: calc((100% - 240px) / 6);
+  }
+}
+
+.team-image {
+  margin-bottom: 10px;
+  border-top-left-radius: 50%;
+  justify-content: center;
+
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.4); 
+    z-index: 10;
+  }
+
+  @include transition(transform);
+
+  box-shadow: 5px 2px 5px 2px $accent-color;
+}
+
+.team-name {
+  margin-bottom: 5px;
+  color: $main-color;
+  text-align: center;
+
+  @include font(14px, 700, 1.3);
+
+@include mq(desktop) {
+    @include font(15px, 700, 1.3);
+  }
+  
+}
+
+.team-role {
+  @include font(12px, 500, 1.2);
+  text-align: center;
+
+@include mq(desktop) {
+    @include font(15px, 500, 1.3);
+  }
+}
+
+.team-git {
+  position: absolute;
+  fill: rgb(91, 3, 109);
+
+  top: 0;
+  left: 0;
+}

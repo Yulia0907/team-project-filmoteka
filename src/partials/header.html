@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header header-index">
   <div class="container header__container">
     <nav class="header-nav container__header-nav">
       <a href="./index.html" class="logo">
@@ -21,13 +21,18 @@
     <!-- <div class="hero-home"> -->
     <form class="hero-home__form" name="hero-home" role="search">
       <input class="form_input" type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+
       <button class="form_search-button" aria-label="search" type="submit">
         <img src="./img/search.svg" alt="Icon search" width="20" height="20" />
         <!-- <svg class="form_search-icon" width="12" height="12">
             <use href="./img/search.svg"></use>
           </svg> -->
       </button>
+      <div class="search-result"></div>
     </form>
     <!-- </div> -->
+    <p class="fail-search is-hidden">
+      Search result not successful. Enter the correct movie name and try again
+    </p>
   </div>
 </header>
