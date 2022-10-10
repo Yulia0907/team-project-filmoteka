@@ -38,12 +38,19 @@ let email;
 let password;
 
 //обсервер текущего пользователя
+const welcome = document.querySelector('.header-nav__end');
 onAuthStateChanged(auth, user => {
   if (user) {
     userId = user.uid;
     userEmail = user.email;
     console.log('current user = ', userEmail);
-    autorizeFormEl.insertAdjacentHTML('afterend', `welcome, ${userEmail}`);
+    console.dir(welcome);
+    welcome.insertAdjacentHTML(
+      'afterbegin',
+      `<li class="header-nav__item">
+          <p>Welcome, ${userEmail}!</p>
+        </li>`
+    );
   }
 });
 
