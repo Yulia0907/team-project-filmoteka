@@ -5,12 +5,15 @@ import {
 } from './fetchAPI';
 import { createMovieCards } from './moviesMarkup';
 import { modalBasicLightbox } from './modalBasicLightbox';
+import { localStorageAPI } from './watched-queued';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
 const moviesContainer = document.querySelector('.movies');
 const form = document.querySelector('.hero-home__form');
 const failSearch = document.querySelector('.fail-search');
+
+const localStorageApi = new localStorageAPI();
 
 /**
  * Function fetch trending movies and make markup on page
@@ -43,13 +46,62 @@ trendingMovies();
 moviesContainer.addEventListener('click', onMovieCardClick);
 
 async function onMovieCardClick(e) {
-  const id = e.target.closest('li').dataset.id;
+  const targetFilm = e.target.closest('li').dataset.id;
   if (e.target.nodeName === 'UL') {
     return;
   }
   try {
-    const film = await fetchMovieById(id);
+    const movies = JSON.parse(localStorage.getItem('movies'));
+    const parsedGenres = JSON.parse(localStorage.getItem('genresList'));
+
+    const film = movies.filter(({ id }) => id === Number(targetFilm))[0];
+    const { genre_ids } = film;
+    let genres;
+    if (genre_ids) {
+      genres = parsedGenres
+        .filter(({ id }) => genre_ids.includes(id))
+        .map(({ name }) => name);
+    }
+    film.genres = genres;
+
+    const watchedMovies = JSON.parse(localStorage.getItem('watched'));
+    const queuedMovies = JSON.parse(localStorage.getItem('queue'));
+
+    if (watchedMovies) {
+      if (watchedMovies.map(({ id }) => id).includes(film.id)) {
+        const movieIsInWatched = watchedMovies.filter(
+          ({ id }) => id == film.id
+        )[0];
+        film.watchedStatus = movieIsInWatched.watchedStatus;
+        film.queueStatus = movieIsInWatched.queueStatus;
+        localStorage.setItem('current-film', JSON.stringify(film));
+      } else {
+        film.watchedStatus = false;
+        film.queueStatus = false;
+
+        localStorage.setItem('current-film', JSON.stringify(film));
+      }
+    } else if (queuedMovies) {
+      if (queuedMovies.map(({ id }) => id).includes(film.id)) {
+        const movieIsInQueue = queuedMovies.filter(
+          ({ id }) => id == film.id
+        )[0];
+        film.watchedStatus = movieIsInQueue.watchedStatus;
+        film.queueStatus = movieIsInQueue.queueStatus;
+        localStorage.setItem('current-film', JSON.stringify(film));
+      } else {
+        film.watchedStatus = false;
+        film.queueStatus = false;
+        localStorage.setItem('current-film', JSON.stringify(film));
+      }
+    } else {
+      film.watchedStatus = false;
+      film.queueStatus = false;
+      localStorage.setItem('current-film', JSON.stringify(film));
+    }
+
     modalBasicLightbox(film);
+    localStorageApi.addListeners();
   } catch (error) {
     console.log(error.message);
   }

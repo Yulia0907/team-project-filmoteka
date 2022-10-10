@@ -49,9 +49,7 @@ function modalBasicLightbox({
           </li>
           <li class="movie__item">
             <p class="movie__details">Genre</p>
-            <p class="movie__info">${genres
-              .map(genre => genre.name)
-              .join(', ')}</p>
+            <p class="movie__info">${genres.join(', ')}</p>
           </li>
         </ul>
       </div>
@@ -61,8 +59,8 @@ function modalBasicLightbox({
         <button type="button" class="trailer__button" data-id=${id}><img class="play__icon" src=${playSvg} alt="play" />Watch trailer</button>
       </div>
       <div class="button__wrapper">
-        <button type="button" class="movie__button" data-id=${id}>Add to watched</button>
-        <button type="button" class="movie__button" data-id=${id}>Add to queue</button>
+        <button type="button" class="movie__button btn-watched" data-id=${id}>Add to watched</button>
+        <button type="button" class="movie__button btn-queue" data-id=${id}>Add to queue</button>
       </div>
       </div>
       </div>
@@ -83,6 +81,7 @@ function modalBasicLightbox({
         });
       },
       onClose: instance => {
+        localStorage.removeItem('current-film');
         body.style.overflow = 'auto';
       },
     }
