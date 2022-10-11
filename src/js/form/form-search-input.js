@@ -9,7 +9,7 @@ const formSearchInput = document.querySelector('.form_input');
 
 const DEBOUNCE_DELAY = 500;
 
-let forRenderDate = '';
+let dataForRender = '';
 let searchString = '';
 let lastDownPage = 0;
 // let searchTotalFound = 0;
@@ -25,7 +25,7 @@ async function onInputChange(e) {
     return;
   }
   lastDownPage = 0;
-  let forRenderDate = '';
+  let dataForRender = '';
 
   console.log(
     'searchString:  ',
@@ -36,8 +36,7 @@ async function onInputChange(e) {
   // lastDownPage += 1;
   // const res =
   const response = await fetchMoviesByNameGetAll(searchString, 3);
-  // const response = await fetchMoviesByName(searchString, searchLastDownPage);
-  console.log('response: === ', response);
+  console.log('response final all request: === ', response);
   return;
   // fetchMoviesByNameService(searchString, (searchLastDownPage += 1));
   //   .then(data =>
@@ -45,7 +44,7 @@ async function onInputChange(e) {
   // );
   // console.log('download searchLastDownPage: ', searchLastDownPage);
 
-  // console.log('forRenderDate one: ', forRenderDate);
+  // console.log('    dataForRender one: ',     dataForRender);
 
   // while (searchLastDownPage < totalFoundPages) {
   //   searcharray += fetchMoviesByNameService(
@@ -54,13 +53,12 @@ async function onInputChange(e) {
   //   );
   // }
 
-  // renderSearch(forRenderDate);
+  // renderSearch(    dataForRender);
 }
 
 async function fetchMoviesByNameGetAll(nameSearch, page) {
-  // console.log('Start ----- fetchMoviesByNameGetAll');
-  // console.log('nameSearch: ', nameSearch, 'page: ', page);
   const response = await fetchMoviesByName(nameSearch, page);
+  dataForRender = response.results;
   console.log('return fetchMoviesByName then JSON:  ', response);
   totalFoundPages = response.total_pages;
   getsPage = response.page;
@@ -70,17 +68,10 @@ async function fetchMoviesByNameGetAll(nameSearch, page) {
     console.log('respWhile ----- ', respWhile);
     getsPage = respWhile.page;
     console.log('getsPage = ', getsPage);
+    dataForRender = { ...dataForRender, ...respWhile };
   }
-  console.log(
-    'lastDownPage: ',
-    lastDownPage,
-    '   getsPage: ',
-    getsPage,
-    '  respWhile:  ',
-    respWhile
-  );
-  // }
-  return response;
+  console.log('dataForRender:   ', dataForRender);
+  return dataForRender;
 }
 
 function fetchMoviesByNameService(searchName, page) {
@@ -100,8 +91,8 @@ function fetchMoviesByNameService(searchName, page) {
 
 const prepareArrayForRender = fetchData => {
   console.log('fetchData.results: ', fetchData);
-  const forHTML = markupFormListSearch(fetchData.results);
-  return (forRenderDate += forHTML);
+  const forHTML = markupFormListSearch(fetchData);
+  return (dataForRender += forHTML);
 };
 
 const renderSearch = dataRender => {
