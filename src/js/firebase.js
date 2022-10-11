@@ -27,6 +27,7 @@ import {
   loginFormEmail,
   loginFormPassword,
   onCloseModal,
+  closeOnSubmit,
 } from '/src/js/modal-registr.js';
 const firebaseConfig = {
   apiKey: 'AIzaSyCI5JTbKtHIHNuS4WcbgMfz2S8WxJp_ehM',
@@ -92,7 +93,7 @@ function onRegistrationSubmit(event) {
       // ..
     });
   registrationForm.reset();
-  onCloseModal();
+  closeOnSubmit();
 }
 
 //авторизация существующих хользователей
@@ -115,7 +116,7 @@ function onLoginSubmit(event) {
     });
 
   loginForm.reset();
-  onCloseModal();
+  closeOnSubmit();
 }
 
 //логаут
