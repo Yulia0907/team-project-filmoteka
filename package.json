@@ -18,7 +18,6 @@
     "url": "https://github.com/NilKad/js-project-7/issues"
   },
   "dependencies": {
-    "firebase": "^9.11.0",
     "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
