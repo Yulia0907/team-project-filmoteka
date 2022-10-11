@@ -17,7 +17,17 @@ import {
   signOut,
   getAdditionalUserInfo,
 } from 'firebase/auth';
-
+import {
+  registrationForm,
+  registrationFormName,
+  registrationFormEmail,
+  registrationFormPassword,
+  loginForm,
+  loginFormName,
+  loginFormEmail,
+  loginFormPassword,
+  onCloseModal,
+} from '/src/js/modal-registr.js';
 const firebaseConfig = {
   apiKey: 'AIzaSyCI5JTbKtHIHNuS4WcbgMfz2S8WxJp_ehM',
   authDomain: 'filmoteka-proj-7.firebaseapp.com',
@@ -33,76 +43,66 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+
+const logoutBtnEl = document.querySelector('#logout');
 let userId;
 let email;
 let password;
 
-//обсервер текущего пользователя
-const welcome = document.querySelector('.header-nav__end');
+// обсервер текущего пользователя
+const welcome = document.querySelector('.welcome');
+const login = document.querySelector('#login');
+
 onAuthStateChanged(auth, user => {
   if (user) {
     userId = user.uid;
     userEmail = user.email;
+    logoutBtnEl.classList.remove('visually-hidden');
+    login.classList.add('visually-hidden');
     console.log('current user = ', userEmail);
-    console.dir(welcome);
-    welcome.insertAdjacentHTML(
-      'afterbegin',
-      `<li class="header-nav__item">
-          <p>Welcome, ${userEmail}!</p>
-        </li>`
-    );
+    welcome.innerHTML = `Welcome, ${userEmail}!`;
   }
 });
 
 //регистрация новых пользователей
-const registrationFormEl = document.querySelector('#registration-form');
-const registrationNameEl = document.querySelector('#registration-form-name');
-const registrationEmailEl = document.querySelector('#registration-form-email');
-const registrationPasswordEl = document.querySelector(
-  '#registration-form-password'
-);
-
-registrationFormEl.addEventListener('submit', onRegistrationSubmit);
+registrationForm.addEventListener('submit', onRegistrationSubmit);
 
 function onRegistrationSubmit(event) {
   event.preventDefault();
-  const name = registrationNameEl.value;
-  const email = registrationEmailEl.value;
-  const password = registrationPasswordEl.value;
+  // const name = registrationFormName.value;
+  const email = registrationFormEmail.value;
   console.log(email);
+  const password = registrationFormPassword.value;
   console.log(password);
-  createUserWithEmailAndPassword(auth, email, password, name)
+  createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      set(ref(database, 'users/' + user.uid), {
-        email: email,
-        displayName: name,
-        online: true,
-      });
+      // set(ref(database, 'users/' + user.uid), {
+      //   email: email,
+      //   displayName: email,
+      // });
       // ...
     })
     .catch(error => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
       // ..
     });
-  registrationFormEl.reset();
+  registrationForm.reset();
+  onCloseModal();
 }
 
 //авторизация существующих хользователей
-const autorizeFormEl = document.querySelector('#autorize-form');
-const autorizeEmailEl = document.querySelector('#autorize-form-email');
-const autorizePasswordEl = document.querySelector('#autorize-form-password');
+loginForm.addEventListener('submit', onLoginSubmit);
 
-autorizeFormEl.addEventListener('submit', onAutorizeSubmit);
-
-function onAutorizeSubmit(event) {
-  const email = autorizeEmailEl.value;
-  const password = autorizePasswordEl.value;
-  console.log(email);
-  console.log(password);
+function onLoginSubmit(event) {
   event.preventDefault();
+  const email = loginFormEmail.value;
+  const password = loginFormPassword.value;
+
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       // Signed in
@@ -114,11 +114,11 @@ function onAutorizeSubmit(event) {
       const errorMessage = error.message;
     });
 
-  autorizeFormEl.reset();
+  loginForm.reset();
+  onCloseModal();
 }
 
 //логаут
-const logoutBtnEl = document.querySelector('#logout-btn');
 
 logoutBtnEl.addEventListener('click', logOut);
 
@@ -127,6 +127,8 @@ function logOut() {
     .then(() => {
       // Sign-out successful.
       userEmail = null;
+      logoutBtnEl.classList.add('visually-hidden');
+      login.classList.remove('visually-hidden');
     })
     .catch(error => {
       // An error happened.
