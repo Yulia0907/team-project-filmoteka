@@ -15,17 +15,16 @@
 
   border-radius: 25px;
 
-  margin-top: 600px;
+  margin-top: 610px;
   width: 300px;
   
-
 @include mq(mobile-tablet) {
     margin-top: 250px;
     width: 460px;
   }
 
 @include mq(tablet) {
-    margin-top: 160px;
+    margin-top: 120px;
     width: 760px;
   }
 
@@ -49,7 +48,6 @@
   }
 
 @include mq(tablet) {
-    margin: 10px;
     width: calc((100% - 160px) / 4);
   }
 
