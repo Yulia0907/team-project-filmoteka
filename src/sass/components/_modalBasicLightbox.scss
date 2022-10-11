@@ -151,6 +151,17 @@
   margin-bottom: 20px;
   max-height: 100px;
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background: rgb(241, 244, 246);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(41, 226, 243);
+    border-radius: 20px;
+  }
+
 }
 
 .button__wrapper {
