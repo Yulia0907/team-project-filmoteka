@@ -247,27 +247,3 @@
     }
   }
 }
-
-.modalopen-list{
-  display: flex;
-  justify-content: end;
-  
-}
-
-.modalopen-item:not(:last-child){
-  margin-right: 55px;
-  
-}
-.modalopen-btn{
-  outline: none;
-  border-style: none;
-  padding: 0;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: #fff;
-  transform: scale(1);
-    transition: transform ease 1s;
-        &:hover {
-          transform: scale(1.3);
-        }
-}

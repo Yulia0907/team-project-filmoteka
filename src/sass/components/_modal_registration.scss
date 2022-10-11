@@ -1,96 +1,14 @@
-.lightbox {
-    width: 100%;
-    background: #ffffff;
-    border-radius: 4px;
-    padding: 40px;
-    background-image: url(/src/img/header-mobile-v2@x-min.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-image: url(/src/img/header-tablet-v2@1x-min.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    @include mq(retina) {
-        background-image: url(/src/img/header-tablet-v2@2x-min.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-}
-.modal-close-btn{
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
-  padding: 8px;
-  background-color: transparent;
-  border: 0;
-  background-image: url(../img/closemodal.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.modal-registr-title {
-    font-family: inherit;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    margin-bottom: 40px;
-    color: #fff;
-}
-
-.modal-regist-close-btn {
+.visually-hidden {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: transparent;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
     border: 0;
-    stroke: #fff;
-    transition-duration: 500ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover {
-        stroke: #FF6B08;
-        transform: scale(1.2)
-    }
-}
-
-.modal-registr-input {
-    display: flex;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 14px 8px;
-    padding-bottom: 10px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    background-color: transparent;
-    transition-duration: 500ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover,
-    &:focus {
-        outline: none;
-        border-bottom: 1px solid #FF6B08;
-        transform: scale(1.02);
-    }
-
-    &:not(:placeholder-shown):required:valid {
-        border-bottom: 1px solid #32CD32;
-    }
-
-    &:not(:placeholder-shown):required:invalid {
-        border-bottom: 1px solid #ff0000;
-    }
-
-    &:not(:placeholder-shown) {
-        color: #fff;
-    }
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
 }
 
 .modal-registr-btn-sbmt {
@@ -121,12 +39,36 @@
     }
 }
 
-.modal-registr-signup {
-    text-align: center;
-    color: #fff;
+.modal-regist-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: 0;
+    stroke: #fff;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        stroke: #FF6B08;
+        transform: scale(1.1)
+    }
 }
 
+.modal-regist-close-svg {
+    width: 30px;
+    height: 30px;
+}
+
+// .modal-registr-signup {
+//     text-align: center;
+//     color: #fff;
+// }
+
 .modal-registr-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
     text-decoration: underline;
     color: #FF6B08;
     cursor: pointer;
@@ -134,18 +76,18 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-        transform: scale(1.02);
+        transform: scale(1.1);
     }
 }
 
 @media screen and (min-width: 480px) {
-    .lightbox {
+    .modal-registr {
         width: 450px;
     }
 }
 
 @include mq(desktop) {
-    .lightbox {
+    .modal-registr {
         width: 550px;
 
         // background-image: url(/src/img/header-desktop-v2@1x-min.jpg);
