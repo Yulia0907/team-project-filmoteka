@@ -6,8 +6,8 @@ const openModalLogInEl = document.querySelector('#login-btn');
 const closeModalSignUpEl = document.querySelector('.close-singup-btn')
 const closeModalLogInel = document.querySelector('.close-login-btn');
 
-// const openModal = document.querySelector('.open-modal-svg');
-// openModal.addEventListener("click", toggleModal);
+const openModal = document.querySelector('.open-modal-svg');
+openModal.addEventListener("click", toggleModal);
 
 const markupModalLogIn = basicLightbox.create(document.querySelector('#modal-welcome'), { className: 'modal-registr' });
 
@@ -54,3 +54,23 @@ function onCloseModal(e){
     markupModalLogIn.close();
     markupModalSignUp.close();
 }
+
+const inputEl = document.querySelector('#user-password');
+const inputVerifyEl = document.querySelector('#user-verify-password');
+
+
+
+
+function verifyPassword(e) {
+    e.preventDefault();
+    const password = inputEl.target.value;
+    const verifyPassword = inputVerifyEl.target.value;
+
+    console.log(password)
+    if (password === verifyPassword) {
+        console.log('adads')
+    }
+}
+
+// const btnSubmit = document.querySelector('#qweqwe');
+// btnSubmit.addEventListener('click', verifyPassword)

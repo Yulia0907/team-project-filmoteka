@@ -11,6 +11,92 @@
     margin: -1px;
 }
 
+.modal-registr {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 40px;
+    background-image: url(/src/img/header-mobile-v2@x-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(/src/img/header-tablet-v2@1x-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include mq(retina) {
+        background-image: url(/src/img/header-tablet-v2@2x-min.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+.modal-registr-title {
+    font-family: inherit;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.modal-regist-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: 0;
+    stroke: #fff;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        stroke: #FF6B08;
+        transform: scale(1.1)
+    }
+}
+
+.modal-regist-close-svg {
+    width: 30px;
+    height: 30px;
+}
+
+.modal-registr-input {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 14px 8px;
+    padding-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid #FF6B08;
+        transform: scale(1.02);
+    }
+
+    &:not(:placeholder-shown):required:valid {
+        border-bottom: 1px solid #32CD32;
+    }
+
+    &:not(:placeholder-shown):required:invalid {
+        border-bottom: 1px solid #ff0000;
+    }
+
+    &:not(:placeholder-shown) {
+        color: #fff;
+    }
+}
+
 .modal-registr-btn-sbmt {
     display: flex;
     margin: auto;
@@ -39,31 +125,10 @@
     }
 }
 
-.modal-regist-close-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: transparent;
-    border: 0;
-    stroke: #fff;
-    transition-duration: 500ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover {
-        stroke: #FF6B08;
-        transform: scale(1.1)
-    }
+.modal-registr-signup {
+    text-align: center;
+    color: #fff;
 }
-
-.modal-regist-close-svg {
-    width: 30px;
-    height: 30px;
-}
-
-// .modal-registr-signup {
-//     text-align: center;
-//     color: #fff;
-// }
 
 .modal-registr-btn {
     border: none;

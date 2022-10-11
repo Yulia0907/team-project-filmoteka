@@ -9,16 +9,6 @@
     <form>
       <div class="modal-registr-wrap">
         <input
-          type="text"
-          name="user-name"
-          id="user-name"
-          class="modal-registr-input"
-          placeholder="Name"
-          minlength="2"
-          pattern="^[a-zA-Z]+"
-          required
-        />
-        <input
           type="email"
           name="user-email"
           id="user-email"
@@ -32,22 +22,24 @@
           id="user-password"
           class="modal-registr-input"
           placeholder="Password"
-          minlength="2"
+          minlength="6"
           pattern="^[a-zA-Z]+"
           required
         />
         <input
           type="text"
-          name="user-password"
-          id="user-password"
+          name="user-verify-password"
+          id="user-verify-password"
           class="modal-registr-input"
           placeholder="Verify password"
-          minlength="2"
+          minlength="6"
           pattern="^[a-zA-Z]+"
           required
         />
       </div>
-      <button type="submit" class="modal-registr-btn-sbmt">Sign up</button>
+      <button type="submit" class="modal-registr-btn-sbmt" id="qweqwe">
+        Sign up
+      </button>
       <p class="modal-registr-signup">
         Already have an account?<a
           href=""
@@ -72,16 +64,6 @@
     <form>
       <div class="modal-registr-wrap">
         <input
-          type="text"
-          name="user-name"
-          id="user-name"
-          class="modal-registr-input"
-          placeholder="Name"
-          minlength="2"
-          pattern="^[a-zA-Z]+"
-          required
-        />
-        <input
           type="email"
           name="user-email"
           id="user-email"
@@ -95,7 +77,7 @@
           id="user-password"
           class="modal-registr-input"
           placeholder="Password"
-          minlength="2"
+          minlength="6"
           pattern="^[a-zA-Z]+"
           required
         />
