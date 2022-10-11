@@ -5,21 +5,11 @@
     </svg>
   </button>
   <p class="modal-registr-title">Sing up to Filmoteka</p>
-  <form>
+  <form id="registration-form">
     <div class="modal-registr-wrap">
       <input
-        type="text"
-        name="user-name"
-        id="user-name"
-        class="modal-registr-input"
-        placeholder="Name"
-        minlength="2"
-        pattern="^[a-zA-Z]+"
-        required
-      />
-      <input
         type="email"
-        name="user-email"
+        name="registration-form-email"
         id="user-email"
         class="modal-registr-input"
         placeholder="Email"
@@ -28,7 +18,7 @@
       <input
         type="text"
         name="user-password"
-        id="user-password"
+        id="registration-form-password"
         class="modal-registr-input"
         placeholder="Password"
         minlength="2"
@@ -66,22 +56,12 @@
     </svg>
   </button>
   <p class="modal-registr-title">Welcome to Filmoteka</p>
-  <form>
+  <form id="login-form">
     <div class="modal-registr-wrap">
-      <input
-        type="text"
-        name="user-name"
-        id="user-name"
-        class="modal-registr-input"
-        placeholder="Name"
-        minlength="2"
-        pattern="^[a-zA-Z]+"
-        required
-      />
       <input
         type="email"
         name="user-email"
-        id="user-email"
+        id="login-form-email"
         class="modal-registr-input"
         placeholder="Email"
         required
@@ -89,7 +69,7 @@
       <input
         type="text"
         name="user-password"
-        id="user-password"
+        id="login-form-password"
         class="modal-registr-input"
         placeholder="Password"
         minlength="2"
