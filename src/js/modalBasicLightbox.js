@@ -21,6 +21,10 @@ function modalBasicLightbox({
   const imgUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : noFoto;
+  let genresNo = '';
+  if (genres.length > 0) {
+    genresNo = 'Genres';
+  }
   const instance = basicLightbox.create(
     `<div class="modal">
     <button class="mobalClose__btn" type="button"></button>
@@ -50,7 +54,7 @@ function modalBasicLightbox({
             <p class="movie__info--uper">${title || original_title || name}</p>
           </li>
           <li class="movie__item">
-            <p class="movie__details">Genre</p>
+            <p class="movie__details">${genresNo}</p>
             <p class="movie__info">${genres
               .map(genre => genre.name)
               .join(', ')}</p>
