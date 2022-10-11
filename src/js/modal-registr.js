@@ -3,13 +3,16 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 
 const openModalSignUpEl = document.querySelector('#signup-btn');
 const openModalLogInEl = document.querySelector('#login-btn');
+const closeModalSignUpEl = document.querySelector('.close-singup-btn')
+const closeModalLogInel = document.querySelector('.close-login-btn');
 
-const openModal = document.querySelector('#check');
+const openModal = document.querySelector('.open-modal-svg');
 openModal.addEventListener("click", toggleModal);
 
 const markupModalLogIn = basicLightbox.create(document.querySelector('#modal-welcome'));
 
-function toggleModal() {
+function toggleModal(e) {
+    e.preventDefault();
     markupModalLogIn.show();
 
     window.addEventListener('keydown', onEscKeyPress);
@@ -22,9 +25,12 @@ function toggleModal() {
 
 openModalSignUpEl.addEventListener('click', onSignUp);
 openModalLogInEl.addEventListener('click', onLogIn);
+closeModalSignUpEl.addEventListener('click', onCloseModal);
+closeModalLogInel.addEventListener('click', onCloseModal);
 
 const markupModalSignUp = basicLightbox.create(document.querySelector('#modal-singup'));
-function onSignUp() {
+function onSignUp(e) {
+    e.preventDefault();
     markupModalSignUp.show();
 
     window.addEventListener('keydown', onEscKeyPress);
@@ -37,11 +43,14 @@ function onSignUp() {
     markupModalLogIn.close();
 };
 
-function onLogIn() {
+function onLogIn(e) {
+    e.preventDefault();
     markupModalLogIn.show();
     markupModalSignUp.close();
 };
 
-openModalSignUpEl.addEventListener('click', onSignUp);
-openModalLogInEl.addEventListener('click', onLogIn);
-// export { toggleModal, onSignUp, onLogIn };
+function onCloseModal(e){
+    e.preventDefault();
+    markupModalLogIn.close();
+    markupModalSignUp.close();
+}

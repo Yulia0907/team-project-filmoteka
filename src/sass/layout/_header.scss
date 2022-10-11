@@ -247,3 +247,17 @@
     }
   }
 }
+
+.open-modal-svg{
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  margin-left: 35px;
+  transition: transform ease 1s;
+  cursor: pointer;
+
+  &:hover{
+    fill: #FF6B08;
+    transform: scale(1.3);
+  }
+}
