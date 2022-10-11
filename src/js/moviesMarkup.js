@@ -42,7 +42,7 @@ function createMovieCards(movies) {
                   <div class="movies__meta">
                     <p class="movies__genres">${filmGenres}</p>
                     <p class="movies__data">${
-                      parseInt(release_date) || parseInt(first_air_date)
+                      parseInt(release_date) || parseInt(first_air_date) || ''
                     }</p>
                     <span class="movies__rating">${moviRating}</span>
                   </div>
