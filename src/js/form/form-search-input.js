@@ -1,11 +1,12 @@
 import debounce from 'lodash.debounce';
-// import { fetchMoviesByName } from '../fetchAPI';
+import { fetchMoviesByName } from '../api/fetchAPI-v2';
 import { markupFormListSearch } from './markup-form-search';
 import { galletyFetchAndRender } from '../moviesGallery';
 const formInputResultSearch = document.querySelector('.search-result');
 const formRefs = document.querySelector('.hero-home__form');
 
 const formSearchInput = document.querySelector('.form_input');
+
 const DEBOUNCE_DELAY = 500;
 
 let forRenderDate = '';
@@ -16,7 +17,7 @@ const searchParPage = 20;
 let totalFoundPages = 0;
 let totalFoundResults = 0;
 
-const onInputChange = e => {
+async function onInputChange(e) {
   searchString = e.target.value.trim();
   if (searchString.length === 0) {
     closeSearch();
@@ -33,9 +34,14 @@ const onInputChange = e => {
     searchLastDownPage
   );
   searchLastDownPage += 1;
-  const res = fetchMoviesByNameGetAll(searchString, searchLastDownPage);
-  console.log('res:  ', res);
-
+  // const res =
+  const response = await fetchMoviesByNameGetAll(
+    searchString,
+    searchLastDownPage
+  );
+  // const response = await fetchMoviesByName(searchString, searchLastDownPage);
+  console.log('response: === ', response);
+  return;
   // fetchMoviesByNameService(searchString, (searchLastDownPage += 1));
   //   .then(data =>
   //   console.log('then after fetchMoviesByNameService ret data: ', data)
@@ -52,13 +58,15 @@ const onInputChange = e => {
   // }
 
   // renderSearch(forRenderDate);
-};
+}
 
 async function fetchMoviesByNameGetAll(nameSearch, page) {
-  //
-  const res = await fetchMoviesByName(nameSearch, page);
-  conslole.log('return fetchMoviesByName:  ', res);
-  return res;
+  console.log('Start ----- fetchMoviesByNameGetAll');
+  console.log('nameSearch: ', nameSearch, 'page: ', page);
+  const response = await fetchMoviesByName(nameSearch, page);
+  console.log('return fetchMoviesByName then JSON:  ', response);
+
+  return response;
 }
 
 function fetchMoviesByNameService(searchName, page) {
@@ -74,29 +82,7 @@ function fetchMoviesByNameService(searchName, page) {
 }
 
 //для модернизации
-async function fetchMoviesByName(movieName, p = 1) {
-  console.log('movieName: ', movieName, '     p: ', p);
-  const searchParams = new URLSearchParams({
-    api_key: '0214e4f6556edfc65f2eadfc23b43510',
-    language: 'en-US',
-    page: p ?? 1,
-    include_adult: false,
-    query: movieName,
-  });
-
-  // try {
-  const data = await fetch(
-    `https://api.themoviedb.org/3/search/movie?${searchParams}`
-  ).then(date => {
-    console.log();
-  });
-  const results = await data.json();
-
-  return results;
-  // } catch (error) {
-  //   console.log(error.statusText);
-  // }
-}
+//
 
 const prepareArrayForRender = fetchData => {
   console.log('fetchData.results: ', fetchData);
