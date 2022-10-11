@@ -70,7 +70,6 @@ async function onMovieCardClick(e) {
   console.log('onMovieCardClick e.target: ', e.target);
   console.log('onMovieCardClick e.target: ', e.target.closest('li'));
   const targetFilm = e.target.closest('li').dataset.id; // id текущего фильма при открытии модалки
-  console.log('id: ', id);
   if (e.target.nodeName === 'UL') {
     return;
   }
