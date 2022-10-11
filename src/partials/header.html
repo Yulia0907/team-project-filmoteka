@@ -9,6 +9,18 @@
         <span class="logo__label">Filmoteka</span>
       </a>
       <ul class="header-nav__end">
+        <li class="header-nav__item welcome">
+          <p></p>
+        </li>
+        <li class="header-nav__item">
+          <button
+            type="button"
+            class="button logout visually-hidden"
+            id="logout"
+          >
+            Logout
+          </button>
+        </li>
         <li class="header-nav__item">
           <a
             href="./index.html"
@@ -20,6 +32,9 @@
           <a href="./mylibrary.html" class="header-nav__link">MY LIBRARY</a>
         </li>
       </ul>
+      <svg class="open-modal-svg" id="login">
+        <use href="./img/login.svg#icon-user"></use>
+      </svg>
     </nav>
 
     <!-- <div class="hero-home"> -->
@@ -31,12 +46,14 @@
         autocomplete="off"
         placeholder="Movie search"
       />
+
       <button class="form_search-button" aria-label="search" type="submit">
         <img src="./img/search.svg" alt="Icon search" width="20" height="20" />
         <!-- <svg class="form_search-icon" width="12" height="12">
             <use href="./img/search.svg"></use>
           </svg> -->
       </button>
+      <div class="search-result"></div>
     </form>
     <!-- </div> -->
     <p class="fail-search is-hidden">

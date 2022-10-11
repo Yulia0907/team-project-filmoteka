@@ -73,9 +73,15 @@
       background: transparent;
     }
 
-    .tui-last,
     .tui-first {
-      display: none;
+      // display: none;
+      background-color: #f7f7f7;
+      margin-right: 5px;
+    }
+
+    .tui-last {
+      background-color: #f7f7f7;
+      margin-left: 5px;
     }
   }
 }

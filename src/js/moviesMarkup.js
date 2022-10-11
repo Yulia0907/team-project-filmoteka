@@ -1,3 +1,5 @@
+import noFoto from '../img/no_ing.jpg';
+
 function createMovieCards(movies) {
   if (movies === null) {
     return ''; // чтобы не было ошибки в случае, если movies = undefined
@@ -26,9 +28,13 @@ function createMovieCards(movies) {
             .slice(0, 2)
             .join(', ');
         }
+        if (filmGenres.length > 0) {
+          filmGenres += ' |';
+        }
         const imgUrl = poster_path
-          ? `https://image.tmdb.org/t/p/original${poster_path}`
-          : 'https://via.placeholder.com/395x574';
+          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+          : // ? `https://image.tmdb.org/t/p/original${poster_path}`
+            noFoto;
 
         return `<li class="movies__item" data-id=${id}>
                 <div class="movies__img">
@@ -39,7 +45,7 @@ function createMovieCards(movies) {
                   <div class="movies__meta">
                     <p class="movies__genres">${filmGenres}</p>
                     <p class="movies__data">${
-                      parseInt(release_date) || parseInt(first_air_date)
+                      parseInt(release_date) || parseInt(first_air_date) || ''
                     }</p>
                     <span class="movies__rating">${moviRating}</span>
                   </div>

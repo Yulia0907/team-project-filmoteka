@@ -2,6 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 import { fetchTrailerById } from './fetchAPI';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import playSvg from '../img/play.svg';
+import noFoto from '../img/no_ing.jpg';
 
 const body = document.querySelector('body');
 
@@ -17,13 +18,18 @@ function modalBasicLightbox({
   popularity,
   id,
 }) {
+  const imgUrl = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : noFoto;
+  let genresNo = '';
+  if (genres.length > 0) {
+    genresNo = 'Genres';
+  }
   const instance = basicLightbox.create(
     `<div class="modal">
     <button class="mobalClose__btn" type="button"></button>
     <div class="movie__image">
-      <img class="image" src=https://image.tmdb.org/t/p/original${poster_path} alt=${
-      title || original_title || name
-    } />
+      <img class="image" src=${imgUrl} alt=${title || original_title || name} />
     </div>
     <div class="movie__information">
       <div>
@@ -48,8 +54,9 @@ function modalBasicLightbox({
             <p class="movie__info--uper">${title || original_title || name}</p>
           </li>
           <li class="movie__item">
-            <p class="movie__details">Genre</p>
+            <p class="movie__details">${genresNo}</p>
             <p class="movie__info">${genres.join(', ')}</p>
+
           </li>
         </ul>
       </div>
@@ -89,24 +96,36 @@ function modalBasicLightbox({
 
   instance.show();
 
+  async function tryFetch() {
+    const trailer = await fetchTrailerById(id);
+    const resultType = trailer.results;
+    const typeObj = resultType.find(result => result.type === 'Trailer');
+    if (resultType.length === 0 || typeObj.type !== 'Trailer') {
+      trailerBtnEl.style.display = 'none';
+      return;
+    }
+    return;
+  }
+  tryFetch();
+
   const trailerBtnEl = document.querySelector('.trailer__button');
   trailerBtnEl.addEventListener('click', getLinkTrailer);
 }
 
 async function getLinkTrailer(e) {
+  const trailerBtnEl = document.querySelector('.trailer__button');
   const movieId = e.target.dataset.id;
   const trailer = await fetchTrailerById(movieId);
   const resultType = trailer.results;
   const typeObj = resultType.find(result => result.type === 'Trailer');
-  if (typeObj.type !== 'Trailer') {
-    const trailerBtnEl = document.querySelector('.trailer__button');
+  if (resultType.length === 0 || typeObj.type !== 'Trailer') {
     trailerBtnEl.style.display = 'none';
     return;
   }
   const trailerKey = typeObj.key;
 
   const instanceTrailer = basicLightbox.create(
-    `<iframe width="560" height="315" src="https://www.youtube.com/embed/${trailerKey}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+    `<iframe width="700" height="400" src="https://www.youtube.com/embed/${trailerKey}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
     {
       onShow: instance => {
         instance.element().querySelector('.modal');
