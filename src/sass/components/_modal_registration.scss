@@ -1,4 +1,4 @@
-.basicLightbox__placeholder {
+.lightbox {
     width: 100%;
     background: #ffffff;
     border-radius: 4px;
@@ -18,6 +18,20 @@
         background-position: center;
         background-size: cover;
     }
+}
+.modal-close-btn{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  background-color: transparent;
+  border: 0;
+  background-image: url(../img/closemodal.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .modal-registr-title {
@@ -43,13 +57,8 @@
 
     &:hover {
         stroke: #FF6B08;
-        transform: scale(1.1)
+        transform: scale(1.2)
     }
-}
-
-.modal-regist-close-svg {
-    width: 30px;
-    height: 30px;
 }
 
 .modal-registr-input {
@@ -118,9 +127,6 @@
 }
 
 .modal-registr-btn {
-    border: none;
-    outline: none;
-    background-color: transparent;
     text-decoration: underline;
     color: #FF6B08;
     cursor: pointer;
@@ -128,18 +134,18 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.02);
     }
 }
 
 @media screen and (min-width: 480px) {
-    .basicLightbox__placeholder {
+    .lightbox {
         width: 450px;
     }
 }
 
 @include mq(desktop) {
-    .basicLightbox__placeholder {
+    .lightbox {
         width: 550px;
 
         // background-image: url(/src/img/header-desktop-v2@1x-min.jpg);

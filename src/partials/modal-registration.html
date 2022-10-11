@@ -1,9 +1,5 @@
-<div class="modal-registr" id="modal-singup">
-  <button type="button" class="modal-regist-close-btn close-singup-btn">
-    <svg class="modal-regist-close-svg">
-      <use href="./img/modal-registration.svg#icon-close"></use>
-    </svg>
-  </button>
+<div class="lightbox visually-hidden" id="modal-singup">
+  <button type="button" class="modal-close-btn modal-regist-close-btn"></button>
   <p class="modal-registr-title">Sing up to Filmoteka</p>
   <form>
     <div class="modal-registr-wrap">
@@ -59,12 +55,8 @@
   </form>
 </div>
 
-<div class="modal-registr" id="modal-welcome">
-  <button type="button" class="modal-regist-close-btn close-login-btn">
-    <svg class="modal-regist-close-svg">
-      <use href="./img/modal-registration.svg#icon-close"></use>
-    </svg>
-  </button>
+<div class="lightbox visually-hidden" id="modal-welcome">
+  <button type="button" class="modal-close-btn modal-regist-close-btn"></button>
   <p class="modal-registr-title">Welcome to Filmoteka</p>
   <form>
     <div class="modal-registr-wrap">
@@ -92,8 +84,8 @@
         id="user-password"
         class="modal-registr-input"
         placeholder="Password"
-        minlength="2"
-        pattern="^[a-zA-Z]+"
+        minlength="6"
+        pattern="[a-z0-9]{1,}"
         required
       />
     </div>

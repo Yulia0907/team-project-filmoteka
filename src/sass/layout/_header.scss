@@ -248,16 +248,26 @@
   }
 }
 
-.open-modal-svg{
-  width: 20px;
-  height: 20px;
-  fill: #fff;
-  margin-left: 35px;
-  transition: transform ease 1s;
-  cursor: pointer;
+.modalopen-list{
+  display: flex;
+  justify-content: end;
+  
+}
 
-  &:hover{
-    fill: #FF6B08;
-    transform: scale(1.3);
-  }
+.modalopen-item:not(:last-child){
+  margin-right: 55px;
+  
+}
+.modalopen-btn{
+  outline: none;
+  border-style: none;
+  padding: 0;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #fff;
+  transform: scale(1);
+    transition: transform ease 1s;
+        &:hover {
+          transform: scale(1.3);
+        }
 }

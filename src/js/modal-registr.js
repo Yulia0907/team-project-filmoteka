@@ -1,36 +1,65 @@
-import * as basicLightbox from 'basiclightbox'
+import * as lightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
-const openModalSignUpEl = document.querySelector('#signup-btn');
-const openModalLogInEl = document.querySelector('#login-btn');
-const closeModalSignUpEl = document.querySelector('.close-singup-btn')
-const closeModalLogInel = document.querySelector('.close-login-btn');
+const openModalSignUp = document.querySelector('#signup-btn');
+const openModalSignIn = document.querySelector('#signin-btn');
+openModalSignUp.addEventListener("click", toggleModal);
+openModalSignIn.addEventListener("click", openSignIn);
 
-const openModal = document.querySelector('.open-modal-svg');
-openModal.addEventListener("click", toggleModal);
+const closeModalBtn = document.querySelector('.modal-regist-close-btn');
+// const openModalSignIn = document.querySelector('#signin-btn');
+closeModalBtn.addEventListener("click", closeModal);
+// openModalSignIn.addEventListener("click", openSignIn);
 
-const markupModalLogIn = basicLightbox.create(document.querySelector('#modal-welcome'));
+const markupModalSignUp = lightbox.create(`<div class="lightbox" id="modal-singup">
+  <button type="button" class="modal-close-btn modal-regist-close-btn"></button>
+  <p class="modal-registr-title">Sing up to Filmoteka</p>
+  <form>
+    <div class="modal-registr-wrap">
+      <input
+        type="text"
+        name="user-name"
+        id="user-name"
+        class="modal-registr-input"
+        placeholder="Name"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
+      <input
+        type="email"
+        name="user-email"
+        id="user-email"
+        class="modal-registr-input"
+        placeholder="Email"
+        required
+      />
+      <input
+        type="text"
+        name="user-password"
+        id="user-password"
+        class="modal-registr-input"
+        placeholder="Password"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
+      <input
+        type="text"
+        name="user-password"
+        id="user-password"
+        class="modal-registr-input"
+        placeholder="Verify password"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
+    </div>
+    <button type="submit" class="modal-registr-btn-sbmt">Sign up</button>
+  </form>
+</div>`);
 
-function toggleModal(e) {
-    e.preventDefault();
-    markupModalLogIn.show();
-
-    window.addEventListener('keydown', onEscKeyPress);
-    function onEscKeyPress(e) {
-        if (e.code === "Escape") {
-            markupModalLogIn.close();
-        }
-    }
-};
-
-openModalSignUpEl.addEventListener('click', onSignUp);
-openModalLogInEl.addEventListener('click', onLogIn);
-closeModalSignUpEl.addEventListener('click', onCloseModal);
-closeModalLogInel.addEventListener('click', onCloseModal);
-
-const markupModalSignUp = basicLightbox.create(document.querySelector('#modal-singup'));
-function onSignUp(e) {
-    e.preventDefault();
+function toggleModal() {
     markupModalSignUp.show();
 
     window.addEventListener('keydown', onEscKeyPress);
@@ -39,18 +68,59 @@ function onSignUp(e) {
             markupModalSignUp.close();
         }
     }
-
-    markupModalLogIn.close();
 };
 
-function onLogIn(e) {
-    e.preventDefault();
-    markupModalLogIn.show();
-    markupModalSignUp.close();
-};
+const markupModalSignIn = lightbox.create(`<div class="lightbox">
+<button type="button" class="modal-close-btn modal-regist-close-btn"></button>
+  <p class="modal-registr-title">Welcome to Filmoteka</p>
+  <form>
+    <div class="modal-registr-wrap">
+      <input
+        type="text"
+        name="user-name"
+        id="user-name"
+        class="modal-registr-input"
+        placeholder="Name"
+        minlength="2"
+        pattern="^[a-zA-Z]+"
+        required
+      />
+      <input
+        type="email"
+        name="user-email"
+        id="user-email"
+        class="modal-registr-input"
+        placeholder="Email"
+        required
+      />
+      <input
+        type="text"
+        name="user-password"
+        id="user-password"
+        class="modal-registr-input"
+        placeholder="Password"
+        minlength="6"
+        pattern="[a-z0-9]{1,}"
+        required
+      />
+    </div>
+    <button type="submit" class="modal-registr-btn-sbmt">Log in</button>
+  </form>
+</div>
+`);
 
-function onCloseModal(e){
-    e.preventDefault();
-    markupModalLogIn.close();
+function openSignIn() {
+    markupModalSignIn.show();
+
+    window.addEventListener('keydown', onEscKeyPress);
+    function onEscKeyPress(e) {
+        if (e.code === "Escape") {
+            markupModalSignIn.close();
+        }
+    }
+}
+
+function closeModal() {
     markupModalSignUp.close();
+    markupModalSignIn.close();
 }
