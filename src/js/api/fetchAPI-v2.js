@@ -7,6 +7,10 @@ const searchParamsAll = {
 };
 
 async function fetchTrendingMovies(p = 1) {
+  if (!localStorage.getItem('genresList')) {
+    fetchGenresList();
+  }
+
   const searchParams = new URLSearchParams({
     api_key: '0214e4f6556edfc65f2eadfc23b43510',
     language: 'en-US',
@@ -41,13 +45,11 @@ async function fetchMoviesByName(movieName, p = 1) {
     include_adult: false,
     query: movieName,
   });
-
+  console.log('p = ', p);
   const data = await fetch(
     `https://api.themoviedb.org/3/search/movie?${searchParams}`
   );
-  // console.log('data after --- fetchMoviesByName: ', data);
   const results = await data.json();
-  // console.log('results JSON after --- fetchMoviesByName:  ', results);
   return results;
 }
 
@@ -63,24 +65,16 @@ async function fetchGenresList() {
   }
 }
 
-if (!localStorage.getItem('genresList')) {
-  fetchGenresList();
-}
-
 async function fetchTrailerById(id) {
   const searchParams = new URLSearchParams({
     api_key: '0214e4f6556edfc65f2eadfc23b43510',
     language: 'en-US',
   });
-  try {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos?${searchParams}`
-    );
-    const results = await data.json();
-    return results;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/videos?${searchParams}`
+  );
+  const results = await data.json();
+  return results;
 }
 
 export {

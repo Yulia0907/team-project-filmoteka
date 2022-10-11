@@ -11,7 +11,7 @@ const DEBOUNCE_DELAY = 500;
 
 let forRenderDate = '';
 let searchString = '';
-let searchLastDownPage = 0;
+let lastDownPage = 0;
 // let searchTotalFound = 0;
 const searchParPage = 20;
 let totalFoundPages = 0;
@@ -21,24 +21,21 @@ async function onInputChange(e) {
   searchString = e.target.value.trim();
   if (searchString.length === 0) {
     closeSearch();
-    searchLastDownPage = 0;
+    lastDownPage = 0;
     return;
   }
-  searchLastDownPage = 0;
+  lastDownPage = 0;
   let forRenderDate = '';
 
   console.log(
     'searchString:  ',
     searchString,
     '  searchLastDownPage: ',
-    searchLastDownPage
+    lastDownPage
   );
-  searchLastDownPage += 1;
+  // lastDownPage += 1;
   // const res =
-  const response = await fetchMoviesByNameGetAll(
-    searchString,
-    searchLastDownPage
-  );
+  const response = await fetchMoviesByNameGetAll(searchString, 3);
   // const response = await fetchMoviesByName(searchString, searchLastDownPage);
   console.log('response: === ', response);
   return;
@@ -61,11 +58,28 @@ async function onInputChange(e) {
 }
 
 async function fetchMoviesByNameGetAll(nameSearch, page) {
-  console.log('Start ----- fetchMoviesByNameGetAll');
-  console.log('nameSearch: ', nameSearch, 'page: ', page);
+  // console.log('Start ----- fetchMoviesByNameGetAll');
+  // console.log('nameSearch: ', nameSearch, 'page: ', page);
   const response = await fetchMoviesByName(nameSearch, page);
   console.log('return fetchMoviesByName then JSON:  ', response);
-
+  totalFoundPages = response.total_pages;
+  getsPage = response.page;
+  let respWhile = [];
+  while (page > lastDownPage && totalFoundPages > lastDownPage) {
+    const respWhile = await fetchMoviesByName(nameSearch, (lastDownPage += 1));
+    console.log('respWhile ----- ', respWhile);
+    getsPage = respWhile.page;
+    console.log('getsPage = ', getsPage);
+  }
+  console.log(
+    'lastDownPage: ',
+    lastDownPage,
+    '   getsPage: ',
+    getsPage,
+    '  respWhile:  ',
+    respWhile
+  );
+  // }
   return response;
 }
 
