@@ -1,4 +1,7 @@
 function createMovieCards(movies) {
+  if (movies === null) {
+    return ''; // чтобы не было ошибки в случае, если movies = undefined
+  }
   return movies
     .map(
       ({

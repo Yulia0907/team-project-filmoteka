@@ -5,7 +5,7 @@ import {
 } from './fetchAPI';
 import { createMovieCards } from './moviesMarkup';
 import { modalBasicLightbox } from './modalBasicLightbox';
-import { localStorageAPI } from './watched-queued';
+import { localStorageAPI } from './localStorageAPI';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
@@ -45,63 +45,30 @@ trendingMovies();
 
 moviesContainer.addEventListener('click', onMovieCardClick);
 
-async function onMovieCardClick(e) {
-  const targetFilm = e.target.closest('li').dataset.id;
+export async function onMovieCardClick(e) {
+  const targetFilm = e.target.closest('li').dataset.id; // id текущего фильма при открытии модалки
+  console.log(targetFilm);
   if (e.target.nodeName === 'UL') {
     return;
   }
   try {
-    const movies = JSON.parse(localStorage.getItem('movies'));
-    const parsedGenres = JSON.parse(localStorage.getItem('genresList'));
+    const movies = localStorageApi.getData('movies'); // забираем фильмы из Local Storage по тегу "movies"
+    const parsedGenres = localStorageApi.getData('genresList'); // забираем жанры из Local Storage
 
-    const film = movies.filter(({ id }) => id === Number(targetFilm))[0];
+    const film = movies.filter(({ id }) => id === Number(targetFilm))[0]; // метод filter возвращает массив, поэтому берем элемент этого массива
     const { genre_ids } = film;
     let genres;
     if (genre_ids) {
       genres = parsedGenres
-        .filter(({ id }) => genre_ids.includes(id))
-        .map(({ name }) => name);
+        .filter(({ id }) => genre_ids.includes(id)) // перебираем массив всех жанров по id и возвращаем только с текущими
+        .map(({ name }) => name); //перебираем массив текущих id и возвращаем массив с именами
     }
-    film.genres = genres;
+    film.genres = genres; // в ключ текущего объекта film сохраняем жанры по именам
 
-    const watchedMovies = JSON.parse(localStorage.getItem('watched'));
-    const queuedMovies = JSON.parse(localStorage.getItem('queue'));
-
-    if (watchedMovies) {
-      if (watchedMovies.map(({ id }) => id).includes(film.id)) {
-        const movieIsInWatched = watchedMovies.filter(
-          ({ id }) => id == film.id
-        )[0];
-        film.watchedStatus = movieIsInWatched.watchedStatus;
-        film.queueStatus = movieIsInWatched.queueStatus;
-        localStorage.setItem('current-film', JSON.stringify(film));
-      } else {
-        film.watchedStatus = false;
-        film.queueStatus = false;
-
-        localStorage.setItem('current-film', JSON.stringify(film));
-      }
-    } else if (queuedMovies) {
-      if (queuedMovies.map(({ id }) => id).includes(film.id)) {
-        const movieIsInQueue = queuedMovies.filter(
-          ({ id }) => id == film.id
-        )[0];
-        film.watchedStatus = movieIsInQueue.watchedStatus;
-        film.queueStatus = movieIsInQueue.queueStatus;
-        localStorage.setItem('current-film', JSON.stringify(film));
-      } else {
-        film.watchedStatus = false;
-        film.queueStatus = false;
-        localStorage.setItem('current-film', JSON.stringify(film));
-      }
-    } else {
-      film.watchedStatus = false;
-      film.queueStatus = false;
-      localStorage.setItem('current-film', JSON.stringify(film));
-    }
+    localStorageApi.setData('current-film', film);
 
     modalBasicLightbox(film);
-    localStorageApi.addListeners();
+    localStorageApi.addListenersToBtns();
   } catch (error) {
     console.log(error.message);
   }
