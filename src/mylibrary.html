@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Library</title>
+    <title>Filmoteka</title>
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./js/my-library.js"></script>
     <link rel="shortcut icon" href="./img/favicon.ico" />
   </head>
 
   <body>
-    <div class="wrapper-container">
-      <include src="./partials/header-mylibrary.html"></include>
-      <main>
-        <div id="#main" class="main"></div>
-        <include src="./partials/watched-queue.html"></include>
-        <include src="./partials/paginatios.html"></include>
-      </main>
+    <include src="./partials/header-mylibrary.html"></include>
+    <main>
+      <div id="#main" class="main-mylibrary"></div>
+      <include src="./partials/movies-gallery.html"></include>
+      <include src="./partials/paginatios.html"></include>
+    </main>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/scroll.html"></include>
 
-      <include src="./partials/footer.html"></include>
-      <include src="./partials/scroll.html"></include>
-      <script type="module" src="./js/firebase.js"></script>
-    </div>
+    <script type="module" src="./js/scroll.js"></script>
   </body>
 </html>
