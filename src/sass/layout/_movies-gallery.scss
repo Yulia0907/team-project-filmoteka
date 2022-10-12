@@ -1,3 +1,14 @@
+@import '../components/modalBasicLightbox';
+
+// .movies-gallery {
+//   z-index: -10;
+//   outline: 5px solid red;
+// }
+
+// .movies__container {
+//   z-index: -10000;
+// }
+
 .visually-hidden {
   position: absolute;
 
@@ -30,11 +41,14 @@
 }
 
 .movies__item {
+  // outline: 5px solid red;
   position: relative;
+  // z-index: -1;
   box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
+  transition: box-shadow 250ms linear;
 
   @include mq(tablet) {
     width: 336px;
@@ -44,25 +58,23 @@
     width: 395px;
   }
 
-  // &:hover {
-  //   box-shadow: -5px -5px 18px $accent-color;
-
-  //   & .movies__img {
-  //     opacity: 0.7;
-  //   }
-  // }
+  &:hover {
+    box-shadow: 0 0 10px 3px rgb(34 60 80 / 50%);
+    // box-shadow: 5px 5px 18px rgb(0 0 0 / 50%);
+  }
 }
 
 .movies__img {
   @include mq(tablet) {
     height: 455px;
   }
+
   @include mq(desktop) {
     height: 574px;
   }
 }
 
-.movies__img > img {
+.movies__img>img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -99,15 +111,19 @@
   }
 }
 
-.movies__data:before {
-  content: '';
-  display: inline-block;
-  width: 1px;
-  height: 12px;
-  margin-left: 5px;
+.movies__genres {
   margin-right: 5px;
-  background-color: $accent-color;
 }
+
+// .movie.s__data:before {
+//   content: '';
+//   display: inline-block;
+//   width: 1px;
+//   height: 12px;
+//   margin-left: 5px;
+//   margin-right: 5px;
+//   background-color: $accent-color;
+// }
 
 .movies__rating {
   position: absolute;

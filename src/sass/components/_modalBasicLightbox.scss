@@ -1,4 +1,5 @@
 .modal {
+  position: relative;
   background-color: $main-invert-color;
   color: $main-color;
 
@@ -27,13 +28,36 @@
   }
 }
 
+.mobalClose__btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  background-color: transparent;
+  border: 0;
+  background-image: url(../img/close.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 107, 8, 0.7);
+    border-radius: 50%;
+  }
+}
+
 .image {
   display: block;
   min-width: 240px;
   border-radius: 5px;
+
   @include mq(mobile-only) {
     margin-bottom: 30px;
   }
+
   @include mq(tablet-only) {
     max-width: 264px;
     height: 374px;
@@ -71,6 +95,7 @@
   font-size: 20px;
   line-height: 1.15;
   margin-bottom: 20px;
+
   @include mq(desktop) {
     font-size: 30px;
     line-height: 1.17;
@@ -86,6 +111,7 @@
     margin-bottom: 20px;
   }
 }
+
 .movie__details {
   color: $advanced-color;
   line-height: 1.33;
@@ -105,6 +131,7 @@
   background-color: $accent-color;
   border-radius: 5px;
 }
+
 .movie__rating--delimiter {
   margin-right: 3px;
 }
@@ -123,13 +150,30 @@
 
   margin-bottom: 8px;
 }
+
 .about__text {
   line-height: 1.67;
+  font-weight: 500;
   margin-bottom: 20px;
+  max-height: 100px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background: rgb(241, 244, 246);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(41, 226, 243);
+    border-radius: 20px;
+  }
+
 }
+
 .button__wrapper {
   display: flex;
 }
+
 .movie__button {
   width: 110px;
   height: 44px;
@@ -140,6 +184,7 @@
   cursor: pointer;
   border: 1px solid $main-color;
   transition: all 300ms linear;
+
   &:hover,
   &:focus {
     background-color: $accent-color;
@@ -158,4 +203,37 @@
 
 .movie__button:first-child {
   margin-right: 15px;
+}
+
+.trailer__button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-left: 0;
+  width: 120px;
+  height: 20px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+
+  @include mq(tablet-only) {
+    width: 125px;
+  }
+
+  @include mq(desktop) {
+    width: 140px;
+  }
+}
+
+.play__icon {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
 }

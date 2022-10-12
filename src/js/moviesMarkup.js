@@ -1,4 +1,9 @@
+import noFoto from '../img/no_ing.jpg';
+
 function createMovieCards(movies) {
+  if (movies === null) {
+    return ''; // чтобы не было ошибки в случае, если movies = undefined
+  }
   return movies
     .map(
       ({
@@ -12,21 +17,24 @@ function createMovieCards(movies) {
         genres,
         genre_ids,
       }) => {
+        const moviRating = vote_average === 0 ? '-' : vote_average.toFixed(1);
         const genresListFromStorage = localStorage.getItem('genresList');
         const parsedGenres = JSON.parse(genresListFromStorage);
-        let filmGenres;
-        if (genres) {
-          filmGenres = genres.map(({ name }) => name).join(', ');
-        }
+
         if (genre_ids) {
           filmGenres = parsedGenres
             .filter(({ id }) => genre_ids.includes(id))
             .map(({ name }) => name)
+            .slice(0, 2)
             .join(', ');
         }
+        if (filmGenres.length > 0) {
+          filmGenres += ' |';
+        }
         const imgUrl = poster_path
-          ? `https://image.tmdb.org/t/p/original${poster_path}`
-          : 'https://via.placeholder.com/395x574';
+          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+          : // ? `https://image.tmdb.org/t/p/original${poster_path}`
+            noFoto;
 
         return `<li class="movies__item" data-id=${id}>
                 <div class="movies__img">
@@ -36,10 +44,10 @@ function createMovieCards(movies) {
                   <p class="movies__title">${title || name}</p>
                   <div class="movies__meta">
                     <p class="movies__genres">${filmGenres}</p>
-                    <p class="movies__data">${(
-                      release_date || first_air_date
-                    ).slice(0, 4)}</p>
-                    <span class="movies__rating">${vote_average || '-'}</span>
+                    <p class="movies__data">${
+                      parseInt(release_date) || parseInt(first_air_date) || ''
+                    }</p>
+                    <span class="movies__rating">${moviRating}</span>
                   </div>
                 </div>
             </li>`;
