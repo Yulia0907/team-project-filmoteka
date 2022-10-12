@@ -100,10 +100,6 @@ const registrationForm = markupModalSignUp
   .element()
   .querySelector('#registration-form');
 
-const registrationFormName = markupModalSignUp
-  .element()
-  .querySelector('#registration-form-name');
-
 const registrationFormEmail = markupModalSignUp
   .element()
   .querySelector('#registration-form-email');

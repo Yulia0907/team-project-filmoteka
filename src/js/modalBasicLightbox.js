@@ -21,6 +21,10 @@ function modalBasicLightbox({
   const imgUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : noFoto;
+  let aboutEl = '';
+  if (overview.length > 0) {
+    aboutEl = 'About';
+  }
   let genresNo = '';
   if (genres.length > 0) {
     genresNo = 'Genres';
@@ -61,7 +65,7 @@ function modalBasicLightbox({
         </ul>
       </div>
       <div>
-        <h3 class="about__title">About</h3>
+        <h3 class="about__title">${aboutEl}</h3>
         <p class="about__text">${overview}</p>
         <button type="button" class="trailer__button" data-id=${id}><img class="play__icon" src=${playSvg} alt="play" />Watch trailer</button>
       </div>
