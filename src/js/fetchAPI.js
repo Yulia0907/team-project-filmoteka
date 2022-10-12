@@ -9,8 +9,11 @@ async function fetchTrendingMovies(p = 1) {
   const data = await fetch(
     `https://api.themoviedb.org/3/trending/movie/day?${searchParams}`
   );
-  const results = await data.json();
-  return results;
+  const response = await data.json();
+  const { results } = response;
+
+  localStorage.setItem('movies', JSON.stringify(results));
+  return response;
 }
 
 async function fetchMovieById(id) {
@@ -21,8 +24,8 @@ async function fetchMovieById(id) {
   const data = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?${searchParams}`
   );
-  const results = await data.json();
-  return results;
+  const response = await data.json();
+  return response;
 }
 
 async function fetchMoviesByName(movieName, p = 1) {
@@ -38,9 +41,11 @@ async function fetchMoviesByName(movieName, p = 1) {
     const data = await fetch(
       `https://api.themoviedb.org/3/search/movie?${searchParams}`
     );
-    const results = await data.json();
+    const response = await data.json();
+    const { results } = response;
+    localStorage.setItem('movies', JSON.stringify(results));
 
-    return results;
+    return response;
   } catch (error) {
     console.log(error.statusText);
   }
@@ -71,8 +76,8 @@ async function fetchTrailerById(id) {
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?${searchParams}`
     );
-    const results = await data.json();
-    return results;
+    const response = await data.json();
+    return response;
   } catch (error) {
     console.log(error.message);
   }

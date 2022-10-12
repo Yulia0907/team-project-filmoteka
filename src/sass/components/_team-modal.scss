@@ -69,8 +69,7 @@
     transform: scale(1.4); 
     z-index: 10;
   }
-
-  @include transition(transform);
+  transition: transform ease 1s;
 
   box-shadow: 5px 2px 5px 2px $accent-color;
 }
