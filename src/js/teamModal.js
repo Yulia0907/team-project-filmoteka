@@ -28,12 +28,14 @@ const markupTeamCard = teamInfo
 const openBtnTeam = document.querySelector('.footer-btn');
 openBtnTeam.addEventListener('click', openModalTeam);
 
+const bodyTeam = document.querySelector('body');
 const modalTeam = basicLightbox.create(markupModal);
 
 function openModalTeam(e) {
   e.preventDefault();
   modalTeam.show();
   showConfetti();
+  bodyTeam.style.overflow = 'hidden';
 
   window.addEventListener('keydown', closeModalTeam);
 
