@@ -1,161 +1,173 @@
-.basicLightbox__placeholder {
-  width: 100%;
-  background: #ffffff;
-  border-radius: 4px;
-  padding: 40px;
-  background-image: url(/src/img/header-mobile-v2@x-min.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-image: url(/src/img/header-tablet-v2@1x-min.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.visually-hidden {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
 
-  @include mq(retina) {
-    background-image: url(/src/img/header-tablet-v2@2x-min.jpg);
+.modal-registr {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 40px;
+    background-image: url(/src/img/header-mobile-v2@x-min.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-  }
+    background-image: url(/src/img/header-tablet-v2@1x-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include mq(retina) {
+        background-image: url(/src/img/header-tablet-v2@2x-min.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
 }
 
 .modal-registr-title {
-  font-family: inherit;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 23px;
-  margin-bottom: 40px;
-  color: #fff;
+    font-family: inherit;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 40px;
+    color: #fff;
 }
 
 .modal-regist-close-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: transparent;
-  border: 0;
-  stroke: #fff;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: 0;
+    stroke: #fff;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
-    stroke: #ff6b08;
-    transform: scale(1.1);
-  }
+    &:hover {
+        stroke: #FF6B08;
+        transform: scale(1.1)
+    }
 }
 
 .modal-regist-close-svg {
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
 }
 
 .modal-registr-input {
-  display: flex;
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 14px 8px;
-  padding-bottom: 10px;
-  border: none;
-  border-bottom: 1px solid #fff;
-  background-color: transparent;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 14px 8px;
+    padding-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid #ff6b08;
-    transform: scale(1.02);
-  }
+    &:hover,
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid #FF6B08;
+    }
 
-  &:not(:placeholder-shown):required:valid {
-    border-bottom: 1px solid #32cd32;
-  }
+    &:not(:placeholder-shown):required:valid {
+        border-bottom: 1px solid #32CD32;
+    }
 
-  &:not(:placeholder-shown):required:invalid {
-    border-bottom: 1px solid #ff0000;
-  }
+    &:not(:placeholder-shown):required:invalid {
+        border-bottom: 1px solid #ff0000;
+    }
 
-  &:not(:placeholder-shown) {
-    color: #fff;
-  }
+    &:not(:placeholder-shown) {
+        color: #fff;
+    }
 }
 
 .modal-registr-btn-sbmt {
-  display: flex;
-  margin: auto;
-  width: 100%;
-  padding: 14px 8px;
-  margin-bottom: 10px;
+    display: flex;
+    margin: auto;
+    width: 100%;
+    padding: 14px 8px;
+    margin-bottom: 10px;
 
-  justify-content: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  border-radius: 5px;
-  color: #fff;
-  background-color: transparent;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 5px;
+    color: #fff;
+    background-color: transparent;
 
-  border: 1px solid #fff;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+    border: 1px solid #fff;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 
-  &:hover,
-  &:focus {
-    background-color: #ff6b08;
-    border: 1px solid #ff6b08;
-    color: #ffffff;
-    transform: scale(1.02);
-  }
+    &:hover,
+    &:focus {
+        background-color: #FF6B08;
+        border: 1px solid #FF6B08;
+        color: #ffffff;
+        transform: scale(1.02);
+    }
 }
 
 .modal-registr-signup {
-  text-align: center;
-  color: #fff;
+    text-align: center;
+    color: #fff;
 }
 
 .modal-registr-btn {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  text-decoration: underline;
-  color: #ff6b08;
-  cursor: pointer;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-decoration: underline;
+    color: #FF6B08;
+    cursor: pointer;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
-    transform: scale(1.1);
-  }
+    &:hover {
+        transform: scale(1.1);
+    }
 }
 
 @media screen and (min-width: 480px) {
-  .basicLightbox__placeholder {
-    width: 450px;
-  }
+    .modal-registr {
+        width: 450px;
+    }
 }
 
 @include mq(desktop) {
-  .basicLightbox__placeholder {
-    width: 550px;
+    .modal-registr {
+        width: 550px;
 
-    // background-image: url(/src/img/header-desktop-v2@1x-min.jpg);
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // background-size: cover;
+        // background-image: url(/src/img/header-desktop-v2@1x-min.jpg);
+        // background-repeat: no-repeat;
+        // background-position: center;
+        // background-size: cover;
 
-    // @include mq(retina) {
-    //     background-image: url(/src/img/header-desktop-v2@2x-min.jpg);
-    //     background-repeat: no-repeat;
-    //     background-position: center;
-    //     background-size: cover;
-    // }
-  }
+        // @include mq(retina) {
+        //     background-image: url(/src/img/header-desktop-v2@2x-min.jpg);
+        //     background-repeat: no-repeat;
+        //     background-position: center;
+        //     background-size: cover;
+        // }
+    }
 
-  .modal-registr-title {
-    font-size: 25px;
-  }
+    .modal-registr-title {
+        font-size: 25px;
+    }
 }
