@@ -23,7 +23,7 @@
           class="modal-registr-input"
           placeholder="Password"
           minlength="6"
-          pattern="^[a-zA-Z]+"
+          pattern="[a-z0-9]{1,}"
           required
         />
         <input
@@ -33,11 +33,11 @@
           class="modal-registr-input"
           placeholder="Verify password"
           minlength="6"
-          pattern="^[a-zA-Z]+"
+          pattern="[a-z0-9]{1,}"
           required
         />
       </div>
-      <button type="submit" class="modal-registr-btn-sbmt" id="qweqwe">
+      <button type="submit" class="modal-registr-btn-sbmt" id="signup-submit">
         Sign up
       </button>
       <p class="modal-registr-signup">
@@ -78,11 +78,13 @@
           class="modal-registr-input"
           placeholder="Password"
           minlength="6"
-          pattern="^[a-zA-Z]+"
+          pattern="[a-z0-9]{1,}"
           required
         />
       </div>
-      <button type="submit" class="modal-registr-btn-sbmt">Log in</button>
+      <button type="submit" class="modal-registr-btn-sbmt" id="login-submit">
+        Log in
+      </button>
       <p class="modal-registr-signup">
         No account yet?
         <a href="" class="modal-registr-btn" id="signup-btn">Sign up</a>

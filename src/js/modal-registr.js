@@ -55,11 +55,8 @@ function onCloseModal(e){
     markupModalSignUp.close();
 }
 
-const inputEl = document.querySelector('#user-password');
+const inputEl = document.getElementById('#user-password');
 const inputVerifyEl = document.querySelector('#user-verify-password');
-
-
-
 
 function verifyPassword(e) {
     e.preventDefault();
@@ -72,5 +69,18 @@ function verifyPassword(e) {
     }
 }
 
-// const btnSubmit = document.querySelector('#qweqwe');
-// btnSubmit.addEventListener('click', verifyPassword)
+const btnSubmit = document.querySelector('#signup-submit');
+const btnLogInEl = document.querySelector('.modal-registr-btn-sbmt');
+// btnSubmit.addEventListener('click', verifyPassword);
+
+// console.log(btnSubmit);
+// console.log(btnLogInEl);
+
+function isLoginValid (login) {
+if (login.length < 6) {
+alert('error');
+
+return false;
+}
+return true;
+};

@@ -81,7 +81,6 @@
     &:focus {
         outline: none;
         border-bottom: 1px solid #FF6B08;
-        transform: scale(1.02);
     }
 
     &:not(:placeholder-shown):required:valid {
