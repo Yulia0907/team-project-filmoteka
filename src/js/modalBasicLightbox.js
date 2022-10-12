@@ -5,6 +5,7 @@ import playSvg from '../img/play.svg';
 import noFoto from '../img/no_ing.jpg';
 
 const body = document.querySelector('body');
+let instance;
 
 function modalBasicLightbox({
   poster_path,
@@ -29,7 +30,7 @@ function modalBasicLightbox({
   if (genres.length > 0) {
     genresNo = 'Genres';
   }
-  const instance = basicLightbox.create(
+  instance = basicLightbox.create(
     `<div class="modal">
     <button class="mobalClose__btn" type="button"></button>
     <div class="movie__image">
@@ -77,23 +78,19 @@ function modalBasicLightbox({
       </div>
       `,
     {
-      onShow: instance => {
+      onShow: () => {
         instance.element().querySelector('.modal');
         instance.element().querySelector('.mobalClose__btn').onclick = () => {
           instance.close();
         };
         body.style.overflow = 'hidden';
-        window.addEventListener('keydown', function event(evt) {
-          if (evt.keyCode === 27) {
-            body.style.overflow = 'auto';
-            instance.close();
-            window.removeEventListener('keydown', event);
-          }
-        });
+        window.addEventListener('keydown', onEscKeyPress);
+        // body.style.overflow = 'auto';
       },
-      onClose: instance => {
+      onClose: () => {
         localStorage.removeItem('current-film');
         body.style.overflow = 'auto';
+        window.removeEventListener('keydown', onEscKeyPress);
       },
     }
   );
@@ -149,6 +146,13 @@ async function getLinkTrailer(e) {
   );
 
   instanceTrailer.show();
+}
+
+function onEscKeyPress(evt) {
+  console.log(evt);
+  if (evt.keyCode === 27) {
+    instance.close();
+  }
 }
 
 export { modalBasicLightbox };
