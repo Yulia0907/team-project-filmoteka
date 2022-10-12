@@ -8,11 +8,13 @@ const formRefs = document.querySelector('.hero-home__form');
 const formSearchInput = document.querySelector('.form_input');
 
 const DEBOUNCE_DELAY = 500;
+const PAGE_PER_REQUEST = 4;
 
-let dataForRender = '';
+let dataForRender = [];
 let searchString = '';
 let lastDownPage = 0;
 // let searchTotalFound = 0;
+
 const searchParPage = 20;
 let totalFoundPages = 0;
 let totalFoundResults = 0;
@@ -35,8 +37,14 @@ async function onInputChange(e) {
   );
   // lastDownPage += 1;
   // const res =
-  const response = await fetchMoviesByNameGetAll(searchString, 3);
-  console.log('response final all request: === ', response);
+  const response = await fetchMoviesByNameGetAll(
+    searchString,
+    PAGE_PER_REQUEST
+  );
+  console.log('return first objects: === ', response);
+  const forHTML = markupFormListSearch(response);
+  renderSearch(forHTML);
+  dataForRender = [];
   return;
   // fetchMoviesByNameService(searchString, (searchLastDownPage += 1));
   //   .then(data =>
@@ -57,18 +65,28 @@ async function onInputChange(e) {
 }
 
 async function fetchMoviesByNameGetAll(nameSearch, page) {
-  const response = await fetchMoviesByName(nameSearch, page);
-  dataForRender = response.results;
+  dataForRender = [];
+  lastDownPage = 0;
+  // totalFoundPages = 0;
+  // let totalFoundResults = 0;;
+  const response = await fetchMoviesByName(nameSearch, (lastDownPage += 1));
+  dataForRender = [...response.results];
   console.log('return fetchMoviesByName then JSON:  ', response);
   totalFoundPages = response.total_pages;
   getsPage = response.page;
+
+  return fetchMoviesByNameGetAllNext(nameSearch, page);
+}
+
+async function fetchMoviesByNameGetAllNext(nameSearch, page) {
+  getsPage > 1 ? (dataForRender = []) : '';
   let respWhile = [];
   while (page > lastDownPage && totalFoundPages > lastDownPage) {
     const respWhile = await fetchMoviesByName(nameSearch, (lastDownPage += 1));
     console.log('respWhile ----- ', respWhile);
     getsPage = respWhile.page;
     console.log('getsPage = ', getsPage);
-    dataForRender = { ...dataForRender, ...respWhile };
+    dataForRender = [...dataForRender, ...respWhile.results];
   }
   console.log('dataForRender:   ', dataForRender);
   return dataForRender;
@@ -86,18 +104,20 @@ function fetchMoviesByNameService(searchName, page) {
   });
 }
 
-//для модернизации
-//
-
+//получаем массив с данными о фмльмах и
 const prepareArrayForRender = fetchData => {
   console.log('fetchData.results: ', fetchData);
   const forHTML = markupFormListSearch(fetchData);
-  return (dataForRender += forHTML);
+  return forHTML;
 };
 
 const renderSearch = dataRender => {
   formInputResultSearch.innerHTML = dataRender;
   document.body.addEventListener('click', onFormClick);
+};
+
+const renderAddedSearch = datarender => {
+  formInputResultSearch.insertAdjacentElement('beforeend', datarender);
 };
 
 const onFormClick = evt => {
@@ -137,7 +157,30 @@ const closeSearch = () => {
 };
 
 const searchFilmFromID = filmid => {
-  //
+  // console.log(evt.scrollHeight);
+};
+
+//--------------------------------
+// offsetHeight 440
+// scrollHeight 1654  1654-440=1214
+// scrollTop 1214
+const scrollSearch = evt => {
+  const { offsetHeight, scrollHeight, scrollTop } = evt.target;
+  if (scrollHeight * 0.3 > scrollHeight - offsetHeight - scrollTop) {
+    console.log('fetchNext');
+    const forHTML = fetchMoviesByNameGetAllNext(
+      searchString,
+      PAGE_PER_REQUEST + lastDownPage
+    );
+    console.log('forHTML: ', forHTML);
+    renderAddedSearch(forHTML);
+    dataForRender = [];
+    return;
+  }
+  // console.dir(evt.target);
+
+  // console.log(evt.target.scrollHeight);
+  // console.log(formInputResultSearch.pageYOffset);
 };
 
 formSearchInput.addEventListener(
@@ -145,5 +188,4 @@ formSearchInput.addEventListener(
   debounce(onInputChange, DEBOUNCE_DELAY)
 );
 
-// fromRefs.addEventListener('click', onFormClick);
-// form
+formInputResultSearch.addEventListener('scroll', debounce(scrollSearch, 100));
