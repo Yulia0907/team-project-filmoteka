@@ -1,5 +1,5 @@
 // import paginations from './js/paginations';
-import './js/scroll.js';
+// import './js/scroll.js';
 import './js/moviesGallery';
 import './js/form/form-search-input';
 import './js/modal-registr';
