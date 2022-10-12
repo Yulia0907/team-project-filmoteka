@@ -1,6 +1,9 @@
 import noFoto from '../img/no_ing.jpg';
 
 function createMovieCards(movies) {
+  if (movies === null) {
+    return ''; // чтобы не было ошибки в случае, если movies = undefined
+  }
   return movies
     .map(
       ({
@@ -17,7 +20,7 @@ function createMovieCards(movies) {
         const moviRating = vote_average === 0 ? '-' : vote_average.toFixed(1);
         const genresListFromStorage = localStorage.getItem('genresList');
         const parsedGenres = JSON.parse(genresListFromStorage);
-        let filmGenres;
+
         if (genre_ids) {
           filmGenres = parsedGenres
             .filter(({ id }) => genre_ids.includes(id))
@@ -42,7 +45,7 @@ function createMovieCards(movies) {
                   <div class="movies__meta">
                     <p class="movies__genres">${filmGenres}</p>
                     <p class="movies__data">${
-                      parseInt(release_date) || parseInt(first_air_date)
+                      parseInt(release_date) || parseInt(first_air_date) || ''
                     }</p>
                     <span class="movies__rating">${moviRating}</span>
                   </div>

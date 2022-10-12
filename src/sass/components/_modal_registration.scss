@@ -1,4 +1,4 @@
-.is-hidden {
+.visually-hidden {
     position: absolute;
     white-space: nowrap;
     width: 1px;
@@ -11,15 +11,15 @@
     margin: -1px;
 }
 
-.basicLightbox__placeholder {
+.modal-registr {
     width: 100%;
-    background: #ffffff;
+    background-color: #ffffff;
     border-radius: 4px;
     padding: 40px;
-    // background-image: url(/src/img/header-mobile-v2@x-min.jpg);
-    // background-repeat: no-repeat;
-    //     background-position: center;
-    //     background-size: cover;
+    background-image: url(/src/img/header-mobile-v2@x-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     background-image: url(/src/img/header-tablet-v2@1x-min.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -44,6 +44,27 @@
     color: #fff;
 }
 
+.modal-regist-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: 0;
+    stroke: #fff;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        stroke: #FF6B08;
+        transform: scale(1.1)
+    }
+}
+
+.modal-regist-close-svg {
+    width: 30px;
+    height: 30px;
+}
+
 .modal-registr-input {
     display: flex;
     width: 100%;
@@ -60,7 +81,6 @@
     &:focus {
         outline: none;
         border-bottom: 1px solid #FF6B08;
-        transform: scale(1.02);
     }
 
     &:not(:placeholder-shown):required:valid {
