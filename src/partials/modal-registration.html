@@ -1,86 +1,94 @@
-<div class="modal-registr" id="modal-singup">
-  <button type="button" class="modal-regist-close-btn close-singup-btn">
-    <svg class="modal-regist-close-svg">
-      <use href="./img/modal-registration.svg#icon-close"></use>
-    </svg>
-  </button>
-  <p class="modal-registr-title">Sing up to Filmoteka</p>
-  <form id="registration-form">
-    <div class="modal-registr-wrap">
-      <input
-        type="email"
-        name="registration-form-email"
-        id="user-email"
-        class="modal-registr-input"
-        placeholder="Email"
-        required
-      />
-      <input
-        type="text"
-        name="user-password"
-        id="registration-form-password"
-        class="modal-registr-input"
-        placeholder="Password"
-        minlength="2"
-        pattern="^[a-zA-Z]+"
-        required
-      />
-      <input
-        type="text"
-        name="user-password"
-        id="user-password"
-        class="modal-registr-input"
-        placeholder="Verify password"
-        minlength="2"
-        pattern="^[a-zA-Z]+"
-        required
-      />
-    </div>
-    <button type="submit" class="modal-registr-btn-sbmt">Sign up</button>
-    <p class="modal-registr-signup">
-      Already have an account?<a
-        href=""
-        class="modal-registr-btn"
-        id="login-btn"
-      >
-        Log in</a
-      >
-    </p>
-  </form>
+<div id="modal-singup" class="visually-hidden">
+  <div class="modal-registr">
+    <button type="button" class="modal-regist-close-btn close-singup-btn">
+      <svg class="modal-regist-close-svg">
+        <use href="./img/modal-registration.svg#icon-close"></use>
+      </svg>
+    </button>
+    <p class="modal-registr-title">Sing up to Filmoteka</p>
+    <form>
+      <div class="modal-registr-wrap">
+        <input
+          type="email"
+          name="user-email"
+          id="user-email"
+          class="modal-registr-input"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="text"
+          name="user-password"
+          id="user-password"
+          class="modal-registr-input"
+          placeholder="Password"
+          minlength="6"
+          pattern="[a-z0-9]{1,}"
+          required
+        />
+        <input
+          type="text"
+          name="user-verify-password"
+          id="user-verify-password"
+          class="modal-registr-input"
+          placeholder="Verify password"
+          minlength="6"
+          pattern="[a-z0-9]{1,}"
+          required
+        />
+      </div>
+      <button type="submit" class="modal-registr-btn-sbmt" id="signup-submit">
+        Sign up
+      </button>
+      <p class="modal-registr-signup">
+        Already have an account?<a
+          href=""
+          class="modal-registr-btn"
+          id="login-btn"
+        >
+          Log in</a
+        >
+      </p>
+    </form>
+  </div>
 </div>
 
-<div class="modal-registr" id="modal-welcome">
-  <button type="button" class="modal-regist-close-btn close-login-btn">
-    <svg class="modal-regist-close-svg">
-      <use href="./img/modal-registration.svg#icon-close"></use>
-    </svg>
-  </button>
-  <p class="modal-registr-title">Welcome to Filmoteka</p>
-  <form id="login-form">
-    <div class="modal-registr-wrap">
-      <input
-        type="email"
-        name="user-email"
-        id="login-form-email"
-        class="modal-registr-input"
-        placeholder="Email"
-        required
-      />
-      <input
-        type="text"
-        name="user-password"
-        id="login-form-password"
-        class="modal-registr-input"
-        placeholder="Password"
-        minlength="2"
-        pattern="^[a-zA-Z]+"
-        required
-      />
-    </div>
-    <button type="submit" class="modal-registr-btn-sbmt">Log in</button>
-    <p class="modal-registr-signup">
-      No account yet?
-      <a href="" class="modal-registr-btn" id="signup-btn">Sign up</a>
-    </p>
-  </form>
+<div id="modal-welcome" class="visually-hidden">
+  <div class="modal-registr">
+    <button type="button" class="modal-regist-close-btn close-login-btn">
+      <svg class="modal-regist-close-svg">
+        <use href="./img/modal-registration.svg#icon-close"></use>
+      </svg>
+    </button>
+    <p class="modal-registr-title">Welcome to Filmoteka</p>
+    <form>
+      <div class="modal-registr-wrap">
+        <input
+          type="email"
+          name="user-email"
+          id="user-email"
+          class="modal-registr-input"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="text"
+          name="user-password"
+          id="user-password"
+          class="modal-registr-input"
+          placeholder="Password"
+          minlength="6"
+          pattern="[a-z0-9]{1,}"
+          required
+        />
+      </div>
+      <button type="submit" class="modal-registr-btn-sbmt" id="login-submit">
+        Log in
+      </button>
+      <p class="modal-registr-signup">
+        No account yet?
+        <a href="" class="modal-registr-btn" id="signup-btn">Sign up</a>
+      </p>
+    </form>
+  </div>
 </div>
