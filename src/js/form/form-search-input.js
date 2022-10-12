@@ -13,6 +13,7 @@ const PAGE_PER_REQUEST = 4;
 let dataForRender = [];
 let searchString = '';
 let lastDownPage = 0;
+let lastNameSearch = '';
 // let searchTotalFound = 0;
 
 const searchParPage = 20;
@@ -27,23 +28,19 @@ async function onInputChange(e) {
     return;
   }
   lastDownPage = 0;
-  let dataForRender = '';
+  dataForRender = [];
 
-  console.log(
-    'searchString:  ',
-    searchString,
-    '  searchLastDownPage: ',
-    lastDownPage
-  );
+  console.log('searchString:  ', searchString, '  searchLastDownPage: ', lastDownPage);
   // lastDownPage += 1;
   // const res =
-  const response = await fetchMoviesByNameGetAll(
-    searchString,
-    PAGE_PER_REQUEST
-  );
+  //* получаю в response готовый массив объектов
+  const response = await fetchMoviesByNameGetAll(searchString, PAGE_PER_REQUEST);
   console.log('return first objects: === ', response);
+  //* подготавливаю из массива объектов разметку
   const forHTML = markupFormListSearch(response);
+  //* рендерю разметку в форме поиска
   renderSearch(forHTML);
+  //* очищаю данные для рендеринга
   dataForRender = [];
   return;
   // fetchMoviesByNameService(searchString, (searchLastDownPage += 1));
@@ -92,6 +89,28 @@ async function fetchMoviesByNameGetAllNext(nameSearch, page) {
   return dataForRender;
 }
 
+async function quickSearchFetchAndRender(nameSearch) {
+  nameSearch = nameSearch.toLowerCase();
+  if (lastNameSearch === nameSearch) {
+    //* получаю в response готовый массив объектов
+    const response = await fetchMoviesByNameGetAll(nameSearch, PAGE_PER_REQUEST);
+    console.log('return first objects: === ', response);
+  } else {
+    const response = await fetchMoviesByNameGetAllNext(
+      searchString,
+      PAGE_PER_REQUEST + lastDownPage
+    );
+    console.log('return first objects: === ', response);
+  }
+  //* подготавливаю из массива объектов разметку
+  const forHTML = markupFormListSearch(response);
+
+  //* рендерю разметку в форме поиска
+  renderSearch(forHTML);
+
+  //* очищаю данные для рендеринга
+  dataForRender = [];
+}
 function fetchMoviesByNameService(searchName, page) {
   //
   fetchMoviesByName(searchName, page).then(data => {
@@ -168,10 +187,7 @@ const scrollSearch = evt => {
   const { offsetHeight, scrollHeight, scrollTop } = evt.target;
   if (scrollHeight * 0.3 > scrollHeight - offsetHeight - scrollTop) {
     console.log('fetchNext');
-    const forHTML = fetchMoviesByNameGetAllNext(
-      searchString,
-      PAGE_PER_REQUEST + lastDownPage
-    );
+    const forHTML = fetchMoviesByNameGetAllNext(searchString, PAGE_PER_REQUEST + lastDownPage);
     console.log('forHTML: ', forHTML);
     renderAddedSearch(forHTML);
     dataForRender = [];
@@ -183,9 +199,6 @@ const scrollSearch = evt => {
   // console.log(formInputResultSearch.pageYOffset);
 };
 
-formSearchInput.addEventListener(
-  'input',
-  debounce(onInputChange, DEBOUNCE_DELAY)
-);
+formSearchInput.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 formInputResultSearch.addEventListener('scroll', debounce(scrollSearch, 100));
