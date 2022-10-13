@@ -33,6 +33,8 @@ async function onInputChange(e) {
   console.log('searchString:  ', searchString, '  searchLastDownPage: ', lastDownPage);
   // lastDownPage += 1;
   // const res =
+  const ret = await quickSearchFetchAndRender(searchString);
+  retutn;
   //* получаю в response готовый массив объектов
   const response = await fetchMoviesByNameGetAll(searchString, PAGE_PER_REQUEST);
   console.log('return first objects: === ', response);
@@ -94,13 +96,17 @@ async function quickSearchFetchAndRender(nameSearch) {
   if (lastNameSearch === nameSearch) {
     //* получаю в response готовый массив объектов
     const response = await fetchMoviesByNameGetAll(nameSearch, PAGE_PER_REQUEST);
-    console.log('return first objects: === ', response);
+    console.log('!!!return first objects: === ', response);
   } else {
+    //* получаю в response продолжение, если есть
+    if (lastDownPage === totalFoundPages) {
+      return;
+    }
     const response = await fetchMoviesByNameGetAllNext(
       searchString,
       PAGE_PER_REQUEST + lastDownPage
     );
-    console.log('return first objects: === ', response);
+    console.log('!!!return first objects: === ', response);
   }
   //* подготавливаю из массива объектов разметку
   const forHTML = markupFormListSearch(response);
