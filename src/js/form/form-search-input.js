@@ -30,21 +30,29 @@ async function onInputChange(e) {
   lastDownPage = 0;
   dataForRender = [];
 
-  console.log('searchString:  ', searchString, '  searchLastDownPage: ', lastDownPage);
+  console.log(
+    'searchString:  ',
+    searchString,
+    '   lastNameSearch:  ',
+    lastNameSearch,
+    '  searchLastDownPage: ',
+    lastDownPage
+  );
   // lastDownPage += 1;
   // const res =
   const ret = await quickSearchFetchAndRender(searchString);
-  retutn;
-  //* получаю в response готовый массив объектов
-  const response = await fetchMoviesByNameGetAll(searchString, PAGE_PER_REQUEST);
-  console.log('return first objects: === ', response);
-  //* подготавливаю из массива объектов разметку
-  const forHTML = markupFormListSearch(response);
-  //* рендерю разметку в форме поиска
-  renderSearch(forHTML);
-  //* очищаю данные для рендеринга
-  dataForRender = [];
-  return;
+  console.log(ret);
+  // retutn ret;
+  // //* получаю в response готовый массив объектов
+  // const response = await fetchMoviesByNameGetAll(searchString, PAGE_PER_REQUEST);
+  // console.log('return first objects: === ', response);
+  // //* подготавливаю из массива объектов разметку
+  // const forHTML = markupFormListSearch(response);
+  // //* рендерю разметку в форме поиска
+  // renderSearch(forHTML);
+  // //* очищаю данные для рендеринга
+  // dataForRender = [];
+  // return;
   // fetchMoviesByNameService(searchString, (searchLastDownPage += 1));
   //   .then(data =>
   //   console.log('then after fetchMoviesByNameService ret data: ', data)
@@ -64,6 +72,7 @@ async function onInputChange(e) {
 }
 
 async function fetchMoviesByNameGetAll(nameSearch, page) {
+  console.log('fetchMoviesByNameGetAll');
   dataForRender = [];
   lastDownPage = 0;
   // totalFoundPages = 0;
@@ -72,19 +81,19 @@ async function fetchMoviesByNameGetAll(nameSearch, page) {
   dataForRender = [...response.results];
   console.log('return fetchMoviesByName then JSON:  ', response);
   totalFoundPages = response.total_pages;
-  getsPage = response.page;
+  lastDownPage = response.page;
 
   return fetchMoviesByNameGetAllNext(nameSearch, page);
 }
 
 async function fetchMoviesByNameGetAllNext(nameSearch, page) {
-  getsPage > 1 ? (dataForRender = []) : '';
+  lastDownPage > 1 ? (dataForRender = []) : '';
   let respWhile = [];
   while (page > lastDownPage && totalFoundPages > lastDownPage) {
     const respWhile = await fetchMoviesByName(nameSearch, (lastDownPage += 1));
     console.log('respWhile ----- ', respWhile);
-    getsPage = respWhile.page;
-    console.log('getsPage = ', getsPage);
+    lastDownPage = respWhile.page;
+    // console.log('getsPage = ', getsPage);
     dataForRender = [...dataForRender, ...respWhile.results];
   }
   console.log('dataForRender:   ', dataForRender);
@@ -93,20 +102,32 @@ async function fetchMoviesByNameGetAllNext(nameSearch, page) {
 
 async function quickSearchFetchAndRender(nameSearch) {
   nameSearch = nameSearch.toLowerCase();
-  if (lastNameSearch === nameSearch) {
+  console.log(
+    'nameSearch:  ',
+    nameSearch,
+    '   lastNameSearch:  ',
+    lastNameSearch,
+    '  searchLastDownPage: ',
+    lastDownPage
+  );
+  if (lastNameSearch != nameSearch) {
+    console.log('-----   lastNameSearch === nameSearch  ------');
+    console.log('//* получаю в response готовый массив объектов.   fetchMoviesByNameGetAll');
     //* получаю в response готовый массив объектов
     const response = await fetchMoviesByNameGetAll(nameSearch, PAGE_PER_REQUEST);
     console.log('!!!return first objects: === ', response);
   } else {
+    console.log('* получаю в response продолжение, если есть.   fetchMoviesByNameGetAllNext');
+
     //* получаю в response продолжение, если есть
-    if (lastDownPage === totalFoundPages) {
-      return;
-    }
+    // if (lastDownPage === totalFoundPages) {
+    //   return;
+    // }
     const response = await fetchMoviesByNameGetAllNext(
       searchString,
       PAGE_PER_REQUEST + lastDownPage
     );
-    console.log('!!!return first objects: === ', response);
+    console.log('!!!return NEXT objects: === ', response);
   }
   //* подготавливаю из массива объектов разметку
   const forHTML = markupFormListSearch(response);
@@ -116,6 +137,7 @@ async function quickSearchFetchAndRender(nameSearch) {
 
   //* очищаю данные для рендеринга
   dataForRender = [];
+  return 'ok';
 }
 function fetchMoviesByNameService(searchName, page) {
   //
