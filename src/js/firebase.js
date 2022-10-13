@@ -47,6 +47,7 @@ const auth = getAuth();
 
 const logoutBtnEl = document.querySelector('#logout');
 let userId;
+let userEmail;
 let email;
 let password;
 

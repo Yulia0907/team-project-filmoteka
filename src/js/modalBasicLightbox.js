@@ -5,6 +5,7 @@ import playSvg from '../img/play.svg';
 import noFoto from '../img/no_ing.jpg';
 
 const body = document.querySelector('body');
+let instance;
 
 function modalBasicLightbox({
   poster_path,
@@ -21,11 +22,15 @@ function modalBasicLightbox({
   const imgUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : noFoto;
+  let aboutEl = '';
+  if (overview.length > 0) {
+    aboutEl = 'About';
+  }
   let genresNo = '';
   if (genres.length > 0) {
     genresNo = 'Genres';
   }
-  const instance = basicLightbox.create(
+  instance = basicLightbox.create(
     `<div class="modal">
     <button class="mobalClose__btn" type="button"></button>
     <div class="movie__image">
@@ -61,7 +66,7 @@ function modalBasicLightbox({
         </ul>
       </div>
       <div>
-        <h3 class="about__title">About</h3>
+        <h3 class="about__title">${aboutEl}</h3>
         <p class="about__text">${overview}</p>
         <button type="button" class="trailer__button" data-id=${id}><img class="play__icon" src=${playSvg} alt="play" />Watch trailer</button>
       </div>
@@ -73,23 +78,19 @@ function modalBasicLightbox({
       </div>
       `,
     {
-      onShow: instance => {
+      onShow: () => {
         instance.element().querySelector('.modal');
         instance.element().querySelector('.mobalClose__btn').onclick = () => {
           instance.close();
         };
         body.style.overflow = 'hidden';
-        window.addEventListener('keydown', function event(evt) {
-          if (evt.keyCode === 27) {
-            body.style.overflow = 'auto';
-            instance.close();
-            window.removeEventListener('keydown', event);
-          }
-        });
+        window.addEventListener('keydown', onEscKeyPress);
+        // body.style.overflow = 'auto';
       },
-      onClose: instance => {
+      onClose: () => {
         localStorage.removeItem('current-film');
         body.style.overflow = 'auto';
+        window.removeEventListener('keydown', onEscKeyPress);
       },
     }
   );
@@ -145,6 +146,13 @@ async function getLinkTrailer(e) {
   );
 
   instanceTrailer.show();
+}
+
+function onEscKeyPress(evt) {
+  console.log(evt);
+  if (evt.keyCode === 27) {
+    instance.close();
+  }
 }
 
 export { modalBasicLightbox };
