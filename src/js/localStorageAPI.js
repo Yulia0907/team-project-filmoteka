@@ -22,11 +22,16 @@ export class localStorageAPI {
   addListenersToBtns = () => {
     this.currentMovie = this.getData('current-film');
     this.watchedMoviesList = this.getData('watched');
+    this.queueMoviesList = this.getData('queue');
 
     if (this.watchedMoviesList === null) {
       // при удалении всех записей, чтоб список был непустым,
       // так как кнопка Delete последнего оставшегося элемента удаляет и сам тэг из Local Storage
       this.watchedMoviesList = [];
+    }
+
+    if (this.queueMoviesList === null) {
+      this.queueMoviesList = [];
     }
 
     this.watchedBtn = document.querySelector('.btn-watched');
