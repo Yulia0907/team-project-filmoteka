@@ -13,8 +13,9 @@ async function trendingMovies() {
   // try {
   const res = await fetchTrendingMovies();
   moviesContainer.innerHTML = createMovieCards(res.results);
+  const returPaginationOption = paginationOptions(res.total_results);
 
-  const pagination = new Pagination('pagination', paginationOptions(res.total_results));
+  const pagination = new Pagination('pagination', returPaginationOption);
 
   pagination.on('afterMove', ({ page }) => {
     fetchTrendingMovies(page).then(res => {
