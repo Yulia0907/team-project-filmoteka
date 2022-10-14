@@ -70,3 +70,31 @@
     }
   }
 }
+
+// theme switch btn
+@mixin craterBtn($top, $left, $size) {
+  content: '';
+  position: absolute;
+  top: $top;
+  left: $left;
+  width: $size;
+  height: $size;
+  background-color: #efeeda;
+  border-radius: 100%;
+}
+
+@mixin cloudBubbleBtn($top, $right, $width, $height, $deg) {
+  content: '';
+  display: block;
+  position: relative;
+  top: $top;
+  right: $right;
+  width: $width;
+  height: $height;
+  border: 8px solid #d4d4d2;
+  border-radius: 100%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotateZ($deg);
+  background-color: #fff;
+}
