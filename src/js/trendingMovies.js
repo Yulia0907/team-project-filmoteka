@@ -19,6 +19,7 @@ async function trendingMovies() {
   console.log('res: ', res);
   const returnPaginationOption = await paginationOptions(res.total_results);
   console.log(returnPaginationOption);
+  // coso
 
   const pagination = new Pagination('pagination', returnPaginationOption);
 
