@@ -16,12 +16,12 @@ async function trendingMovies() {
   const res = await fetchTrendingMovies();
   moviesContainer.innerHTML = createMovieCards(res.results);
 
-  console.log('res: ', res);
-  const returnPaginationOption = await paginationOptions(res.total_results);
-  console.log(returnPaginationOption);
-  // coso
+  // console.log('res: ', res);
+  // let returnPaginationOption = null;
+  console.log(typeof paginationOptions(res.total_results)); //.then(e => (returnPaginationOption = e));
+  // console.log(returnPaginationOption);
 
-  const pagination = new Pagination('pagination', returnPaginationOption);
+  const pagination = new Pagination('pagination', paginationOptions(res.total_results));
 
   pagination.on('afterMove', ({ page }) => {
     fetchTrendingMovies(page).then(res => {
