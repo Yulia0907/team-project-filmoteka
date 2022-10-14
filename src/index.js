@@ -13,3 +13,4 @@ import './js/footer';
 import './js/preloader';
 import './js/spinner';
 import './js/darkThemeStyles';
+import './js/teamModal';

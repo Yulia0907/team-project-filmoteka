@@ -1,1 +1,1 @@
-import './teamModal';
+// import './teamModal';
