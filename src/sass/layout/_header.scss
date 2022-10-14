@@ -258,7 +258,17 @@
   cursor: pointer;
 
   &:hover {
-    fill: #FF6B08;
+    fill: #ff6b08;
     transform: scale(1.3);
   }
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.welcome {
+  cursor: default;
 }

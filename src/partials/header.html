@@ -9,32 +9,28 @@
         <span class="logo__label">Filmoteka</span>
       </a>
       <ul class="header-nav__end">
-        <li class="header-nav__item welcome">
-          <p></p>
-        </li>
+        <div class="login-container">
+          <li class="welcome">
+            <p></p>
+          </li>
+          <li>
+            <svg class="open-modal-svg logout visually-hidden" id="logout">
+              <use href="./img/door-exit.svg#log-out"></use>
+            </svg>
+          </li>
+          <li>
+            <svg class="open-modal-svg login-btn" id="login">
+              <use href="./img/login.svg#icon-user"></use>
+            </svg>
+          </li>
+        </div>
         <li class="header-nav__item">
-          <button
-            type="button"
-            class="button logout visually-hidden"
-            id="logout"
-          >
-            Logout
-          </button>
-        </li>
-        <li class="header-nav__item">
-          <a
-            href="./index.html"
-            class="header-nav__link header-nav__link--current-header"
-            >HOME</a
-          >
+          <a href="./index.html" class="header-nav__link header-nav__link--current-header">HOME</a>
         </li>
         <li class="header-nav__item">
           <a href="./mylibrary.html" class="header-nav__link">MY LIBRARY</a>
         </li>
       </ul>
-      <svg class="open-modal-svg" id="login">
-        <use href="./img/login.svg#icon-user"></use>
-      </svg>
     </nav>
     <!-- <div class="hero-home"> -->
     <form class="hero-home__form" name="hero-home" role="search">
