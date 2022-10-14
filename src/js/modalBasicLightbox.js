@@ -92,6 +92,7 @@ function modalBasicLightbox({
         body.style.overflow = 'auto';
         window.removeEventListener('keydown', onEscKeyPress);
       },
+      className: 'film-modal',
     }
   );
 
