@@ -7,17 +7,12 @@ const openModalLogInEl = document.querySelector('#login-btn');
 const closeModalSignUpEl = document.querySelector('.close-signup-btn');
 const closeModalLogInel = document.querySelector('.close-login-btn');
 
-const openModal = document.querySelector('.open-modal-svg');
+const openModal = document.querySelector('.login-btn');
 openModal.addEventListener('click', toggleModal);
 
-const markupModalLogIn = basicLightbox.create(
-  document.querySelector('#modal-welcome'),
-  { className: 'modal-registr' }
-);
-
-const markupModalSignUp = basicLightbox.create(
-  document.querySelector('#modal-singup')
-);
+const markupModalLogIn = basicLightbox.create(document.querySelector('#modal-welcome'), {
+  className: 'modal-registr',
+});
 
 function toggleModal(e) {
   e.preventDefault();
@@ -36,6 +31,7 @@ openModalLogInEl.addEventListener('click', onLogIn);
 closeModalSignUpEl.addEventListener('click', onCloseModal);
 closeModalLogInel.addEventListener('click', onCloseModal);
 
+const markupModalSignUp = basicLightbox.create(document.querySelector('#modal-singup'));
 function onSignUp(e) {
   e.preventDefault();
   markupModalSignUp.show();
@@ -76,12 +72,12 @@ function verifyPassword(e) {
   const password = inputEl.value;
   const verifyPassword = inputVerifyEl.value;
 
-    if (password !== verifyPassword) {
-       Notiflix.Notify.failure('Password is incorrect. Please try again.');
-        return false
-    };
-    return true
-};
+  if (password !== verifyPassword) {
+    Notiflix.Notify.failure('Password is incorrect. Please try again.');
+    return false;
+  }
+  return true;
+}
 
 // for login
 function closeOnSubmit() {
@@ -89,13 +85,9 @@ function closeOnSubmit() {
   markupModalSignUp.close();
 }
 
-const registrationForm = markupModalSignUp
-  .element()
-  .querySelector('#registration-form');
+const registrationForm = markupModalSignUp.element().querySelector('#registration-form');
 
-const registrationFormEmail = markupModalSignUp
-  .element()
-  .querySelector('#registration-form-email');
+const registrationFormEmail = markupModalSignUp.element().querySelector('#registration-form-email');
 
 const registrationFormPassword = markupModalSignUp
   .element()
@@ -103,17 +95,11 @@ const registrationFormPassword = markupModalSignUp
 
 const loginForm = markupModalLogIn.element().querySelector('#login-form');
 
-const loginFormName = markupModalLogIn
-  .element()
-  .querySelector('#login-form-name');
+const loginFormName = markupModalLogIn.element().querySelector('#login-form-name');
 
-const loginFormEmail = markupModalLogIn
-  .element()
-  .querySelector('#login-form-email');
+const loginFormEmail = markupModalLogIn.element().querySelector('#login-form-email');
 
-const loginFormPassword = markupModalLogIn
-  .element()
-  .querySelector('#login-form-password');
+const loginFormPassword = markupModalLogIn.element().querySelector('#login-form-password');
 
 export { toggleModal, onSignUp, onLogIn };
 
