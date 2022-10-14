@@ -18,8 +18,7 @@
     "url": "https://github.com/NilKad/js-project-7/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.5"
+    "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
@@ -29,6 +28,7 @@
     "canvas-confetti": "^1.5.1",
     "firebase": "^9.11.0",
     "lodash.debounce": "^4.0.8",
+    "notiflix": "^3.2.5",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4",
