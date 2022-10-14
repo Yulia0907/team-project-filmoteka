@@ -25,6 +25,7 @@
     "assert": "^2.0.0",
     "axios": "^1.1.2",
     "basiclightbox": "^5.0.4",
+    "buffer": "^6.0.3",
     "canvas-confetti": "^1.5.1",
     "firebase": "^9.11.0",
     "lodash.debounce": "^4.0.8",
