@@ -1,4 +1,4 @@
-const body = document.querySelector('body');
+const body = document.body;
 
 const checkbox = document.querySelector('.toggle-input');
 const initialState = localStorage.getItem('toggleState') == 'true';

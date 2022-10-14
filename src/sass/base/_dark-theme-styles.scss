@@ -6,6 +6,28 @@ body.dark__theme {
   background-color: rgb(43, 40, 40);
   transition: all 400ms linear;
 
+  & .modal {
+    background-color: rgb(43, 40, 40);
+    color: $main-invert-color;
+
+    & .vote-count {
+      background-color: rgb(140, 140, 140);
+    }
+
+    & .trailer__button {
+      color: rgb(140, 140, 140);
+    }
+  }
+
+  & .movie__button {
+    background-color: rgb(140, 140, 140);
+
+    &:hover,
+    &:focus {
+      background-color: $accent-bg-color;
+    }
+  }
+
   & .footer {
     background: linear-gradient(
       180deg,
@@ -34,6 +56,4 @@ body.dark__theme {
   & .movies__title {
     color: rgb(194, 196, 197);
   }
-
-  
 }
