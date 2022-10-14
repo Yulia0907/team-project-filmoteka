@@ -19,9 +19,7 @@ function modalBasicLightbox({
   popularity,
   id,
 }) {
-  const imgUrl = poster_path
-    ? `https://image.tmdb.org/t/p/w500${poster_path}`
-    : noFoto;
+  const imgUrl = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : noFoto;
   let aboutEl = '';
   if (overview.length > 0) {
     aboutEl = 'About';
@@ -43,9 +41,7 @@ function modalBasicLightbox({
           <li class="movie__item">
             <p class="movie__details">Vote / Votes</p>
             <p>
-              <span class="movie__rating--orange">${vote_average.toFixed(
-                1
-              )}</span>
+              <span class="movie__rating--orange">${vote_average.toFixed(1)}</span>
               <span class="movie__rating--delimiter"> / </span>
               <span class="vote-count">${vote_count}</span>
             </p>
@@ -85,6 +81,10 @@ function modalBasicLightbox({
         };
         body.style.overflow = 'hidden';
         window.addEventListener('keydown', onEscKeyPress);
+        instance.element(
+          '.basicLightbox.film-detail'
+        ).style.background = `linear-gradient(rgba(100, 100, 100, 0.7), rgba(100, 100, 100, 0.7)), url('${imgUrl}') center center / cover no-repeat`;
+
         // body.style.overflow = 'auto';
       },
       onClose: () => {
@@ -92,6 +92,7 @@ function modalBasicLightbox({
         body.style.overflow = 'auto';
         window.removeEventListener('keydown', onEscKeyPress);
       },
+      className: 'film-modal',
     }
   );
 

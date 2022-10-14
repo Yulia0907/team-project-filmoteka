@@ -1,0 +1,71 @@
+body {
+  background-color: $main-invert-color;
+  transition: all 400ms linear;
+}
+body.dark__theme {
+  background-color: rgb(43, 40, 40);
+  transition: all 400ms linear;
+
+  & .tui-pagination.custom-tui-pagination .tui-page-btn {
+    color: $main-invert-color;
+  }
+
+  & .modal {
+    background-color: rgb(43, 40, 40);
+    color: $main-invert-color;
+
+    & .vote-count {
+      background-color: rgb(140, 140, 140);
+    }
+
+    & .trailer__button {
+      color: rgb(140, 140, 140);
+    }
+  }
+
+  & .movie__button {
+    background-color: rgb(140, 140, 140);
+
+    &:hover,
+    &:focus {
+      background-color: $accent-bg-color;
+    }
+  }
+
+  & .footer {
+    background: linear-gradient(
+      180deg,
+      rgb(43, 40, 40),
+      rgb(156, 156, 156) 100%
+    );
+
+    &-content {
+      color: $main-invert-color;
+    }
+
+    &-btn {
+      color: $main-invert-color;
+    }
+  }
+
+  & .movies__item {
+    transition: box-shadow 250ms linear;
+    box-shadow: 0 2px 4px rgba(255, 107, 1, 0.5);
+
+    &:hover {
+      box-shadow: 0 0 10px 3px rgba(255, 107, 1, 0.5);
+    }
+  }
+
+  & .movies__title {
+    color: rgb(194, 196, 197);
+  }
+
+  & .team-wrapper {
+    background: radial-gradient(
+      circle,
+      rgb(143, 82, 39) 0%,
+      rgb(102, 98, 96) 100%
+    );
+  }
+}

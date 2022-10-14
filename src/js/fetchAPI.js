@@ -16,12 +16,9 @@ async function fetchTrendingMovies(p = 1) {
     include_adult: false,
   };
 
-  const { data } = await axios.get(
-    `${BASE_URL}/trending/movie/day?api_key=${KEY}`,
-    { params }
-  );
+  const { data } = await axios.get(`${BASE_URL}/trending/movie/day?api_key=${KEY}`, { params });
   const { results } = data;
-
+  // console.log('data: ', data);
   localStorage.setItem('movies', JSON.stringify(results));
   return data;
 }
@@ -77,10 +74,7 @@ async function fetchGenresList() {
     language: 'en-US',
   };
   try {
-    const { data } = await fetch(
-      `${BASE_URL}/genre/movie/list?api_key=${KEY}`,
-      { params }
-    );
+    const { data } = await axios.get(`${BASE_URL}/genre/movie/list?api_key=${KEY}`, { params });
     const genresList = data.genres;
     localStorage.setItem('genresList', JSON.stringify(genresList));
   } catch (error) {
@@ -102,10 +96,7 @@ async function fetchTrailerById(id) {
     language: 'en-US',
   };
   try {
-    const { data } = await axios.get(
-      `${BASE_URL}/movie/${id}/videos?api_key=${KEY}`,
-      { params }
-    );
+    const { data } = await axios.get(`${BASE_URL}/movie/${id}/videos?api_key=${KEY}`, { params });
     return data;
   } catch (error) {
     console.log(error.message);
