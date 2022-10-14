@@ -38,11 +38,9 @@ export class localStorageAPI {
     this.queueBtn = document.querySelector('.btn-queue');
 
     // для кнонпки Add to Watched
-    if (
-      this.watchedMoviesList.map(({ id }) => id).includes(this.currentMovie.id)
-    ) {
+    if (this.watchedMoviesList.map(({ id }) => id).includes(this.currentMovie.id)) {
       this.watchedBtn.classList.toggle('added'); // чтоб при повторном открытии модалки одного и того же фильма сохранялся статус кнопки
-      this.watchedBtn.innerText = 'Delete';
+      this.watchedBtn.innerText = 'Delete from watched';
       this.watchedBtn.addEventListener('click', this.onClickWatchedDelete);
     } else {
       this.watchedBtn.innerText = 'Add to watched';
@@ -50,11 +48,9 @@ export class localStorageAPI {
     }
 
     // для кнонпки Add to Queue
-    if (
-      this.queueMoviesList.map(({ id }) => id).includes(this.currentMovie.id)
-    ) {
+    if (this.queueMoviesList.map(({ id }) => id).includes(this.currentMovie.id)) {
       this.queueBtn.classList.toggle('added');
-      this.queueBtn.innerText = 'Delete';
+      this.queueBtn.innerText = 'Delete from Queue';
       this.queueBtn.addEventListener('click', this.onClickQueueDelete);
     } else {
       this.queueBtn.innerText = 'Add to queue';
@@ -63,7 +59,7 @@ export class localStorageAPI {
   };
 
   onClickWatched = () => {
-    this.watchedBtn.innerText = 'Delete';
+    this.watchedBtn.innerText = 'Delete from watched';
     this.watchedBtn.classList.toggle('added');
 
     if (this.getData('watched')) {
@@ -78,7 +74,7 @@ export class localStorageAPI {
   };
 
   onClickQueue = () => {
-    this.queueBtn.innerText = 'Delete';
+    this.queueBtn.innerText = 'Delete from Queue';
     this.queueBtn.classList.toggle('added');
 
     if (this.getData('queue')) {
