@@ -9,7 +9,10 @@ const paginationOptions = {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 3,
-  centerAlign: false,
+  centerAlign: true,
+  firstItemClassName: 'pagination-first-child',
+  lastItemClassName: 'pagination-last-child',
+  usageStatistics: false,
 };
 
 const moviesContainer = document.querySelector('.movies');
