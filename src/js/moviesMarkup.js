@@ -22,7 +22,7 @@ function createMovieCards(movies) {
         const parsedGenres = JSON.parse(genresListFromStorage);
 
         if (genre_ids) {
-          filmGenres = parsedGenres
+          const filmGenres = parsedGenres
             .filter(({ id }) => genre_ids.includes(id))
             .map(({ name }) => name)
             .slice(0, 2)
