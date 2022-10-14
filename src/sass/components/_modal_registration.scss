@@ -65,17 +65,30 @@
     height: 30px;
 }
 
+
+
 .modal-registr-input {
     display: flex;
     width: 100%;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     padding: 14px 8px;
     padding-bottom: 10px;
     border: none;
+    font-size: 14px;
     border-bottom: 1px solid #fff;
     background-color: transparent;
+    background-image: filter blur(4px);
+    // filter: blur(4px);
     transition-duration: 500ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &:last-child {
+        margin-bottom: 50px;
+    }
 
     &:hover,
     &:focus {
@@ -99,7 +112,7 @@
 .modal-registr-btn-sbmt {
     display: flex;
     margin: auto;
-    width: 100%;
+    width: 50%;
     padding: 14px 8px;
     margin-bottom: 10px;
 
