@@ -81,7 +81,6 @@ function modalBasicLightbox({
         };
         body.style.overflow = 'hidden';
         window.addEventListener('keydown', onEscKeyPress);
-        instance.element('.basicLightbox.film-detail').style.backgroundFilter = 'blur(px)';
         instance.element(
           '.basicLightbox.film-detail'
         ).style.background = `linear-gradient(rgba(100, 100, 100, 0.7), rgba(100, 100, 100, 0.7)), url('${imgUrl}') center center / cover no-repeat`;
