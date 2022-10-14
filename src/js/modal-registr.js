@@ -10,6 +10,12 @@ const closeModalLogInel = document.querySelector('.close-login-btn');
 const openModal = document.querySelector('.login-btn');
 openModal.addEventListener('click', toggleModal);
 
+const inputEl = document.querySelector('#registration-form-password');
+const inputVerifyEl = document.querySelector('#user-verify-password');
+
+const btnSubmit = document.querySelector('#signup-submit');
+
+const markupModalSignUp = basicLightbox.create(document.querySelector('#modal-signup'));
 const markupModalLogIn = basicLightbox.create(document.querySelector('#modal-welcome'), {
   className: 'modal-registr',
 });
@@ -31,7 +37,6 @@ openModalLogInEl.addEventListener('click', onLogIn);
 closeModalSignUpEl.addEventListener('click', onCloseModal);
 closeModalLogInel.addEventListener('click', onCloseModal);
 
-const markupModalSignUp = basicLightbox.create(document.querySelector('#modal-singup'));
 function onSignUp(e) {
   e.preventDefault();
   markupModalSignUp.show();
@@ -59,11 +64,6 @@ function onCloseModal(e) {
 }
 
 // verify password
-
-const inputEl = document.querySelector('#registration-form-password');
-const inputVerifyEl = document.querySelector('#user-verify-password');
-
-const btnSubmit = document.querySelector('#signup-submit');
 
 btnSubmit.addEventListener('click', verifyPassword);
 
