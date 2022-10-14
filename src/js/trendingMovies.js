@@ -1,9 +1,16 @@
 import { fetchTrendingMovies } from './fetchAPI';
 import { createMovieCards } from './moviesMarkup';
-import { paginationOptions } from './pagination-options';
+// import { paginationOptions } from './pagination-options';
 // import './pagination-options';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+
+const paginationOptions = {
+  totalItems: 0,
+  itemsPerPage: 20,
+  visiblePages: 5,
+  centerAlign: false,
+};
 
 const moviesContainer = document.querySelector('.movies');
 
@@ -18,10 +25,11 @@ async function trendingMovies() {
 
   // console.log('res: ', res);
   // let returnPaginationOption = null;
-  console.log(typeof paginationOptions(res.total_results)); //.then(e => (returnPaginationOption = e));
+  // console.log(typeof paginationOptions(res.total_results)); //.then(e => (returnPaginationOption = e));
+  paginationOptions.totalItems = res.total_results;
   // console.log(returnPaginationOption);
 
-  const pagination = new Pagination('pagination', paginationOptions(res.total_results));
+  const pagination = new Pagination('pagination', paginationOptions);
 
   pagination.on('afterMove', ({ page }) => {
     fetchTrendingMovies(page).then(res => {
