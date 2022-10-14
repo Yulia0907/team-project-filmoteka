@@ -71,10 +71,4 @@ const searchFilmFromID = filmid => {
   //
 };
 
-formSearchInput.addEventListener(
-  'input',
-  debounce(onInputChange, DEBOUNCE_DELAY)
-);
-
-// fromRefs.addEventListener('click', onFormClick);
-// form
+formSearchInput.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
