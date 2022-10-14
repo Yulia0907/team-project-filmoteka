@@ -6,6 +6,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 
 const moviesContainer = document.querySelector('.movies');
 
+const getPaginationsOption = totalResults => paginationOptions;
 /**
  * Function fetch trending movies and make markup on page
  */
@@ -13,9 +14,10 @@ async function trendingMovies() {
   // try {
   const res = await fetchTrendingMovies();
   moviesContainer.innerHTML = createMovieCards(res.results);
-  const returPaginationOption = paginationOptions(res.total_results);
 
-  const pagination = new Pagination('pagination', returPaginationOption);
+  // const returPaginationOption = paginationOptions(res.total_results);
+
+  const pagination = new Pagination('pagination', getPaginationsOption);
 
   pagination.on('afterMove', ({ page }) => {
     fetchTrendingMovies(page).then(res => {
