@@ -1,8 +1,6 @@
 let visiblePages = 0;
 const mediaQueryMobile = window.matchMedia('(max-width: 768px)');
-const mediaQueryTablet = window.matchMedia(
-  '(min-width: 769px) and (max-width: 1279px)'
-);
+const mediaQueryTablet = window.matchMedia('(min-width: 769px) and (max-width: 1279px)');
 const mediaQueryDesktop = window.matchMedia('(min-width: 1280px)');
 
 if (mediaQueryMobile.matches) {
