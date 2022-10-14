@@ -14,19 +14,20 @@ const localStorageApi = new localStorageAPI();
 
 moviesContainer.addEventListener('click', onMovieCardClick);
 
-async function onMovieCardClick(e) {
-  console.log('onMovieCardClick e: ', e);
-  console.log('onMovieCardClick e.target: ', e.target);
-  console.log('onMovieCardClick e.target: ', e.target.closest('li'));
+export async function onMovieCardClick(e) {
+  // console.log('onMovieCardClick e: ', e);
+  // console.log('onMovieCardClick e.target: ', e.target);
+  // console.log('onMovieCardClick e.target: ', e.target.closest('li'));
   const targetFilm = e.target.closest('li').dataset.id; // id текущего фильма при открытии модалки
   if (e.target.nodeName === 'UL') {
     return;
   }
 
   try {
+    // console.log(localStorageApi.getData('current-film'));
+
     const movies = localStorageApi.getData('movies'); // забираем фильмы из Local Storage по тегу "movies"
     const parsedGenres = localStorageApi.getData('genresList'); // забираем жанры из Local Storage
-
     const film = movies.filter(({ id }) => id === Number(targetFilm))[0]; // метод filter возвращает массив, поэтому берем элемент этого массива
     const { genre_ids } = film;
     let genres;
@@ -41,6 +42,7 @@ async function onMovieCardClick(e) {
 
     modalBasicLightbox(film);
     localStorageApi.addListenersToBtns();
+    // console.log(localStorageApi.getData('current-film'));
   } catch (error) {
     console.log(error.message);
   }
