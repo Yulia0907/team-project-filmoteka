@@ -4,6 +4,20 @@ body {
   font-size: 12px;
   line-height: 1.2;
   background-color: $main-invert-color;
+  height: 100%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: rgba(26, 24, 47, 0.15);
+    border-radius: 5px;
+    height: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ff6b08;
+    border-radius: 5px;
+  }
 }
 
 html,
