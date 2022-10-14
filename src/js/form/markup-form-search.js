@@ -1,4 +1,6 @@
 function markupFormListSearch(resultSearch) {
+  console.log('------markupFormListSearch------');
+  console.log('resultSearch: ', resultSearch);
   const newItem = preapreArray(resultSearch);
   console.log('new Item: ', newItem);
   return markupResSearch(newItem);
@@ -9,9 +11,12 @@ function markupGalleryNameSearch(itemSearch) {
 }
 
 const preapreArray = item => {
-  console.log('preapreArray item:  ', item);
+  console.log('------preapreArray------');
+  // console.log('iem: ', item);
+  // console.log('preapreArray item:  ', item);
   const newArr = item.map(evt => {
-    let { title = '', vote_average = '', release_date = '', id = '' } = evt;
+    // let { title = '', vote_average = '', release_date = '', id = '' } = evt;
+    let { title, vote_average, release_date, id } = evt;
     // console.log('index : ', index, '       release_date: ', release_date);
     release_date.length > 0 ? (release_date = release_date.slice(0, 4)) : '';
     return { title, vote_average, release_date, id };
