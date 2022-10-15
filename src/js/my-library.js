@@ -8,9 +8,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 const moviesContainer = document.querySelector('.movies');
 const watchedBtnEl = document.querySelector('[data-id="watched-btn"');
 const queueBtnEl = document.querySelector('[data-id="queue-btn"');
-const myLibraryNavEl = document.querySelector(
-  '.header-nav__link--current-header'
-);
+const myLibraryNavEl = document.querySelector('.header-nav__link--current-header');
 const localStorageApi = new localStorageAPI();
 
 watchedBtnEl.addEventListener('click', onWatchedBtnClick);
@@ -58,24 +56,19 @@ function onWatchedMovieCardClick(e) {
   }
 
   try {
-    console.log('onWatchedMovieCardClick is running');
     const movies = localStorageApi.getData('watched');
     const parsedGenres = localStorageApi.getData('genresList');
     const film = movies.filter(({ id }) => id === Number(targetFilm))[0];
     const { genre_ids } = film;
     let genres;
     if (genre_ids) {
-      genres = parsedGenres
-        .filter(({ id }) => genre_ids.includes(id))
-        .map(({ name }) => name);
+      genres = parsedGenres.filter(({ id }) => genre_ids.includes(id)).map(({ name }) => name);
     }
     film.genres = genres;
-    console.log(film, 'film');
-    console.log(movies, 'movies');
 
     localStorageApi.setData('current-film', film);
 
-    modalBasicLightbox(film);
+    modalBasicLightbox(film, 'watched');
     localStorageApi.addListenersToBtns();
   } catch (error) {
     console.log(error.message);
@@ -89,25 +82,19 @@ function onQueueMovieCardClick(e) {
   }
 
   try {
-    console.log('onQueueMovieCardClick is running');
-
     const movies = localStorageApi.getData('queue');
     const parsedGenres = localStorageApi.getData('genresList');
     const film = movies.filter(({ id }) => id === Number(targetFilm))[0];
     const { genre_ids } = film;
     let genres;
     if (genre_ids) {
-      genres = parsedGenres
-        .filter(({ id }) => genre_ids.includes(id))
-        .map(({ name }) => name);
+      genres = parsedGenres.filter(({ id }) => genre_ids.includes(id)).map(({ name }) => name);
     }
     film.genres = genres;
-    console.log(film, 'film');
-    console.log(movies, 'movies');
 
     localStorageApi.setData('current-film', film);
 
-    modalBasicLightbox(film);
+    modalBasicLightbox(film, 'queue');
     localStorageApi.addListenersToBtns();
   } catch (error) {
     console.log(error.message);

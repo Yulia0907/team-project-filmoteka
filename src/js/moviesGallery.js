@@ -40,7 +40,7 @@ export async function onMovieCardClick(e) {
 
     localStorageApi.setData('current-film', film);
 
-    modalBasicLightbox(film);
+    modalBasicLightbox(film, 'movies');
     localStorageApi.addListenersToBtns();
     // console.log(localStorageApi.getData('current-film'));
   } catch (error) {
@@ -71,10 +71,7 @@ async function galletyFetchAndRender(movieName) {
     return;
   }
   moviesContainer.innerHTML = createMovieCards(res.results);
-  const pagination = new Pagination(
-    'pagination',
-    paginationOptions(res.total_results)
-  );
+  const pagination = new Pagination('pagination', paginationOptions(res.total_results));
 
   pagination.on('afterMove', ({ page }) => {
     fetchMoviesByName(movieName, page)
