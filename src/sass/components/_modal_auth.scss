@@ -14,6 +14,7 @@
 .modal-registr {
     width: 100%;
     background-color: #ffffff;
+    // color: $advanced-color;
     border-radius: 4px;
     padding: 40px;
     background-image: url(/src/img/header-mobile-v2@x-min.jpg);
@@ -70,13 +71,13 @@
 .modal-registr-input {
     display: flex;
     width: 100%;
-    // margin-bottom: 20px;
     padding: 14px 8px;
     padding-bottom: 10px;
     border: none;
+    font-size: 14px;
     background-color: transparent;
     background-image: filter blur(4px);
-    // filter: blur(4px);
+    border-bottom: 1px solid $advanced-color;
     transition-duration: 500ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -92,6 +93,12 @@
     &:focus {
         outline: none;
         border-bottom: 1px solid #FF6B08;
+    }
+
+    &::placeholder {
+        color: $advanced-color;
+        font-size: 14px;
+        ;
     }
 
     &:not(:placeholder-shown):required:valid {
