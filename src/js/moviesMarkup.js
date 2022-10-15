@@ -20,17 +20,24 @@ function createMovieCards(movies) {
         const moviRating = vote_average === 0 ? '-' : vote_average.toFixed(1);
         const genresListFromStorage = localStorage.getItem('genresList');
         const parsedGenres = JSON.parse(genresListFromStorage);
-        let filmGenres = [];
+        let filmGenres;
         if (genre_ids) {
           filmGenres = parsedGenres
             .filter(({ id }) => genre_ids.includes(id))
-            .map(({ name }) => name)
-            .slice(0, 2)
-            .join(', ');
+            .map(({ name }) => name);
+          // .slice(0, 2)
+          // .join(', ');
         }
-        if (filmGenres.length > 0) {
-          filmGenres += ' |';
+
+        let other;
+        filmGenres.length <= 2
+          ? (other = filmGenres.join(', ') + ' |')
+          : (other = filmGenres.slice(0, 2).join(', ') + ', other' + ' |');
+
+        if (filmGenres.length === 0) {
+          other = filmGenres.join('');
         }
+
         const imgUrl = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : // ? `https://image.tmdb.org/t/p/original${poster_path}`
@@ -43,7 +50,7 @@ function createMovieCards(movies) {
                 <div class="movies__description">
                   <p class="movies__title">${title || name}</p>
                   <div class="movies__meta">
-                    <p class="movies__genres">${filmGenres}</p>
+                    <p class="movies__genres">${other}</p>
                     <p class="movies__data">${
                       parseInt(release_date) || parseInt(first_air_date) || ''
                     }</p>
