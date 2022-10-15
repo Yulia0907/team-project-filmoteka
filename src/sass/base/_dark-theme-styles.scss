@@ -2,6 +2,7 @@ body {
   background-color: $main-invert-color;
   transition: all 400ms linear;
 }
+
 body.dark__theme {
   background-color: rgb(43, 40, 40);
   transition: all 400ms linear;
@@ -28,16 +29,14 @@ body.dark__theme {
 
     &:hover,
     &:focus {
-      background-color: $accent-bg-color;
+      background-color: $accent-color;
     }
   }
 
   & .footer {
-    background: linear-gradient(
-      180deg,
-      rgb(43, 40, 40),
-      rgb(156, 156, 156) 100%
-    );
+    background: linear-gradient(180deg,
+        rgb(43, 40, 40),
+        rgb(156, 156, 156) 100%);
 
     &-content {
       color: $main-invert-color;
@@ -62,10 +61,8 @@ body.dark__theme {
   }
 
   & .team-wrapper {
-    background: radial-gradient(
-      circle,
-      rgb(143, 82, 39) 0%,
-      rgb(102, 98, 96) 100%
-    );
+    background: radial-gradient(circle,
+        rgb(143, 82, 39) 0%,
+        rgb(102, 98, 96) 100%);
   }
 }

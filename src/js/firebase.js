@@ -1,14 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {
-  getDatabase,
-  set,
-  ref,
-  update,
-  get,
-  onValue,
-  child,
-  remove,
-} from 'firebase/database';
+import { getDatabase, set, ref, update, get, onValue, child, remove } from 'firebase/database';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -28,12 +19,11 @@ import {
   loginFormPassword,
   onCloseModal,
   closeOnSubmit,
-} from '/src/js/modal-registr.js';
+} from '/src/js/modals/modal-auth.js';
 const firebaseConfig = {
   apiKey: 'AIzaSyCI5JTbKtHIHNuS4WcbgMfz2S8WxJp_ehM',
   authDomain: 'filmoteka-proj-7.firebaseapp.com',
-  databaseURL:
-    'https://filmoteka-proj-7-default-rtdb.europe-west1.firebasedatabase.app/',
+  databaseURL: 'https://filmoteka-proj-7-default-rtdb.europe-west1.firebasedatabase.app/',
   projectId: 'filmoteka-proj-7',
   storageBucket: 'filmoteka-proj-7.appspot.com',
   messagingSenderId: '181528100082',

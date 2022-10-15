@@ -2,7 +2,7 @@
 // import './js/scroll.js';
 // import './js/moviesGallery';  //old gallery render
 import './js/form/form-search-input';
-import './js/modal-registr';
+import './js/modals/modal-auth';
 import './js/firebase';
 import './js/trendingMovies'; //main gallery render
 const currentPage = 1;
