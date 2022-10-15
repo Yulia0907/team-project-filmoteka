@@ -57,7 +57,7 @@ function onFormInputHandler(event) {
     return console.log('Empty search query');
   }
 
-  galletyFetchAndRender(movieName);
+  // galletyFetchAndRender(movieName);
   // resetPage();
 }
 
