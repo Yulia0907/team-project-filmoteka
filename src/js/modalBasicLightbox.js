@@ -95,11 +95,14 @@ function modalBasicLightbox(
         localStorage.removeItem('current-film');
         body.style.overflow = 'auto';
         window.removeEventListener('keydown', onEscKeyPress);
+        // console.log(tag);
 
-        const moviesListOnClose = JSON.parse(localStorage.getItem(`${tag}`));
-        const markup = createMovieCards(moviesListOnClose);
-        const moviesContainer = document.querySelector('.movies');
-        moviesContainer.innerHTML = markup;
+        if (tag !== 'movies') {
+          const moviesListOnClose = JSON.parse(localStorage.getItem(`${tag}`));
+          const markup = createMovieCards(moviesListOnClose);
+          const moviesContainer = document.querySelector('.movies');
+          moviesContainer.innerHTML = markup;
+        }
       },
       className: 'film-modal',
     }
