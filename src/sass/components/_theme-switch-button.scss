@@ -10,6 +10,8 @@
   padding: 4px;
   border-radius: 40px;
 
+  transition: box-shadow 250ms linear;
+
   @include mq(mobile) {
     scale: 0.6;
     right: 18px;
@@ -23,6 +25,11 @@
 
   @include mq(desktop) {
     scale: 0.7;
+  }
+
+  &:hover {
+    box-shadow: 7px 7px 10px #464646,
+      -5px -5px 10px #e2e2e2;
   }
 }
 
@@ -82,9 +89,11 @@
   background-color: #fff;
   transform: scale(0.4);
   transition: all 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
   &:after {
     @include cloudBubbleBtn(-65px, -42px, 15px, 15px, 70deg);
   }
+
   &:before {
     @include cloudBubbleBtn(-25px, -10px, 30px, 30px, 30deg);
   }
@@ -111,23 +120,23 @@
 
 // Night State
 
-.toggle-input:checked ~ .toggle-switch {
+.toggle-input:checked~.toggle-switch {
   margin-left: 0;
   border-color: #dee1c5;
   background-color: #fffdf2;
 }
 
-.toggle-input:checked ~ .toggle-bg {
+.toggle-input:checked~.toggle-bg {
   background-color: rgba(72, 72, 72, 0.6);
   border-color: #202020;
 }
 
-.toggle-input:checked ~ .toggle-switch .toggle-switch-figure {
+.toggle-input:checked~.toggle-switch .toggle-switch-figure {
   margin-left: 40px;
   opacity: 0;
   transform: scale(0.1);
 }
 
-.toggle-input:checked ~ .toggle-switch .toggle-switch-figureAlt {
+.toggle-input:checked~.toggle-switch .toggle-switch-figureAlt {
   transform: scale(1);
 }

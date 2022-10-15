@@ -24,14 +24,14 @@ body.dark__theme {
     }
   }
 
-  & .movie__button {
-    background-color: rgb(140, 140, 140);
+  // & .movie__button {
+  //   // background-color: rgb(140, 140, 140);
 
-    &:hover,
-    &:focus {
-      background-color: $accent-color;
-    }
-  }
+  //   &:hover,
+  //   &:focus {
+  //     // background-color: $accent-color;
+  //   }
+  // }
 
   & .footer {
     background: linear-gradient(180deg,
@@ -64,5 +64,16 @@ body.dark__theme {
     background: radial-gradient(circle,
         rgb(143, 82, 39) 0%,
         rgb(102, 98, 96) 100%);
+  }
+
+  & .movie__button {
+    transition: background-color 300ms linear, border 300ms linear, color 300ms linear, box-shadow 300ms linear;
+  }
+
+  & .movie__button:hover,
+  & .movie__button:focus {
+    // background: blue;
+    box-shadow: 5px 5px 15px #000000,
+      -5px -5px 15px #707070;
   }
 }
