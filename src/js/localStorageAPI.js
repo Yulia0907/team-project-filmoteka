@@ -40,6 +40,7 @@ export class localStorageAPI {
     // для кнонпки Add to Watched
     if (this.watchedMoviesList.map(({ id }) => id).includes(this.currentMovie.id)) {
       this.watchedBtn.classList.toggle('added'); // чтоб при повторном открытии модалки одного и того же фильма сохранялся статус кнопки
+      this.watchedBtn.classList.toggle('active');
       this.watchedBtn.innerText = 'Delete from watched';
       this.watchedBtn.addEventListener('click', this.onClickWatchedDelete);
     } else {
@@ -50,6 +51,7 @@ export class localStorageAPI {
     // для кнонпки Add to Queue
     if (this.queueMoviesList.map(({ id }) => id).includes(this.currentMovie.id)) {
       this.queueBtn.classList.toggle('added');
+      this.queueBtn.classList.toggle('active');
       this.queueBtn.innerText = 'Delete from Queue';
       this.queueBtn.addEventListener('click', this.onClickQueueDelete);
     } else {
@@ -61,6 +63,7 @@ export class localStorageAPI {
   onClickWatched = () => {
     this.watchedBtn.innerText = 'Delete from watched';
     this.watchedBtn.classList.toggle('added');
+    this.watchedBtn.classList.toggle('active');
 
     if (this.getData('watched')) {
       this.watchedMoviesList = this.getData('watched');
@@ -76,7 +79,7 @@ export class localStorageAPI {
   onClickQueue = () => {
     this.queueBtn.innerText = 'Delete from Queue';
     this.queueBtn.classList.toggle('added');
-
+    this.queueBtn.classList.toggle('active');
     if (this.getData('queue')) {
       this.queueMoviesList = this.getData('queue');
     }
@@ -90,6 +93,7 @@ export class localStorageAPI {
 
   onClickWatchedDelete = () => {
     this.watchedBtn.classList.toggle('added');
+    this.watchedBtn.classList.toggle('active');
     this.watchedBtn.innerText = 'Add to watched';
 
     this.watchedMoviesList = this.getData('watched');
@@ -112,7 +116,7 @@ export class localStorageAPI {
   onClickQueueDelete = () => {
     this.queueBtn.classList.toggle('added');
     this.queueBtn.innerText = 'Add to queue';
-
+    this.queueBtn.classList.toggle('active');
     this.queueMoviesList = this.getData('queue');
     this.currentMovie = this.getData('current-film');
 
