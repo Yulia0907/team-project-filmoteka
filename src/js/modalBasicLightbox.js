@@ -3,22 +3,26 @@ import { fetchTrailerById } from './fetchAPI';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import playSvg from '../img/play.svg';
 import noFoto from '../img/no_ing.jpg';
+import { createMovieCards } from './moviesMarkup';
 
 const body = document.querySelector('body');
 let instance;
 
-function modalBasicLightbox({
-  poster_path,
-  original_title,
-  title,
-  name,
-  vote_average,
-  vote_count,
-  genres,
-  overview,
-  popularity,
-  id,
-}) {
+function modalBasicLightbox(
+  {
+    poster_path,
+    original_title,
+    title,
+    name,
+    vote_average,
+    vote_count,
+    genres,
+    overview,
+    popularity,
+    id,
+  },
+  tag
+) {
   const imgUrl = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : noFoto;
   let aboutEl = '';
   if (overview.length > 0) {
@@ -67,8 +71,8 @@ function modalBasicLightbox({
         <button type="button" class="trailer__button" data-id=${id}><img class="play__icon" src=${playSvg} alt="play" />Watch trailer</button>
       </div>
       <div class="button__wrapper">
-        <button type="button" class="movie__button btn-watched" data-id=${id}>Add to watched</button>
-        <button type="button" class="movie__button btn-queue" data-id=${id}>Add to queue</button>
+        <button type="button" class="movie__button btn-watched" data-id=${id} onclick="this.blur();">Add to watched</button>
+        <button type="button" class="movie__button btn-queue" data-id=${id} onclick="this.blur();">Add to queue</button>
       </div>
       </div>
       </div>
@@ -91,6 +95,14 @@ function modalBasicLightbox({
         localStorage.removeItem('current-film');
         body.style.overflow = 'auto';
         window.removeEventListener('keydown', onEscKeyPress);
+        // console.log(tag);
+
+        if (tag !== 'movies') {
+          const moviesListOnClose = JSON.parse(localStorage.getItem(`${tag}`));
+          const markup = createMovieCards(moviesListOnClose);
+          const moviesContainer = document.querySelector('.movies');
+          moviesContainer.innerHTML = markup;
+        }
       },
       className: 'film-modal',
     }

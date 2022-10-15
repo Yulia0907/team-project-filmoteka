@@ -18,7 +18,7 @@ async function fetchTrendingMovies(p = 1) {
 
   const { data } = await axios.get(`${BASE_URL}/trending/movie/day?api_key=${KEY}`, { params });
   const { results } = data;
-
+  // console.log('data: ', data);
   localStorage.setItem('movies', JSON.stringify(results));
   return data;
 }

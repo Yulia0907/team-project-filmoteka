@@ -206,4 +206,5 @@ const scrollSearch = evt => {
 
 formSearchInput.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
-formInputResultSearch.addEventListener('scroll', debounce(scrollSearch, 100));
+// fromRefs.addEventListener('click', onFormClick);
+// form

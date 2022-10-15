@@ -1,0 +1,142 @@
+// Day State
+
+.toggle {
+  position: absolute;
+  scale: 0.5;
+  right: 10px;
+  top: 190px;
+  display: inline-block;
+  width: 80px;
+  padding: 4px;
+  border-radius: 40px;
+
+  transition: box-shadow 250ms linear;
+
+  @include mq(mobile) {
+    scale: 0.6;
+    right: 18px;
+    top: 133px;
+  }
+
+  @include mq(tablet) {
+    scale: 0.7;
+    top: 126px;
+  }
+
+  @include mq(desktop) {
+    scale: 0.7;
+  }
+
+  &:hover {
+    box-shadow: 5px 10px 10px #222222,
+      -5px -5px 10px #e2e2e2;
+  }
+}
+
+.toggle:before,
+.toggle:after {
+  content: '';
+  display: table;
+}
+
+.toggle:after {
+  clear: both;
+}
+
+.toggle-bg {
+  position: absolute;
+  top: 0px;
+  left: -1px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(81, 113, 129, 0.6);
+  border-radius: 40px;
+  border: 4px solid rgb(72, 83, 87);
+  transition: all 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.toggle-input {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-left: 50px;
+  background-color: #f5eb42;
+  border: 3px solid #e4c74d;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.toggle-switch-figure {
+  position: absolute;
+  bottom: -8px;
+  left: -50px;
+  display: block;
+  width: 80px;
+  height: 15px;
+  border: 5px solid #d4d4d2;
+  border-radius: 20px;
+  background-color: #fff;
+  transform: scale(0.4);
+  transition: all 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &:after {
+    @include cloudBubbleBtn(-65px, -42px, 15px, 15px, 70deg);
+  }
+
+  &:before {
+    @include cloudBubbleBtn(-25px, -10px, 30px, 30px, 30deg);
+  }
+}
+
+.toggle-switch-figureAlt {
+  @include craterBtn(2px, 20px, 3px);
+
+  box-shadow: 42px -7px 0 -3px #fcfcfc, 75px -10px 0 -3px #fcfcfc,
+    54px 4px 0 -4px #fcfcfc, 83px 7px 0 -2px #fcfcfc, 63px 18px 0 -4px #fcfcfc,
+    44px 28px 0 -2px #fcfcfc, 78px 23px 0 -3px #fcfcfc;
+
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(0);
+}
+
+.toggle-switch-figureAlt:before {
+  @include craterBtn(-2px, 18px, 4px);
+}
+
+.toggle-switch-figureAlt:after {
+  @include craterBtn(11px, 15px, 3px);
+}
+
+// Night State
+
+.toggle-input:checked~.toggle-switch {
+  margin-left: 0;
+  border-color: #dee1c5;
+  background-color: #fffdf2;
+}
+
+.toggle-input:checked~.toggle-bg {
+  background-color: rgba(72, 72, 72, 0.6);
+  border-color: #202020;
+}
+
+.toggle-input:checked~.toggle-switch .toggle-switch-figure {
+  margin-left: 40px;
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.toggle-input:checked~.toggle-switch .toggle-switch-figureAlt {
+  transform: scale(1);
+}
