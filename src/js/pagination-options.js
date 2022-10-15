@@ -21,12 +21,14 @@
  * @returns {options}
  */
 function paginationOptions(totalResults) {
-  return (options = {
+  const options = {
     totalItems: totalResults,
     itemsPerPage: 20,
     visiblePages: 5,
     centerAlign: false,
-  });
+  };
+
+  return options;
 }
 
 export { paginationOptions };
