@@ -26,7 +26,7 @@ async function trendingMovies() {
   const res = await fetchTrendingMovies();
   moviesContainer.innerHTML = createMovieCards(res.results);
 
-  // console.log('res: ', res);
+  console.log('res: ', res);
   // let returnPaginationOption = null;
   // console.log(typeof paginationOptions(res.total_results)); //.then(e => (returnPaginationOption = e));
   // paginationOptions.totalItems = res.total_results;
@@ -40,6 +40,11 @@ async function trendingMovies() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
+
+  // console.log('!!!!');
+  // document.querySelector('.pagination-first-child').textContent = 1;
+  // document.querySelector('.pagination-last-child').textContent = res.;
+
   // } catch (error) {
   //   console.log('error', error.message);
   // }

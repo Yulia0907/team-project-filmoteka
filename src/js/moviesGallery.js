@@ -1,10 +1,11 @@
-import { fetchMoviesByName } from './fetchAPI';
+import { fetchMoviesByName, fetchMovieById } from './fetchAPI';
 import { createMovieCards } from './moviesMarkup';
 import { paginationOptions } from './pagination-options';
 import { modalBasicLightbox } from './modalBasicLightbox';
 import { localStorageAPI } from './localStorageAPI';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import { async } from '@firebase/util';
 
 const moviesContainer = document.querySelector('.movies');
 const form = document.querySelector('.hero-home__form');
@@ -57,21 +58,34 @@ function onFormInputHandler(event) {
     return console.log('Empty search query');
   }
 
-  galletyFetchAndRender(movieName);
+  // galletyFetchAndRender(movieName);
   // resetPage();
 }
 
 async function galletyFetchAndRender(movieName) {
   const res = await fetchMoviesByName(movieName);
   // console.log('search by Name: ', res, '      total_pages: ', res.total_pages);
-  if (res.results.length === 0) {
+  galleryRender(res);
+}
+
+async function galleryFetchAndRenderByID(movieID) {
+  const res = await fetchMovieById(movieID);
+  console.log('---galleryFetchAndRenderByID---: ', res);
+  const objResult = {};
+  objResult.results = [{ ...res }];
+  objResult.total_results = 1;
+  galleryRender(objResult);
+}
+
+function galleryRender(itemRender) {
+  if (itemRender.results.length === 0) {
     failSearch.classList.remove('is-hidden');
     setTimeout(() => failSearch.classList.add('is-hidden'), 5000);
     form.reset();
     return;
   }
-  moviesContainer.innerHTML = createMovieCards(res.results);
-  const pagination = new Pagination('pagination', paginationOptions(res.total_results));
+  moviesContainer.innerHTML = createMovieCards(itemRender.results);
+  const pagination = new Pagination('pagination', paginationOptions(itemRender.total_results));
 
   pagination.on('afterMove', ({ page }) => {
     fetchMoviesByName(movieName, page)
@@ -86,4 +100,4 @@ async function galletyFetchAndRender(movieName) {
   // form.reset();
 }
 
-export { galletyFetchAndRender };
+export { galletyFetchAndRender, galleryFetchAndRenderByID };

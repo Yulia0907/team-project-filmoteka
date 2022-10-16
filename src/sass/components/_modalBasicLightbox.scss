@@ -191,26 +191,40 @@
 
   &.active {
     background: #ff6b08;
-    box-shadow: inset 20px 20px 60px #d95b07,
-      inset -20px -20px 60px #ff7b09;
+    box-shadow: inset 20px 20px 60px #f46100,
+      inset -30px -30px 60px #fafafa;
+    // inset 20px 20px 60px #ce5707,
+    //   inset -20px -20px 60px #fe7d0b;
     border: 4px solid #ff6b08;
+    // transition: box-shadow 300ms linear;
   }
 
   &:hover:not(.active),
   &:focus:not(.active) {
     background-color: $accent-color;
     color: $main-invert-color;
+    box-shadow:
+      inset 20px 20px 60px #ff9841,
+      inset -20px -20px 60px #d55601,
+      5px 5px 10px #acacac,
+      -5px -5px 10px #fcfcfc;
     // border: 1px solid $accent-color;
 
-    border: 4px solid #ff6906;
-    box-shadow: 5px 5px 10px #acacac,
-      -5px -5px 10px #fcfcfc;
+    border: 1px solid #ff6906;
+    //   box-shadow: 5px 5px 10px #acacac,
+    //     -5px -5px 10px #fcfcfc;
   }
 
-  &:hover.active {
-    box-shadow: inset 20px 20px 60px #d95b07,
-      inset -20px -20px 60px #ff7b09, 5px 5px 10px #acacac,
+  &.active:hover {
+    background: #ff6b08;
+    box-shadow: inset 20px 20px 60px #ff9841,
+      inset -20px -20px 60px #d55601,
+      5px 5px 10px #acacac,
       -5px -5px 10px #fcfcfc;
+    //dark theme
+    // box-shadow: inset 20px 20px 60px #d95b07,
+    //     inset -20px -20px 60px #ff7b09, 5px 5px 10px #acacac,
+    //     -5px -5px 10px #fcfcfc;
   }
 
   @include mq(tablet-only) {
