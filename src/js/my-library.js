@@ -33,6 +33,8 @@ const dbRef = ref(getDatabase());
 const auth = getAuth();
 let userId;
 let userEmail;
+let getWatched = [];
+let getQueue = [];
 const logoutMlBtnEl = document.querySelector('#logout-ml');
 const welcomeMl = document.querySelector('.welcome-ml');
 
