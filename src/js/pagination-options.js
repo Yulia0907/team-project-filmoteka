@@ -29,19 +29,9 @@ function paginationOptions(totalResults, totalPages = 0) {
     firstItemClassName: 'pagination-first-child',
     lastItemClassName: 'pagination-last-child',
     usageStatistics: false,
-    moveButton: type => {
-      let template = '';
-      console.log('type: = ', type);
-      if (type === 'next') {
-        template = '<a href="#" class="tui-page-btn tui-{{type}}">' + totalPages + '</a>';
-      }
-      return template;
+    template: {
+      // page: '<a href="#" class="tui-page-btn">{{page}}p</a>',
     },
-    // '<a href="#" class="tui-page-btn tui-{{type}}">' +
-    // '<span class="tui-ico-{{type}}">{{type}}</span>' +
-    // '</a>',
-
-    // '<div class="custom-page-btn">' + 'totalPages' + '</div>';
   });
 }
 
