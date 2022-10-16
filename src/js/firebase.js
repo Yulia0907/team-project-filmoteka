@@ -13,6 +13,7 @@ import {
   registrationFormName,
   registrationFormEmail,
   registrationFormPassword,
+  registrationFormSubmit,
   loginForm,
   loginFormName,
   loginFormEmail,
@@ -57,7 +58,7 @@ onAuthStateChanged(auth, user => {
 });
 
 //регистрация новых пользователей
-registrationForm.addEventListener('submit', onRegistrationSubmit);
+registrationFormSubmit.addEventListener('click', onRegistrationSubmit);
 
 function onRegistrationSubmit(event) {
   event.preventDefault();
@@ -92,6 +93,8 @@ loginForm.addEventListener('submit', onLoginSubmit);
 
 function onLoginSubmit(event) {
   event.preventDefault();
+  localStorage.removeItem('watched');
+  localStorage.removeItem('queue');
   const email = loginFormEmail.value;
   const password = loginFormPassword.value;
 
@@ -121,6 +124,7 @@ function logOut() {
       userEmail = null;
       logoutBtnEl.classList.add('visually-hidden');
       login.classList.remove('visually-hidden');
+      localStorage.clear();
     })
     .catch(error => {
       // An error happened.
