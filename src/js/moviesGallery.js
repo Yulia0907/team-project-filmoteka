@@ -38,7 +38,7 @@ export async function onMovieCardClick(e) {
         .map(({ name }) => name); //перебираем массив текущих id и возвращаем массив с именами
     }
     film.genres = genres; // в ключ текущего объекта film сохраняем жанры по именам
-
+    
     localStorageApi.setData('current-film', film);
 
     modalBasicLightbox(film, 'movies');

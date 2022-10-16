@@ -93,6 +93,7 @@ const registrationFormPassword = markupModalSignUp
   .element()
   .querySelector('#registration-form-password');
 
+const registrationFormSubmit = markupModalSignUp.element().querySelector('#signup-submit');
 const loginForm = markupModalLogIn.element().querySelector('#login-form');
 
 const loginFormName = markupModalLogIn.element().querySelector('#login-form-name');
@@ -112,6 +113,7 @@ export {
   loginFormName,
   loginFormEmail,
   loginFormPassword,
+  registrationFormSubmit,
   onCloseModal,
   closeOnSubmit,
 };

@@ -41,7 +41,6 @@ onAuthStateChanged(auth, user => {
     logoutMlBtnEl.classList.remove('visually-hidden');
     welcomeMl.innerHTML = `Welcome, ${userEmail}!`;
   } else {
-    console.log('Не авторизован');
     logoutMlBtnEl.classList.add('visually-hidden');
   }
 });
