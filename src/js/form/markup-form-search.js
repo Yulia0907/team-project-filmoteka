@@ -32,7 +32,7 @@ const markupResultSearchTPL = ({ title, release_date, id }, index, Arr) => {
   return `
       <div class="search-result__item " tadindex="0" data-index=${index} data-id=${id}>
         <p class="search-result__title">${title}</p>
-        <spam class="search-result__date"> (${release_date})</spam>
+        <span class="search-result__date"> (${release_date})</span>
 
       </div>
       `;
