@@ -4,7 +4,7 @@ import { modalBasicLightbox } from './modalBasicLightbox';
 import { localStorageAPI } from './localStorageAPI';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-
+import nothingHereIMG from '../img/thereNothingHere.jpg';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, set, ref, update, get, onValue, child, remove } from 'firebase/database';
 import {
@@ -26,6 +26,9 @@ const firebaseConfig = {
   appId: '1:181528100082:web:031dd9add36023a4e5e46b',
   measurementId: 'G-1X27T2N03L',
 };
+// Заглушка, когда пусто в MyLibrary
+const DefaultMarcup = `<li class="default-img"><img src="${nothingHereIMG}" 
+  alt="nothing-here" width="400px"></img></li>`;
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -79,7 +82,7 @@ function renderCardsWatched() {
             console.log('No data available');
             getWatched = snapshot.val();
             console.log('getWatched', snapshot.val());
-            markup = `<div><p>ЗАГЛУШКА Watched</p></div>`;
+            markup = DefaultMarcup;
             moviesContainer.innerHTML = markup;
             moviesContainer.addEventListener('click', onWatchedMovieCardClick);
           }
@@ -121,7 +124,7 @@ function onWatchedBtnClick() {
             console.log('No data available');
             getWatched = snapshot.val();
             console.log('getWatched', snapshot.val());
-            markup = `<div><p>ЗАГЛУШКА Watched</p></div>`;
+            markup = DefaultMarcup;
             moviesContainer.innerHTML = markup;
             moviesContainer.addEventListener('click', onWatchedMovieCardClick);
           }
@@ -160,7 +163,7 @@ function onQueueBtnClick() {
             console.log('No data available');
             getWatched = snapshot.val();
             console.log('getWatched', snapshot.val());
-            markup = `<div><p>ЗАГЛУШКА Queue</p></div>`;
+            markup = DefaultMarcup;
             moviesContainer.innerHTML = markup;
             moviesContainer.addEventListener('click', onWatchedMovieCardClick);
           }
