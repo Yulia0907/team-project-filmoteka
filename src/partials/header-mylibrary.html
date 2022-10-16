@@ -1,48 +1,57 @@
 <header class="header header-mylibrary">
   <div class="container header__container">
-    <nav class="header-nav container__header-nav">
+    <div class="logo-auth">
       <a href="./index.html" class="logo">
         <img src="./img/film.svg" alt="Icon logo" width="24" height="24" />
         <!-- <svg class="logo__icon">
-          <use href="./img/film.svg"></use>
-        </svg> -->
+            <use href="./img/film.svg"></use>
+          </svg> -->
         <span class="logo__label">Filmoteka</span>
       </a>
-      <ul class="header-nav__end">
-        <div class="login-container">
-          <li class="welcome-ml">
-            <p></p>
-          </li>
-          <li class="">
-            <svg class="open-modal-svg" id="logout-ml">
-              <use href="./img/door-exit.svg#log-out"></use>
-            </svg>
-          </li>
-        </div>
-        <li class="header-nav__item">
-          <a href="./index.html" class="header-nav__link">HOME</a>
+      <ul class="header-nav__end login-container">
+        <li class="welcome">
+          <p></p>
         </li>
-        <li class="header-nav__item">
-          <a href="./mylibrary.html" class="header-nav__link header-nav__link--current-header">
-            MY LIBRARY
-          </a>
+        <li>
+          <svg class="open-modal-svg logout visually-hidden" id="logout">
+            <use href="./img/door-exit.svg#log-out"></use>
+          </svg>
+        </li>
+        <li>
+          <svg class="open-modal-svg login-btn" id="login">
+            <use href="./img/login.svg#icon-user"></use>
+          </svg>
         </li>
       </ul>
-    </nav>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="header-nav__item">
+            <a href="./index.html" class="header-nav__link">HOME</a>
+          </li>
+          <li class="header-nav__item">
+            <a href="./mylibrary.html" class="header-nav__link header-nav__link--current-header">
+              MY LIBRARY
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
-<div class="header-button__wrapper">
-  <button type="button" class="header-movie__button is-active" data-id="watched-btn">watched</button>
-  <button type="button" class="header-movie__button" data-id="queue-btn">queue</button>
-</div>
- <!-- перекльчатель на темную тему -->
- <div class="toggle">
-  <input class="toggle-input" type="checkbox" />
-  <div class="toggle-bg"></div>
-  <div class="toggle-switch">
-    <div class="toggle-switch-figure"></div>
-    <div class="toggle-switch-figureAlt"></div>
-  </div>  
-</div>
+    <div class="header-button__wrapper">
+      <button type="button" class="header-movie__button is-active" data-id="watched-btn">
+        watched
+      </button>
+      <button type="button" class="header-movie__button" data-id="queue-btn">queue</button>
+    </div>
+    <!-- перекльчатель на темную тему -->
+    <div class="toggle">
+      <input class="toggle-input" type="checkbox" />
+      <div class="toggle-bg"></div>
+      <div class="toggle-switch">
+        <div class="toggle-switch-figure"></div>
+        <div class="toggle-switch-figureAlt"></div>
+      </div>
+    </div>
   </div>
   <script type="module" src="./js/active-btn.js"></script>
 </header>
