@@ -203,8 +203,9 @@
   &:focus:not(.active) {
     background-color: $accent-color;
     color: $main-invert-color;
-    box-shadow: inset -20px -20px 60px #ff6601,
-      inset 20px 20px 60px #f8f8f8,
+    box-shadow:
+      inset 20px 20px 60px #ff9841,
+      inset -20px -20px 60px #d55601,
       5px 5px 10px #acacac,
       -5px -5px 10px #fcfcfc;
     // border: 1px solid $accent-color;
