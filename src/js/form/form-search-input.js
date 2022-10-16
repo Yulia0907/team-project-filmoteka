@@ -1,7 +1,8 @@
 import debounce from 'lodash.debounce';
-import { fetchMoviesByName } from '../api/fetchAPI-v2';
+import { fetchMoviesByName, fetchMovieById } from '../fetchAPI';
+// import { fetchMoviesByName } from '../api/fetchAPI-v2';
 import { markupFormListSearch } from './markup-form-search';
-import { galletyFetchAndRender } from '../moviesGallery';
+import { galletyFetchAndRender, galleryFetchAndRenderByID } from '../moviesGallery';
 const formInputResultSearch = document.querySelector('.search-result');
 const formRefs = document.querySelector('.hero-home__form');
 
@@ -87,7 +88,10 @@ async function quickSearchFetchAndRender(nameSearch) {
   nameSearch = nameSearch.toLowerCase();
   console.log('------quickSearchFetchAndRender------');
   let response = [];
+  let isNewSearch = false;
+
   if (lastNameSearch != nameSearch) {
+    isNewSearch = true;
     console.log('-----   lastNameSearch === nameSearch  ------');
     console.log('//* получаю в response готовый массив объектов.   fetchMoviesByNameGetAll');
     //* получаю в response готовый массив объектов
@@ -100,15 +104,16 @@ async function quickSearchFetchAndRender(nameSearch) {
     if (lastDownPage === totalFoundPages) {
       return;
     }
-    response = await fetchMoviesByNameGetAllNext(searchString);
-    console.log('!!!return NEXT objects: === ', response);
+    response = await fetchMoviesByNameGetAllNext(nameSearch);
+    console.log('!!!return NEXT objects from FETCH: === ', response);
   }
 
   //* подготавливаю из массива объектов разметку
   const forHTML = markupFormListSearch(response);
+  console.log('----markupFormListSearch OK----');
 
   //* рендерю разметку в форме поиска
-  renderSearch(forHTML);
+  isNewSearch ? renderSearch(forHTML) : renderAddedSearch(forHTML);
 
   //* очищаю данные для рендеринга
   dataForRender = [];
@@ -123,14 +128,19 @@ const prepareArrayForRender = fetchData => {
 };
 
 const renderSearch = dataRender => {
+  console.log('------renderAddedSearch------');
   formInputResultSearch.innerHTML = dataRender;
   document.body.addEventListener('click', onFormClick);
 };
 
 const renderAddedSearch = datarender => {
-  formInputResultSearch.insertAdjacentElement('beforeend', datarender);
+  console.log('------renderAddedSearch------');
+  formInputResultSearch.insertAdjacentHTML('beforeend', datarender);
+  document.body.removeEventListener('click', onFormClick);
+  document.body.addEventListener('click', onFormClick);
 };
 
+//* клик по фильму из быстрого поиска
 const onFormClick = evt => {
   if (!evt.target.closest('.hero-home__form')) {
     closeSearch();
@@ -141,15 +151,17 @@ const onFormClick = evt => {
   // console.log('elementOfClick:   ', elementOfClick);
   const searchID = elementOfClick.dataset.id;
   const searchName = elementOfClick.firstElementChild.textContent;
-  // console.log('searchID: ', searchID);
-  // console.log('searchName: ', searchName);
+  console.log('searchID: ', searchID);
+  console.log('searchName: ', searchName);
   closeSearch();
 
-  galletyFetchAndRender(searchName);
+  galleryFetchAndRenderByID(searchID); //* исправить поиск по ID
+  // galletyFetchAndRender(searchName); //* исправить поиск по ID
 };
 
 formRefs.addEventListener('submit', onFormInputHandler);
 
+//* поиск введенно фильма по имени
 function onFormInputHandler(event) {
   event.preventDefault();
   const movieName = formRefs.elements.searchQuery.value.trim();
@@ -181,30 +193,13 @@ const scrollSearch = evt => {
     console.log('fetchNext');
     console.log('------scrollSearch------');
     dataForRender = [];
-    const response = fetchMoviesByNameGetAllNext(searchString, PAGE_PER_REQUEST);
-    console.log('response: ', response);
-    //* подготавливаю из массива объектов разметку
-    const forHTML = markupFormListSearch(response);
-
-    //* рендерю разметку в форме поиска
-    renderAddedSearch(forHTML);
-
-    //* очищаю данные для рендеринга
-    dataForRender = [];
-    return 'ok added search';
-
-    console.log('forHTML: ', forHTML);
-    renderAddedSearch(forHTML);
-    dataForRender = [];
+    console.log('----call quickSearchFetchAndRender');
+    quickSearchFetchAndRender(searchString);
     return;
   }
-  // console.dir(evt.target);
-
-  // console.log(evt.target.scrollHeight);
-  // console.log(formInputResultSearch.pageYOffset);
 };
 
 formSearchInput.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
+formInputResultSearch.addEventListener('scroll', debounce(scrollSearch, 100));
 // fromRefs.addEventListener('click', onFormClick);
-// form
