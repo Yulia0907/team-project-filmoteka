@@ -70,7 +70,6 @@
   // }
 
   &__end {
-    margin-left: auto;
     display: flex;
     justify-content: space-between;
   }
@@ -267,6 +266,7 @@
   display: flex;
   align-items: center;
   margin-right: 50px;
+  margin-left: auto;
 }
 
 .welcome {

@@ -8,6 +8,7 @@ const closeModalSignUpEl = document.querySelector('.close-signup-btn');
 const closeModalLogInel = document.querySelector('.close-login-btn');
 
 const openModal = document.querySelector('.login-btn');
+console.log('openModal = ', openModal);
 openModal.addEventListener('click', toggleModal);
 
 const inputEl = document.querySelector('#registration-form-password');
@@ -21,6 +22,7 @@ const markupModalLogIn = basicLightbox.create(document.querySelector('#modal-wel
 });
 
 function toggleModal(e) {
+  console.log('кликнуто открыть модалку логина');
   e.preventDefault();
   markupModalLogIn.show();
 
@@ -106,7 +108,6 @@ export { toggleModal, onSignUp, onLogIn };
 
 export {
   registrationForm,
-  registrationFormName,
   registrationFormEmail,
   registrationFormPassword,
   loginForm,

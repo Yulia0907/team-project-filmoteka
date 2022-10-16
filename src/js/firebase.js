@@ -36,7 +36,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-const logoutBtnEl = document.querySelector('#logout');
+const logoutBtnEl = document.querySelector('.logout');
 let userId;
 let userEmail;
 let email;
@@ -44,7 +44,7 @@ let password;
 
 // обсервер текущего пользователя
 const welcome = document.querySelector('.welcome');
-const login = document.querySelector('#login');
+const login = document.querySelector('.login');
 
 onAuthStateChanged(auth, user => {
   if (user) {
@@ -102,6 +102,7 @@ function onLoginSubmit(event) {
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
+      window.location.reload();
       // ...
     })
     .catch(error => {

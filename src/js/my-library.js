@@ -35,7 +35,8 @@ let userId;
 let userEmail;
 let getWatched = [];
 let getQueue = [];
-const logoutMlBtnEl = document.querySelector('#logout-ml');
+let markup = '';
+const logoutMlBtnEl = document.querySelector('.logout');
 const welcomeMl = document.querySelector('.welcome-ml');
 
 onAuthStateChanged(auth, user => {
@@ -72,7 +73,7 @@ function renderCardsWatched() {
             getWatched = snapshot.val();
             localStorage.setItem('watched', JSON.stringify(getWatched));
             console.log('getWatched', snapshot.val());
-            const markup = createMovieCards(getWatched);
+            markup = createMovieCards(getWatched);
             moviesContainer.innerHTML = markup;
             moviesContainer.addEventListener('click', onWatchedMovieCardClick);
           } else {
@@ -89,7 +90,7 @@ function renderCardsWatched() {
         });
     } else {
       getWatched = localStorageApi.getData('watched');
-      const markup = createMovieCards(getWatched);
+      markup = createMovieCards(getWatched);
       moviesContainer.innerHTML = markup;
       moviesContainer.addEventListener('click', onWatchedMovieCardClick);
     }
@@ -99,7 +100,6 @@ function renderCardsWatched() {
 renderCardsWatched();
 
 function onWatchedBtnClick() {
-  let markup = '';
   moviesContainer.removeEventListener('click', onQueueMovieCardClick);
 
   if (watchedBtnEl.classList.contains('is-active')) {
@@ -131,7 +131,7 @@ function onWatchedBtnClick() {
         });
     } else {
       getWatched = localStorageApi.getData('watched');
-      const markup = createMovieCards(getWatched);
+      markup = createMovieCards(getWatched);
       moviesContainer.innerHTML = markup;
       moviesContainer.addEventListener('click', onWatchedMovieCardClick);
     }
@@ -153,7 +153,7 @@ function onQueueBtnClick() {
           if (snapshot.exists()) {
             getQueue = snapshot.val();
             console.log('getQueue', snapshot.val());
-            const markup = createMovieCards(getQueue);
+            markup = createMovieCards(getQueue);
             moviesContainer.innerHTML = markup;
             moviesContainer.addEventListener('click', onQueueMovieCardClick);
           } else {
@@ -170,7 +170,7 @@ function onQueueBtnClick() {
         });
     } else {
       const getQueue = localStorageApi.getData('queue');
-      const markup = createMovieCards(getQueue);
+      markup = createMovieCards(getQueue);
       moviesContainer.innerHTML = markup;
       moviesContainer.addEventListener('click', onQueueMovieCardClick);
     }
