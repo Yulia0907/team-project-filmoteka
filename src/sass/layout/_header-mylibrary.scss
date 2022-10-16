@@ -73,6 +73,13 @@
   }
 }
 
-.welcome-ml {
+.login-container {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  margin-left: auto;
+}
+
+.welcome {
   cursor: default;
 }
