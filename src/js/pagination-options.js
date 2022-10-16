@@ -20,15 +20,19 @@
  * @param {number} totalResults
  * @returns {options}
  */
-function paginationOptions(totalResults) {
-  const options = {
+function paginationOptions(totalResults, totalPages = 0) {
+  return (options = {
     totalItems: totalResults,
     itemsPerPage: 20,
-    visiblePages: 5,
-    centerAlign: false,
-  };
-
-  return options;
+    visiblePages: 3,
+    centerAlign: true,
+    firstItemClassName: 'pagination-first-child',
+    lastItemClassName: 'pagination-last-child',
+    usageStatistics: false,
+    template: {
+      // page: '<a href="#" class="tui-page-btn">{{page}}p</a>',
+    },
+  });
 }
 
 export { paginationOptions };

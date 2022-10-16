@@ -27,6 +27,8 @@ function createMovieCards(movies) {
             .map(({ name }) => name);
           // .slice(0, 2)
           // .join(', ');
+        } else {
+          filmGenres = genres.map(item => item.name);
         }
 
         let other;

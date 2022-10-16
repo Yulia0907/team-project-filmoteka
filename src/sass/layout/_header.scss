@@ -9,9 +9,6 @@
   min-width: 320px;
   height: 216px;
   color: $main-invert-color;
-  // margin-left: auto;
-  // margin-right: auto;
-  // background-color: $main-color;
   background-color: rgba(0, 0, 0, 0.56);
   background-repeat: no-repeat;
   background-position: center;
@@ -21,7 +18,6 @@
 .header__container {
   position: relative;
   padding-top: 40px;
-  padding-bottom: 40px;
   height: 100%;
 }
 
@@ -30,15 +26,9 @@
   font-size: 30px;
   line-height: 1.17;
   display: flex;
+  flex-grow: 1;
   align-items: center;
   transition: transform ease 1s;
-
-  @include mq(tablet) {
-    // margin-left: 10px;
-
-    // line-height: 1.16;
-    // color: $main-invert-color;
-  }
 
   &:hover {
     transform: scale(1.1);
@@ -51,36 +41,18 @@
   }
 
   @include mq(tablet) {
-    // color: $main-invert-color;
     margin-left: 10px;
-    // line-height: 1.16;
-    // text-align: center;
   }
 }
 
 .header-nav {
-  // color: $main-invert-color;
   display: flex;
   align-items: center;
-  // justify-content: space-between;
-
-  // &__list {
-  //     display: flex;
-  //     margin-left: auto;
-  // }
 
   &__end {
     display: flex;
     justify-content: space-between;
   }
-}
-
-.container__header-nav {
-  @include mq(mobile-only) {
-    margin-bottom: 60px;
-  }
-
-  margin-bottom: 40px;
 }
 
 .header-nav__item {
@@ -97,14 +69,7 @@
 }
 
 .header-nav__link {
-  // font-size: 12px;
-  // line-height: 1.16;
   text-transform: uppercase;
-  // padding-bottom: 3px;
-
-  // & {
-  //     padding-bottom: 3px;
-  // }
 }
 
 .header-nav__link--current-header {
@@ -127,20 +92,14 @@
 .hero-home__form {
   position: relative;
   z-index: 1;
-  // display: flex;
-  // align-items: center;
-  // height: 44px;
-  // cursor: pointer;
   width: 280px;
   margin-left: auto;
   margin-right: auto;
-  // margin: 0 auto 16px auto;
   transition: transform ease 1s;
   color: $main-invert-color;
 
   @include mq(tablet) {
     width: 336px;
-    // margin: 0 auto 20px auto;
   }
 
   @include mq(desktop) {
@@ -169,14 +128,8 @@
   color: inherit;
   line-height: 1.14;
   height: 30px;
-  // cursor: pointer;
-  // color: $main-invert-color;
 
   &::placeholder {
-    // font-weight: 400;
-    // font-size: 14px;
-    // line-height: 1.14;
-    // color: $main-invert-color;
     color: inherit;
   }
 
@@ -193,10 +146,8 @@
   right: 0;
   width: 30px;
   height: 30px;
-  // padding: 3px;
   background: transparent;
   border: none;
-  // cursor: pointer;
 }
 
 .fail-search {
@@ -212,38 +163,24 @@
 
 .header-index {
   background-image: url('../img/header-mobile@1x-min.jpg');
-  // ;
-  // background-size: cover;
 
   @include mq(retina) {
     background-image: url('../img/header-mobile@2x-min.jpg');
-    // ;
-    // background-size: cover;
   }
 
   @include mq(tablet) {
     background-image: url('../img/header-tablet@1x-min.jpg');
-    // ;
-    // background-size: cover;
 
     @include mq(retina) {
       background-image: url('../img/header-tablet@2x-min.jpg');
-      // ;
-      // background-size: cover;
     }
 
     @include mq(desktop) {
       background-image: url('../img/header-desktop@1x-min.jpg');
-      //
-      // background-size: cover;
 
       @include mq(retina) {
         background-image: url('../img/header-desktop@2x-min.jpg');
-        // ;
-        // background-size: cover;
       }
-
-      // background-color: transparent;
     }
   }
 }
@@ -271,4 +208,20 @@
 
 .welcome {
   cursor: default;
+}
+
+.logo-auth {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mq(mobile-only) {
+    margin-bottom: 60px;
+  }
+
+  margin-bottom: 40px;
+}
+
+.nav-list {
+  display: flex;
 }

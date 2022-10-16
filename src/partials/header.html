@@ -1,11 +1,11 @@
 <header class="header header-index">
   <div class="container header__container">
-    <nav class="header-nav container__header-nav">
+    <div class="logo-auth">
       <a href="./index.html" class="logo">
         <img src="./img/film.svg" alt="Icon logo" width="24" height="24" />
         <!-- <svg class="logo__icon">
-          <use href="./img/film.svg"></use>
-        </svg> -->
+            <use href="./img/film.svg"></use>
+          </svg> -->
         <span class="logo__label">Filmoteka</span>
       </a>
       <ul class="login-container">
@@ -27,11 +27,30 @@
         <li class="header-nav__item">
           <a href="./index.html" class="header-nav__link header-nav__link--current-header">HOME</a>
         </li>
-        <li class="header-nav__item">
-          <a href="./mylibrary.html" class="header-nav__link">MY LIBRARY</a>
+        <li>
+          <svg class="open-modal-svg logout visually-hidden" id="logout">
+            <use href="./img/door-exit.svg#log-out"></use>
+          </svg>
+        </li>
+        <li>
+          <svg class="open-modal-svg login-btn" id="login">
+            <use href="./img/login.svg#icon-user"></use>
+          </svg>
         </li>
       </ul>
-    </nav>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="header-nav__item">
+            <a href="./index.html" class="header-nav__link header-nav__link--current-header">
+              HOME
+            </a>
+          </li>
+          <li class="header-nav__item">
+            <a href="./mylibrary.html" class="header-nav__link">MY LIBRARY</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <!-- <div class="hero-home"> -->
     <form class="hero-home__form" name="hero-home" role="search">
       <input
@@ -48,7 +67,7 @@
             <use href="./img/search.svg"></use>
           </svg> -->
       </button>
-      <div class="search-result"></div>
+      <div class="search-result scroll-bar-style"></div>
     </form>
     <!-- </div> -->
     <p class="fail-search is-hidden">
