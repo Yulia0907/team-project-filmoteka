@@ -108,7 +108,11 @@ function renderCardsWatched() {
         });
     } else {
       getWatched = localStorageApi.getData('watched');
-      markup = createMovieCards(getWatched);
+      if (getWatched === null || getWatched.length === 0) {
+        markup = DefaultMarcup;
+      } else {
+        markup = createMovieCards(getWatched);
+      }
       moviesContainer.innerHTML = markup;
       moviesContainer.addEventListener('click', onWatchedMovieCardClick);
     }
@@ -149,7 +153,11 @@ function onWatchedBtnClick() {
         });
     } else {
       getWatched = localStorageApi.getData('watched');
-      markup = createMovieCards(getWatched);
+      if (getWatched === null || getWatched.length === 0) {
+        markup = DefaultMarcup;
+      } else {
+        markup = createMovieCards(getWatched);
+      }
       moviesContainer.innerHTML = markup;
       moviesContainer.addEventListener('click', onWatchedMovieCardClick);
     }
@@ -188,7 +196,11 @@ function onQueueBtnClick() {
         });
     } else {
       const getQueue = localStorageApi.getData('queue');
-      markup = createMovieCards(getQueue);
+      if (getQueue === null || getQueue.length === 0) {
+        markup = DefaultMarcup;
+      } else {
+        markup = createMovieCards(getQueue);
+      }
       moviesContainer.innerHTML = markup;
       moviesContainer.addEventListener('click', onQueueMovieCardClick);
     }
