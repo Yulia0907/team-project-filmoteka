@@ -1,14 +1,14 @@
 import aleksandrImg from '../img/team/aleksandr-k.jpg';
-import oksanaImg from '../img/team/Oksana.jpg';
-import alekseiImg from '../img/team/Aleksei.jpg';
-import dmytroImg from '../img/team/Dmytro.jpg';
-import yuliaImg from '../img/team/Yulia.jpg';
-import antonImg from '../img/team/Anton.jpg';
-import maximImg from '../img/team/Maksim.jpg';
-import evgeniyImg from '../img/team/Evgeniy.jpg';
-import yelyzavetaImg from '../img/team/Yelyzaveta.jpg';
-import artemImg from '../img/team/Artem.jpg';
-import yuriiImg from '../img/team/Yurii.jpg';
+import oksanaImg from '../img/team/oksana.jpg';
+import alekseiImg from '../img/team/aleksei.jpg';
+import dmytroImg from '../img/team/dmytro.jpg';
+import yuliaImg from '../img/team/yulia.jpg';
+import antonImg from '../img/team/anton.jpg';
+import maximImg from '../img/team/maksim.jpg';
+import evgeniyImg from '../img/team/evgeniy.jpg';
+import yelyzavetaImg from '../img/team/yelyzaveta.jpg';
+import artemImg from '../img/team/artem.jpg';
+import yuriiImg from '../img/team/yurii.jpg';
 
 export const teamInfo = [
   {
