@@ -21,7 +21,7 @@
  * @returns {options}
  */
 function paginationOptions(totalResults, totalPages = 0) {
-  return (options = {
+  return {
     totalItems: totalResults,
     itemsPerPage: 20,
     visiblePages: 3,
@@ -32,7 +32,7 @@ function paginationOptions(totalResults, totalPages = 0) {
     template: {
       // page: '<a href="#" class="tui-page-btn">{{page}}p</a>',
     },
-  });
+  };
 }
 
 export { paginationOptions };
