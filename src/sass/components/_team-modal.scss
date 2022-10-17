@@ -11,7 +11,10 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 
-  background: radial-gradient(circle, rgba(181, 104, 48, 1) 0%, rgba(219, 212, 208, 1) 100%);
+  background-image: url('../img/ukraine.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 
   border-radius: 25px;
 
@@ -72,7 +75,7 @@
 
   transition: transform ease 1s;
 
-  box-shadow: 5px 2px 5px 2px $accent-color;
+  box-shadow: 5px 2px 5px 2px rgb(8, 165, 227);
 }
 
 .team-name {
@@ -99,7 +102,7 @@
 
 .team-git {
   position: absolute;
-  fill: rgb(91, 3, 109);
+  fill: rgb(4, 0, 5);
 
   top: 0;
   left: 0;
@@ -109,6 +112,6 @@
   &:hover,
   &:focus {
     transform: scale(1.4);
-    fill: rgb(64, 85, 223);
+    fill: rgb(240, 20, 20);
   }
 }
