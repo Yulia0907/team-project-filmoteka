@@ -35,7 +35,7 @@ async function fetchMovieById(id) {
   const { data } = await axios.get(`${BASE_URL}/movie/${id}?api_key=${KEY}`, {
     params,
   });
-  console.log(data);
+  // console.log(data);
   return data;
 }
 

@@ -101,13 +101,13 @@ function modalBasicLightbox(
         if (tag !== 'movies') {
           const moviesListOnClose = JSON.parse(localStorage.getItem(`${tag}`));
           let markup = '';
-          if(moviesListOnClose === null || moviesListOnClose.length === 0){
-              markup = `<li class="default-img"><img src="${nothingHereIMG}" 
+          if (moviesListOnClose === null || moviesListOnClose.length === 0) {
+            markup = `<li class="default-img"><img src="${nothingHereIMG}" 
               alt="nothing-here" width="400px"></img></li>`;
           } else {
             markup = createMovieCards(moviesListOnClose);
           }
-           const moviesContainer = document.querySelector('.movies');
+          const moviesContainer = document.querySelector('.movies');
           moviesContainer.innerHTML = markup;
         }
       },
@@ -169,7 +169,7 @@ async function getLinkTrailer(e) {
 }
 
 function onEscKeyPress(evt) {
-  console.log(evt);
+  // console.log(evt);
   if (evt.keyCode === 27) {
     instance.close();
   }
