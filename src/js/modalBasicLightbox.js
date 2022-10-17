@@ -4,6 +4,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import playSvg from '../img/play.svg';
 import noFoto from '../img/no_ing.jpg';
 import { createMovieCards } from './moviesMarkup';
+import nothingHereIMG from '../img/thereNothingHere.jpg';
 
 const body = document.querySelector('body');
 let instance;
@@ -99,8 +100,14 @@ function modalBasicLightbox(
 
         if (tag !== 'movies') {
           const moviesListOnClose = JSON.parse(localStorage.getItem(`${tag}`));
-          const markup = createMovieCards(moviesListOnClose);
-          const moviesContainer = document.querySelector('.movies');
+          let markup = '';
+          if(moviesListOnClose === null || moviesListOnClose.length === 0){
+              markup = `<li class="default-img"><img src="${nothingHereIMG}" 
+              alt="nothing-here" width="400px"></img></li>`;
+          } else {
+            markup = createMovieCards(moviesListOnClose);
+          }
+           const moviesContainer = document.querySelector('.movies');
           moviesContainer.innerHTML = markup;
         }
       },

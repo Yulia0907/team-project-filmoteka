@@ -42,10 +42,11 @@
   padding: 8px;
   background-color: transparent;
   border: 0;
-  background-image: url(../img/close.png);
+  background-image: url(/src/img/close.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  transition: all ease 250ms;
 
   &:hover,
   &:focus {
