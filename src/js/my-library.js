@@ -88,6 +88,21 @@ function renderCardsWatched() {
         .catch(error => {
           console.error(error);
         });
+      get(child(dbRef, `users/${userId}queue/queue`))
+        .then(snapshot => {
+          if (snapshot.exists()) {
+            getQueue = snapshot.val();
+            localStorage.setItem('queue', JSON.stringify(getQueue));
+            console.log('getQueue', snapshot.val());
+            markup = createMovieCards(getQueue);
+          } else {
+            console.log('No data available');
+            getWatched = snapshot.val();
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
     } else {
       getWatched = localStorageApi.getData('watched');
       markup = createMovieCards(getWatched);
