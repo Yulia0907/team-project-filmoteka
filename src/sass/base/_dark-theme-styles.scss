@@ -61,9 +61,10 @@ body.dark__theme {
   }
 
   & .team-wrapper {
-    background: radial-gradient(circle,
-        rgb(143, 82, 39) 0%,
-        rgb(102, 98, 96) 100%);
+    background-image: url('../img/ukraine.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
   }
 
   & .movie__button.active {
