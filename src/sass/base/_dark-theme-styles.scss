@@ -9,6 +9,13 @@ body.dark__theme {
 
   & .tui-pagination.custom-tui-pagination .tui-page-btn {
     color: $main-invert-color;
+
+    &:hover,
+    &:focus {
+      color: #000;
+    }
+
+
   }
 
   & .modal {
@@ -27,6 +34,7 @@ body.dark__theme {
   & .mobalClose__btn {
     background-image: url(/src/img/closeLight.svg);
   }
+
   & .footer {
     background: linear-gradient(180deg,
         rgb(43, 40, 40),
@@ -86,4 +94,8 @@ body.dark__theme {
       5px 5px 10px #000,
       -2px -2px 7px #aba8a8;
   }
+}
+
+.tui-page-button .tui-ico-ellip {
+  color: #f8f8f8;
 }
