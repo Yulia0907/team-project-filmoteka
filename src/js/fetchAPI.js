@@ -39,6 +39,27 @@ async function fetchMovieById(id) {
   return data;
 }
 
+async function fetchMoviesByNameQuickSearch(movieName, p = 1) {
+  const params = {
+    api_key: '0214e4f6556edfc65f2eadfc23b43510',
+    language: 'en-US',
+    page: p ?? 1,
+    include_adult: false,
+    query: movieName,
+  };
+
+  try {
+    const { data } = await axios.get(`${BASE_URL}/search/movie?api_key${KEY}`, {
+      params,
+    });
+    const { results } = data;
+    // localStorage.setItem('movies', JSON.stringify(results));
+    return data;
+  } catch (error) {
+    console.log(error.statusText);
+  }
+}
+
 /**
  * Function receives movie name and page, doing fetch by received params
  * @param {string} movieName
@@ -107,6 +128,7 @@ export {
   fetchTrendingMovies,
   fetchMovieById,
   fetchMoviesByName,
+  fetchMoviesByNameQuickSearch,
   fetchGenresList,
   fetchTrailerById,
 };

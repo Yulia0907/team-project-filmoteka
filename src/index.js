@@ -1,6 +1,6 @@
 // import paginations from './js/paginations';
 // import './js/scroll.js';
-// import './js/moviesGallery';  //old gallery render
+// import './js/moviesGallery'; //old gallery render
 import './js/form/form-search-input';
 import './js/modals/modal-auth';
 import './js/firebase';

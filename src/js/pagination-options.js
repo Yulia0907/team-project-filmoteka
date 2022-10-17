@@ -28,10 +28,7 @@ function paginationOptions(totalResults, totalPages = 0) {
     centerAlign: true,
     firstItemClassName: 'pagination-first-child',
     lastItemClassName: 'pagination-last-child',
-    usageStatistics: false,
-    template: {
-      // page: '<a href="#" class="tui-page-btn">{{page}}p</a>',
-    },
+    usageStatistics: true,
   };
 }
 

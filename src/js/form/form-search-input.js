@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import { fetchMoviesByName, fetchMovieById } from '../fetchAPI';
+import { fetchMoviesByName, fetchMovieById, fetchMoviesByNameQuickSearch } from '../fetchAPI';
 // import { fetchMoviesByName } from '../api/fetchAPI-v2';
 import { markupFormListSearch } from './markup-form-search';
 import { galletyFetchAndRender, galleryFetchAndRenderByID } from '../moviesGallery';
@@ -45,7 +45,7 @@ async function fetchMoviesByNameGetAll(nameSearch) {
   lastDownPage = 0;
   // totalFoundPages = 0;
   // let totalFoundResults = 0;;
-  const response = await fetchMoviesByName(nameSearch, (lastDownPage += 1));
+  const response = await fetchMoviesByNameQuickSearch(nameSearch, (lastDownPage += 1));
   console.log('lastNameSearch  in getAll do: ', lastNameSearch);
   lastNameSearch = nameSearch;
   console.log('lastNameSearch  in getAll posle: ', lastNameSearch);
@@ -72,7 +72,7 @@ async function fetchMoviesByNameGetAllNext(nameSearch) {
   const pageEnd = lastDownPage + PAGE_PER_REQUEST;
   let respWhile = [];
   while (pageEnd > lastDownPage && totalFoundPages > lastDownPage) {
-    const respWhile = await fetchMoviesByName(nameSearch, (lastDownPage += 1));
+    const respWhile = await fetchMoviesByNameQuickSearch(nameSearch, (lastDownPage += 1));
     console.log('respWhile ----- ', respWhile);
     lastDownPage = respWhile.page;
     // console.log('getsPage = ', getsPage);
