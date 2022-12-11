@@ -1,0 +1,2 @@
+!function(){var e=document.querySelector("#scrollToTopBtn"),s=document.documentElement;e.addEventListener("click",(function(){s.scrollTo({top:0,behavior:"smooth"})})),window.addEventListener("scroll",(function(){window.pageYOffset>300?(e.classList.add("scroll-visible"),e.classList.remove("noHover"),e.classList.remove("clicked")):(e.classList.remove("scroll-visible"),e.classList.add("noHover"),e.classList.add("clicked"))}))}();
+//# sourceMappingURL=mylibrary.09751d80.js.map

@@ -1,0 +1,2 @@
+const s=document.querySelector("#scrollToTopBtn"),e=document.documentElement;s.addEventListener("click",(function(){e.scrollTo({top:0,behavior:"smooth"})})),window.addEventListener("scroll",(function(){window.pageYOffset>300?(s.classList.add("scroll-visible"),s.classList.remove("noHover"),s.classList.remove("clicked")):(s.classList.remove("scroll-visible"),s.classList.add("noHover"),s.classList.add("clicked"))}));
+//# sourceMappingURL=mylibrary.42a38fc8.js.map
