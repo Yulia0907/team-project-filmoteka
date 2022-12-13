@@ -7,6 +7,7 @@
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /team-project-filmoteka/"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NilKad/js-project-7.git"
